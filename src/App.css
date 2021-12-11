@@ -4,10 +4,6 @@ header {
 .container {
   width: 100%;
 }
-.btn:visited,
-.btn:active {
-  text-decoration: none;
-}
 .btn,
 .btn:link,
 .btn:visited {
@@ -22,15 +18,21 @@ header {
   transition: all 0.2s ease;
   box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.35);
 }
-
+.btn:visited,
+.btn:active {
+  text-decoration: none;
+}
 .btn__info {
   background: #5865f2;
   color: #fff;
   font-weight: 700;
   font-size: 1.6rem;
 }
+.btn__info:disabled {
+  opacity: 0.65;
+}
 .btn__info:hover {
-  background: rgba(88, 101, 242, 0.75);
+  background: #7983f4;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
 }
 /* @media (min-width: 87.5rem) {
@@ -79,11 +81,20 @@ header {
 }
 .avatar {
   border-radius: 100%;
+  height: 20vh;
+  transition: all 0.2s ease;
+}
+.avatar:hover {
+  opacity: 0.65;
 }
 .banner {
   margin-bottom: 2rem;
   width: 100%;
   border-radius: 1rem;
+  transition: all 0.2s ease;
+}
+.banner:hover {
+  opacity: 0.65;
 }
 p:not(:last-child) {
   margin: 0 0 1rem;
@@ -101,16 +112,6 @@ p:not(:last-child) {
 .created {
   color: #05ffa1;
 }
-.bannerColor {
-  border-radius: 2rem;
-  padding: 0 1rem;
-}
-.error {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: red;
-}
 @media (max-width: 600px) {
   .container {
     padding: 0 2rem;
@@ -122,4 +123,24 @@ p:not(:last-child) {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  .avatar {
+    height: 20vh;
+  }
+}
+.icon {
+  margin-right: 0.65rem;
+}
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+}
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
 }
