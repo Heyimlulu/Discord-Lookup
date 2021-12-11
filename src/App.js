@@ -12,75 +12,85 @@ function App () {
   const [discordUser, setDiscordUser] = useState([]);
   const [userID, setUserID] = useState('');
   const [isReady, setIsReady] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value;
+    const regex = /^[0-9\b]+$/;
 
-    setUserID(value);
+    if (value === '' || regex.test(value)) {
+      setUserID(value);
+    }
   }
 
   const handleClick = () => {
-    DiscordService.getUser(userID).then((user) => {
-      if (user) {
+    if (userID) {
+      DiscordService.getUser(userID).then((user) => {
         setDiscordUser(user);
         setIsReady(true);
-      } else {
-        console.log('User not found');
-      }
-    });
+      });
+      setIsError(false);
+    } else {
+      setIsError(true);
+    }
   }
 
   return (
     <>
       <AppHeader />
       <div className="container">
-        <h3 className="title">User ID / Bot ID:</h3>
-        <div className="form">
-          <input type="text" name="input" id="input" className="input" placeholder="1234567890" onChange={handleChange} value={userID} />
-          <button id="btn" className="btn btn__info" onClick={handleClick}>Lookup</button>
-        </div>
-      </div>
-      <div className='content'>
-      {isReady &&
         <div className="row">
+          <div>
+            <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
+            <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={24} onChange={handleChange} value={userID} />
+            <button id="btn" className="btn btn__info" onClick={handleClick}>Lookup</button>
+            {isError &&
+              <span className='error'>User ID may not be empty</span>
+            }
+          </div>
+        </div>
+        {isReady &&
+        <div className="row content">
           <div className='col-1-of-2'>
             <a href={`${discordUser.avatar}?size=1024`} target="_blank" rel="noopener noreferrer">
               <img className='avatar' src={discordUser.avatar} alt={`${discordUser.username} avatar`} />
             </a>
           </div>
-        <div className="col-1-of-2">
-          {discordUser.banner &&
-            <a href={`${discordUser.banner}?size=1024`} target="_blank" rel="noopener noreferrer">
-              <img className='banner' src={discordUser.banner} alt={`${discordUser.username} banner`} />
-            </a>
-          }
-          <p>
-            <strong>User ID: </strong>
-            <span>{discordUser.id}</span>
-          </p>
-          <p>
-            <strong>Username: </strong>
-            <span>{discordUser.username}</span>
-          </p>
-          {discordUser.badges.length !== 0 &&
+          <div className="col-1-of-2">
+            {discordUser.banner &&
+              <a href={`${discordUser.banner}?size=1024`} target="_blank" rel="noopener noreferrer">
+                <img className='banner' src={discordUser.banner} alt={`${discordUser.username} banner`} />
+              </a>
+            }
             <p>
-              <strong>Badge: </strong>
-              {discordUser.badges.map((badge, key) => {
-                return <span key={key}><img className='badge' src={`/img/flags/${badge}.svg`} alt={badge}/></span>
-              })}
+              <strong>User ID: </strong>
+              <span className='userid'>{discordUser.id}</span>
             </p>
-          }
-          <p>
-            <strong>Created: </strong>
-            <span>{discordUser.creationDate}</span>
-          </p>
-          <p>
-            <strong>Banner Color: </strong>
-            <span style={{color: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
-          </p>
+            <p>
+              <strong>Username: </strong>
+              <span className='username'>{discordUser.username}</span>
+            </p>
+            {discordUser.badges.length !== 0 &&
+              <p>
+                <strong>Badge: </strong>
+                {discordUser.badges.map((badge, key) => {
+                  return <span key={key}><img height="20" className='badge' src={`/img/badges/${badge}.svg`} alt={badge}/></span>
+                })}
+              </p>
+            }
+            <p>
+              <strong>Created: </strong>
+              <span className='created'>{discordUser.creationDate}</span>
+            </p>
+            {discordUser.bannerColor &&
+              <p>
+                <strong>Banner Color: </strong>
+                <span className='bannerColor' style={{color: discordUser.bannerColor, backgroundColor: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
+              </p>
+            }
+          </div>
         </div>
-      </div>
-      }
+        }
       </div>
     </>
   )
