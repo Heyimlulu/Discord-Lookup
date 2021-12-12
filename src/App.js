@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
-import { Spinner } from '@chakra-ui/react';
+import Loader from "react-loader-spinner";
 
 // STYLES
 import './App.css'
@@ -27,7 +27,7 @@ function App () {
       setUserID(value);
     }
 
-    // Enable button on +15 numbers
+    // Enable button on 15th numbers
     if (value.length >= 15) {
       setIsDisabled(false);
     } else {
@@ -83,9 +83,9 @@ function App () {
         <div className="row">
           <form>
             <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
-            <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={24} onChange={handleChange} value={userID} />
+            <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={22} onChange={handleChange} value={userID} />
             <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>
-              {isLoading ? <Spinner size='md' speed='.85s' /> : 'Lookup'}
+              {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={10} width={40} /> : 'Lookup'}
             </button>
           </form>
         </div>
