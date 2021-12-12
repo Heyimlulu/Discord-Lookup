@@ -22,10 +22,12 @@ function App () {
     const value = e.target.value;
     const regex = /^[0-9\b]+$/;
 
+    // Tell that input field only accept numbers
     if (value === '' || regex.test(value)) {
       setUserID(value);
     }
 
+    // Enable button on +15 numbers
     if (value.length >= 15) {
       setIsDisabled(false);
     } else {
@@ -46,9 +48,12 @@ function App () {
     await fetch(`https://discord-lookup-api.herokuapp.com/api/user/profile?q=${userID}`)
     .then((response) => response.json())
     .then((response) => {
+
       const data = response.data;
 
-      if (!data) {
+      // On error
+      if (!response.success) {
+        setDiscordUser(data);
         setIsLoading(false);
         setIsError(true);
         // Reset form
@@ -56,6 +61,7 @@ function App () {
         return;
       }
 
+      // On success
       setDiscordUser(data);
       setIsReady(true);
       setIsLoading(false);
@@ -75,15 +81,33 @@ function App () {
       <AppHeader />
       <div className="container">
         <div className="row">
-          <div>
+          <form>
             <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
             <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={24} onChange={handleChange} value={userID} />
             <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>
               {isLoading ? <Spinner size='md' speed='.85s' /> : 'Lookup'}
             </button>
+          </form>
+        </div>
+        {isError && 
+        <div>
+          <h2 className='error'>User not found</h2>
+          <div className='row content'>
+            <div className='col single'>
+              <p>
+                <span className='icon'><FontAwesomeIcon icon={faHashtag} /></span>
+                  <strong>User ID: </strong>
+                <span className='userid'>{discordUser.id}</span>
+              </p>
+              <p>
+                <span className='icon'><FontAwesomeIcon icon={faStar} /></span>
+                  <strong>Created: </strong>
+                <span className='created'>{discordUser.created}</span>
+              </p>
+            </div>
           </div>
         </div>
-        {isError && <h2 className='error'>User not found</h2>}
+        }
         {isReady &&
         <div className="row content">
           {discordUser.avatar &&
@@ -121,7 +145,7 @@ function App () {
             <p>
               <span className='icon'><FontAwesomeIcon icon={faStar} /></span>
               <strong>Created: </strong>
-              <span className='created'>{discordUser.creationDate}</span>
+              <span className='created'>{discordUser.created}</span>
             </p>
             {discordUser.bannerColor &&
               <p>
