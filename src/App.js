@@ -49,16 +49,25 @@ function App () {
       if (!data) {
         setIsLoading(false);
         setIsError(true);
+        // Reset form
+        setUserID('');
+        setIsDisabled(true);
         return;
       }
 
       setDiscordUser(data);
       setIsReady(true);
       setIsLoading(false);
+      // Reset form
+      setUserID('');
+      setIsDisabled(true);
     })
     .catch((error) => {
       setIsLoading(false);
       setIsError(true);
+      // Reset form
+      setUserID('');
+      setIsDisabled(true);
     });
   }
 
