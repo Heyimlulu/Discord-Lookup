@@ -88,12 +88,12 @@ function App () {
         {isError && <h2 className='error'>User not found</h2>}
         {isReady &&
         <div className="row content">
-          <div className='col-1-of-2'>
+          <div className='col col-1'>
             <a href={`${discordUser.avatar}?size=1024`} target="_blank" rel="noopener noreferrer">
               <img className='avatar' src={discordUser.avatar} alt={`${discordUser.username} avatar`} />
             </a>
           </div>
-          <div className="col-1-of-2">
+          <div className='col col-2'>
             {discordUser.banner &&
               <a href={`${discordUser.banner}?size=1024`} target="_blank" rel="noopener noreferrer">
                 <img className='banner' src={discordUser.banner} alt={`${discordUser.username} banner`} />
