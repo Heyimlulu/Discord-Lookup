@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
+import { Spinner } from '@chakra-ui/react';
 
 // STYLES
 import './App.css'
@@ -79,10 +80,11 @@ function App () {
           <div>
             <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
             <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={24} onChange={handleChange} value={userID} />
-            <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>Lookup</button>
+            <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>
+              {isLoading ? <Spinner size='md' speed='.85s' /> : 'Lookup'}
+            </button>
           </div>
         </div>
-        {isLoading && <h2 className='loading'>Loading...</h2>}
         {isError && <h2 className='error'>User not found</h2>}
         {isReady &&
         <div className="row content">
