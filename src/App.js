@@ -114,7 +114,7 @@ function App () {
                 <span className='icon'><FontAwesomeIcon icon={faTags} /></span>
                 <strong>Badge: </strong>
                 {discordUser.badges.map((badge, key) => {
-                  return <span key={key}><img height="20" className='badge' src={`/img/badges/${badge}.svg`} alt={badge}/></span>
+                  return <span key={key} className='badge' style={{backgroundImage: `url("/img/badges/${badge}.svg")`}}></span>
                 })}
               </p>
             }
