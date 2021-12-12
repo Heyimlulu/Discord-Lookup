@@ -41,6 +41,7 @@ function App () {
     setIsReady(false);
     setIsLoading(true);
     setIsError(false);
+    setIsDisabled(true);
 
     await fetch(`https://discord-lookup-api.herokuapp.com/api/user/profile?q=${userID}`)
     .then((response) => response.json())
@@ -52,7 +53,6 @@ function App () {
         setIsError(true);
         // Reset form
         setUserID('');
-        setIsDisabled(true);
         return;
       }
 
@@ -61,14 +61,12 @@ function App () {
       setIsLoading(false);
       // Reset form
       setUserID('');
-      setIsDisabled(true);
     })
     .catch((error) => {
       setIsLoading(false);
       setIsError(true);
       // Reset form
       setUserID('');
-      setIsDisabled(true);
     });
   }
 
