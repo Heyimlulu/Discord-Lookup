@@ -50,6 +50,7 @@ header {
 }
 .col-2 {
   border-radius: 0 2rem 2rem 0;
+  flex: 0 0 25%;
 }
 .single {
   border-radius: 2rem;

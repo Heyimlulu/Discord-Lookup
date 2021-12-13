@@ -95,13 +95,17 @@ function App () {
           <div className='row content'>
             <div className='col single'>
               <p>
-                <span className='icon'><FontAwesomeIcon icon={faHashtag} /></span>
-                  <strong>User ID: </strong>
+                <span className='icon'>
+                  <FontAwesomeIcon icon={faHashtag} />
+                </span>
+                <strong>User ID: </strong>
                 <span className='userid'>{discordUser.id}</span>
               </p>
               <p>
-                <span className='icon'><FontAwesomeIcon icon={faStar} /></span>
-                  <strong>Created: </strong>
+                <span className='icon'>
+                  <FontAwesomeIcon icon={faStar} />
+                </span>
+                <strong>Created: </strong>
                 <span className='created'>{discordUser.created}</span>
               </p>
             </div>
@@ -120,22 +124,28 @@ function App () {
           <div className='col col-2'>
             {discordUser.banner &&
               <a href={`${discordUser.banner}?size=1024`} target="_blank" rel="noopener noreferrer">
-                <img className='banner' src={discordUser.banner} alt={`${discordUser.username} banner`} />
+                <img className='banner' src={`${discordUser.banner}?size=1024`} alt={`${discordUser.username} banner`} />
               </a>
             }
             <p>
-              <span className='icon'><FontAwesomeIcon icon={faHashtag} /></span>
+              <span className='icon'>
+                <FontAwesomeIcon icon={faHashtag} />
+              </span>
               <strong>User ID: </strong>
               <span className='userid'>{discordUser.id}</span>
             </p>
             <p>
-              <span className='icon'><FontAwesomeIcon icon={faIdBadge} /></span>
+              <span className='icon'>
+                <FontAwesomeIcon icon={faIdBadge} />
+              </span>
               <strong>Username: </strong>
               <span className='username'>{discordUser.username}</span>
             </p>
             {discordUser.badges.length !== 0 &&
               <p>
-                <span className='icon'><FontAwesomeIcon icon={faTags} /></span>
+                <span className='icon'>
+                  <FontAwesomeIcon icon={faTags} />
+                </span>
                 <strong>Badge: </strong>
                 {discordUser.badges.map((badge, key) => {
                   return <span key={key} className='badge' style={{backgroundImage: `url("/img/badges/${badge}.svg")`}}></span>
@@ -143,13 +153,17 @@ function App () {
               </p>
             }
             <p>
-              <span className='icon'><FontAwesomeIcon icon={faStar} /></span>
+              <span className='icon'>
+                <FontAwesomeIcon icon={faStar} />
+              </span>
               <strong>Created: </strong>
               <span className='created'>{discordUser.created}</span>
             </p>
             {discordUser.bannerColor &&
               <p>
-                <span className='icon'><FontAwesomeIcon icon={faPalette} /></span>
+                <span className='icon'>
+                  <FontAwesomeIcon icon={faPalette} />
+                </span>
                 <strong>Banner Color: </strong>
                 <span className='bannerColor' style={{color: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
               </p>
