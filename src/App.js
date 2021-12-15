@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faHashtag, faIdBadge, faPalette, faStar, faTags, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import Loader from "react-loader-spinner";
 
 // STYLES
@@ -85,7 +85,7 @@ function App () {
             <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
             <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={22} onChange={handleChange} value={userID} />
             <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>
-              {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={10} width={40} /> : 'Lookup'}
+              {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={10} width={40} /> : <span>Lookup <FontAwesomeIcon icon={faChevronCircleRight} /></span>}
             </button>
           </form>
         </div>
