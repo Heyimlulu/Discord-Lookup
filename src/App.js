@@ -5,9 +5,11 @@ import Loader from "react-loader-spinner";
 
 // STYLES
 import './App.css'
+import './background.css'
 
 // COMPONENTS
 import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
 
 function App () {
 
@@ -79,6 +81,20 @@ function App () {
   return (
     <>
       <AppHeader />
+      <div>
+        <ul className="circles">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+          </ul>
+        </div>
       <div className="container">
         <div className="row">
           <form>
@@ -172,6 +188,7 @@ function App () {
         </div>
         }
       </div>
+      <AppFooter />
     </>
   )
 }

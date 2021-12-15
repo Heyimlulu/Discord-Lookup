@@ -125,6 +125,10 @@ p:not(:last-child) {
   .col-2 {
     border-radius: 0 0 2rem 2rem;
   }
+  footer {
+    position: relative !important;
+    margin-top: 5rem;
+  }
 }
 .icon {
   margin-right: 0.65rem;
@@ -142,4 +146,31 @@ p:not(:last-child) {
   font-size: 2rem;
   font-weight: bold;
   color: red;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #262626;
+  color: white;
+  text-align: center;
+
+  padding: 2rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 2rem;
+}
+.footer-link {
+  text-decoration: none;
+  color: #5865f2;
+
+  transition: all 0.4s;
+}
+.footer-link:hover {
+  color: #7983f4;
+}
+.footer-link:visited {
+  color: rgb(88, 168, 242);
 }
