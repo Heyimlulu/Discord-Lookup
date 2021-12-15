@@ -8,7 +8,6 @@ header {
 .btn:link,
 .btn:visited {
   text-decoration: none;
-  text-transform: uppercase;
   display: inline-block;
   cursor: pointer;
   line-height: 3.5rem;
