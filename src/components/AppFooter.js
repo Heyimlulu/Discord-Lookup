@@ -10,7 +10,7 @@ export default function AppFooter() {
             </div>
             <div>
                 <span>Feel free to contact me on Discord if you have any questions: </span>
-                <a className='footer-link' href='https://discord.com/users/265896171384340480' target="_blank">Ayuki#0001</a>
+                <a className='footer-link' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Ayuki#0001</a>
             </div>
         </footer>
     )
