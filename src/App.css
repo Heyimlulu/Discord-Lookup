@@ -126,8 +126,7 @@ p:not(:last-child) {
     border-radius: 0 0 2rem 2rem;
   }
   footer {
-    position: relative !important;
-    margin-top: 5rem;
+    bottom: -10rem !important;
   }
 }
 .icon {
