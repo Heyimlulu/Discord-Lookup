@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag, faIdBadge, faPalette, faStar, faTags, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
-import Loader from "react-loader-spinner";
+import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
 
 // STYLES
 import './App.css'
@@ -10,6 +9,8 @@ import './background.css'
 // COMPONENTS
 import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
+import Form from './components/Form';
+import Background from './components/Background';
 
 function App () {
 
@@ -81,30 +82,9 @@ function App () {
   return (
     <>
       <AppHeader />
-      <div>
-        <ul className="circles">
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-          </ul>
-        </div>
+      <Background />
       <div className="container">
-        <div className="row">
-          <form>
-            <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
-            <input type="text" name="userid-input" id="userid-input" className="userid-input" maxLength={22} onChange={handleChange} value={userID} />
-            <button id="btn" className="btn btn__info" onClick={handleClick} disabled={isDisabled}>
-              {isLoading ? <Loader type="ThreeDots" color="#FFFFFF" height={10} width={40} /> : <span>Lookup <FontAwesomeIcon icon={faChevronCircleRight} /></span>}
-            </button>
-          </form>
-        </div>
+        <Form handleChange={handleChange} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
         {isError && 
         <div>
           <h2 className='error'>User not found</h2>
