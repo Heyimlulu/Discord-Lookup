@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Background() {
     return (
-        <div>
+        <>
             <ul className="circles">
                 <li></li>
                 <li></li>
@@ -15,6 +15,6 @@ export default function Background() {
                 <li></li>
                 <li></li>
             </ul>
-        </div>
+        </>
     )
 }

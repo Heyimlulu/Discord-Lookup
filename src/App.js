@@ -86,7 +86,7 @@ function App () {
       <div className="container">
         <Form handleChange={handleChange} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
         {isError && 
-        <div>
+        <>
           <h2 className='error'>User not found</h2>
           <div className='row content'>
             <div className='col single'>
@@ -106,7 +106,7 @@ function App () {
               </p>
             </div>
           </div>
-        </div>
+        </>
         }
         {isReady &&
         <div className="row content">

@@ -125,6 +125,9 @@ p:not(:last-child) {
   .col-2 {
     border-radius: 0 0 2rem 2rem;
   }
+  footer {
+    bottom: -10rem !important;
+  }
 }
 .icon {
   margin-right: 0.65rem;
@@ -147,7 +150,7 @@ p:not(:last-child) {
 footer {
   position: absolute;
   left: 0;
-  bottom: -10rem;
+  bottom: 0;
   width: 100%;
   background-color: #262626;
   color: white;
