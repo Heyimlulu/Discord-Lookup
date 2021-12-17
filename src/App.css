@@ -147,27 +147,33 @@ p:not(:last-child) {
   font-weight: bold;
   color: red;
 }
-.box {
-  position: absolute;
+.site-footer {
   width: 100%;
-  left: 0;
-  bottom: 0;
-  background-color: #262626;
-  color: white;
+  background-color: #26272b;
+  padding: 4rem;
+  font-size: 1.5rem;
+  line-height: 2.4rem;
+  color: #737373;
   text-align: center;
-  padding: 2rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  line-height: 2rem;
+  margin: -10rem 0;
 }
-.footer-link,
-.footer-link:visited,
-.footer-link:active {
-  text-decoration: none;
+.site-footer a {
   color: #5865f2;
-
   transition: all 0.4s;
+  text-decoration: none;
 }
-.footer-link:hover {
+.site-footer a:hover {
   color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+.footer-links {
+  padding-left: 0;
+  list-style: none;
+}
+@media (min-width: 1200px) {
+  .site-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }
