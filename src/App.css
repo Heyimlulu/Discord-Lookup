@@ -3,7 +3,7 @@ header {
 }
 .container {
   width: 100%;
-  margin-bottom: 10rem;
+  margin-bottom: 15rem;
 }
 .btn,
 .btn:link,
@@ -112,7 +112,7 @@ p:not(:last-child) {
 .created {
   color: #05ffa1;
 }
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .container {
     padding: 0 2rem;
   }
@@ -127,7 +127,7 @@ p:not(:last-child) {
     border-radius: 0 0 2rem 2rem;
   }
   footer {
-    bottom: -35rem !important;
+    position: relative;
   }
 }
 .icon {
@@ -147,16 +147,14 @@ p:not(:last-child) {
   font-weight: bold;
   color: red;
 }
-
-footer {
+.box {
   position: absolute;
+  width: 100%;
   left: 0;
   bottom: 0;
-  width: 100%;
   background-color: #262626;
   color: white;
   text-align: center;
-
   padding: 2rem;
   font-size: 1.3rem;
   font-weight: bold;
