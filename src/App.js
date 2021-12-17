@@ -48,7 +48,7 @@ function App () {
     setIsError(false);
     setIsDisabled(true);
 
-    await fetch(`https://discord-lookup-api.herokuapp.com/api/user/profile?q=${userID}`)
+    await fetch(`https://discord-lookup-335418.oa.r.appspot.com/api/user/profile?q=${userID}`)
     .then((response) => response.json())
     .then((response) => {
 
