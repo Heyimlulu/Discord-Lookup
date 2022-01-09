@@ -48,7 +48,7 @@ function App () {
     setIsError(false);
     setIsDisabled(true);
 
-    await fetch(`https://discord-lookup-335418.oa.r.appspot.com/api/user/profile?q=${userID}`)
+    await fetch(`https://discord-lookup-api.herokuapp.com/api/user/profile?q=${userID}`)
     .then((response) => response.json())
     .then((response) => {
 
@@ -85,7 +85,7 @@ function App () {
       <Background />
       <div className="container">
         <Form handleChange={handleChange} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
-        {isError && 
+        {isError &&
         <>
           <h2 className='error'>User not found</h2>
           <div className='row content'>
