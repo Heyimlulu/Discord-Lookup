@@ -68,7 +68,6 @@ header {
 }
 .userid-input {
   margin-right: 1rem;
-  margin-bottom: 1rem;
   padding: 1rem 2rem;
   border-radius: 5px;
   border: none;
@@ -130,8 +129,16 @@ p:not(:last-child) {
     position: relative;
   }
 }
-.icon {
-  margin-right: 0.65rem;
+.links {
+  margin-bottom: 1rem;
+  margin-left: .5rem;
+  font-size: 1.5rem;
+  color: #5865f2;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.links:hover {
+  color: #7983f4;
 }
 .loading {
   text-align: center;
@@ -176,6 +183,10 @@ p:not(:last-child) {
     left: 0;
     bottom: 0;
   }
+}
+.flex {
+  display: flex;
+  align-items: center;
 }
 
 .github-corner:hover .octo-face {
