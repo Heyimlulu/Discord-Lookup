@@ -25,7 +25,7 @@ function App () {
 
   useEffect(() => {
     getTodayLogs();
-  }, []);
+  }, [userID]);
 
   const handleChange = (e) => {
     const value = e.target.value;

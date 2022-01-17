@@ -27,6 +27,7 @@ header {
   color: #fff;
   font-weight: 700;
   font-size: 1.6rem;
+  margin-top: 1rem;
 }
 .btn__info:disabled {
   opacity: 0.65;
