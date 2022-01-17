@@ -140,6 +140,9 @@ p:not(:last-child) {
 .links:hover {
   color: #7983f4;
 }
+.count {
+  color: #5865f2;
+}
 .loading {
   text-align: center;
   padding: 3rem;

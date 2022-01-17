@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,6 +21,12 @@ function App () {
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const [visits, getVisits] = useState(0);
+
+  useEffect(() => {
+    getTodayLogs();
+  }, []);
+
   const handleChange = (e) => {
     const value = e.target.value;
     const regex = /^[0-9\b]+$/;
@@ -36,6 +42,21 @@ function App () {
     } else {
       setIsDisabled(true);
     }
+  }
+
+  const getTodayLogs = async () => {
+    await fetch(`https://discord-lookup-api.herokuapp.com/api/logs/today`)
+        .then((response) => response.json())
+        .then((response) => {
+
+          const data = response.data;
+
+          getVisits(data.count);
+
+        })
+        .catch((error) => {
+          console.error(error);
+        });
   }
 
   const handleClick = () => {
@@ -168,7 +189,7 @@ function App () {
         </div>
         }
       </div>
-      <AppFooter />
+      <AppFooter visits={visits} />
     </>
   )
 }
