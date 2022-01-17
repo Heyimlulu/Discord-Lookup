@@ -21,6 +21,3 @@ export default function Form({handleChange, userID, handleClick, isDisabled, isL
         </div>
     )
 }
-
-
-// TUTORIAL ON HOW TO GET THE DISCORD ID: https://wiki.discord.id/obtain-ids/desktop
