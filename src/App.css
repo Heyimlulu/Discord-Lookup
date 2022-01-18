@@ -129,9 +129,6 @@ p:not(:last-child) {
   .col-2 {
     border-radius: 0 0 2rem 2rem;
   }
-  footer {
-    position: relative;
-  }
 }
 .links {
   margin-bottom: 1rem;
@@ -170,6 +167,9 @@ p:not(:last-child) {
   color: #737373;
   text-align: center;
   margin: -10rem 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 .site-footer a {
   color: #5865f2;
@@ -183,13 +183,6 @@ p:not(:last-child) {
 .footer-links {
   padding-left: 0;
   list-style: none;
-}
-@media (min-width: 1200px) {
-  .site-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-  }
 }
 .flex {
   display: flex;

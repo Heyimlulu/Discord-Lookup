@@ -15,12 +15,6 @@
   z-index: -1;
 }
 
-@media (max-width: 600px) {
-  .circles {
-    height: 120%
-  }
-}
-
 .circles li {
   position: absolute;
   display: block;
