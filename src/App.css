@@ -129,6 +129,12 @@ p:not(:last-child) {
   .col-2 {
     border-radius: 0 0 2rem 2rem;
   }
+  .userid-input {
+    width: 100%;
+  }
+  .btn__info {
+    width: 100%;
+  }
 }
 .links {
   margin-bottom: 1rem;
