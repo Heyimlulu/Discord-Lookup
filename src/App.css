@@ -3,12 +3,7 @@ header {
 }
 .container {
   width: 100%;
-}
-.box {
-  background: #26272b;
-  padding: 2rem 4rem;
-  border-radius: 2rem;
-  box-shadow: 2rem 2rem 2rem rgba(0, 0, 0, 0.35);
+  margin-bottom: 15rem;
 }
 .btn,
 .btn:link,
@@ -123,9 +118,6 @@ p:not(:last-child) {
 @media (max-width: 1000px) {
   .container {
     padding: 0 2rem;
-  }
-  .box {
-    margin-bottom: -3.5rem;
   }
   .row {
     display: block;

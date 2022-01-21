@@ -14,7 +14,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-image: linear-gradient(-45deg, #F27121, #E94057, #8A2387);
+  background: #23272a !important;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
 }

@@ -6,7 +6,7 @@ import { faChevronCircleRight, faQuestionCircle } from '@fortawesome/free-solid-
 export default function Form({handleChange, userID, handleClick, isDisabled, isLoading}) {
     return (
         <div className="row">
-            <form className="box">
+            <form>
                 <div className="flex">
                     <label htmlFor='userid-input' className="userid-label">User ID / Bot ID:</label>
                     <a className="links" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
