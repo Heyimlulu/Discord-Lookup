@@ -124,9 +124,6 @@ p:not(:last-child) {
   .container {
     padding: 0 2rem;
   }
-  .box {
-    margin-bottom: -3.5rem;
-  }
   .row {
     display: block;
   }
