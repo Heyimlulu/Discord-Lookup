@@ -171,7 +171,7 @@ p:not(:last-child) {
 .site-footer {
   width: 100%;
   background-color: #26272b;
-  padding: 2.5rem;
+  padding: 4rem;
   font-size: 1.5rem;
   line-height: 2rem;
   color: #737373;
