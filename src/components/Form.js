@@ -1,7 +1,7 @@
 import React from 'react'
 import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleRight, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Form({handleChange, userID, handleClick, isDisabled, isLoading}) {
     return (
