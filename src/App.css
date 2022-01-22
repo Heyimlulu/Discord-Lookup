@@ -57,7 +57,7 @@ header {
   border-radius: 2rem;
 }
 .content {
-  margin-top: 4rem;
+  margin-top: 2rem;
   font-size: 1.5rem;
   color: #fff;
 }
@@ -113,7 +113,7 @@ p:not(:last-child) {
 .created {
   color: #05ffa1;
 }
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
   .container {
     padding: 0 2rem;
   }
@@ -132,9 +132,6 @@ p:not(:last-child) {
   }
   .btn__info {
     width: 100%;
-  }
-  .site-footer {
-    bottom: -6rem !important;
   }
 }
 .links {
@@ -174,12 +171,12 @@ p:not(:last-child) {
 .site-footer {
   width: 100%;
   background-color: #26272b;
-  padding: 4rem;
+  padding: 2.5rem;
   font-size: 1.5rem;
-  line-height: 2.4rem;
+  line-height: 2rem;
   color: #737373;
   text-align: center;
-  margin: -10rem 0;
+  margin: -20rem 0;
   position: absolute;
   left: 0;
   bottom: 0;
