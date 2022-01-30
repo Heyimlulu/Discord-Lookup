@@ -168,6 +168,20 @@ p:not(:last-child) {
   font-weight: bold;
   color: red;
 }
+.header {
+  color: #fff;
+  background: #5865f2;
+  font-weight: bold;
+  padding: 2rem;
+  margin-bottom: 4rem;
+}
+.header__title {
+  text-align: center;
+  font-size: 3.5rem;
+}
+.header__icon {
+  margin-right: 1.2rem;
+}
 .site-footer {
   width: 100%;
   background-color: #26272b;

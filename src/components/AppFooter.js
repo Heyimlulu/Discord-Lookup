@@ -5,7 +5,7 @@ export default function AppFooter({ visits }) {
         <footer className="site-footer">
                 <div>
                     <div>
-                        I do not save anything: <a href='https://github.com/Heyimlulu/Discord-Lookup-Frontend' target="_blank" rel="noopener noreferrer">See sources.</a>&nbsp;
+                        I do not save anything: <a href='https://github.com/Heyimlulu/Discord-Lookup' target="_blank" rel="noopener noreferrer">See sources.</a>&nbsp;
                         This website is not affiliated with <a className='footer-links' href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord.</a>
                     </div>
                     <span>Numbers of search today: <span className="count">{ visits }</span></span>
