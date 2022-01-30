@@ -7,7 +7,7 @@ import './App.css'
 import './background.css'
 
 // COMPONENTS
-import AppHeader from './components/AppHeader';
+//import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import Form from './components/Form';
 import Background from './components/Background';
@@ -102,7 +102,7 @@ function App () {
 
   return (
     <>
-      <AppHeader />
+      {/*<AppHeader />*/}
       <Background />
       <div className="container">
         <Form handleChange={handleChange} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
