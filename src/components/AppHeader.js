@@ -9,6 +9,7 @@ export default function AppHeader() {
                 <FontAwesomeIcon className="header__icon" icon={faSearch} />
                 Discord Lookup
             </h1>
+            <p className="header__subtitle">Lookup for a Discord User or Bot ID</p>
         </header>
     )
 }

@@ -167,14 +167,18 @@ p:not(:last-child) {
 }
 .header {
   color: #fff;
-  background: #5865f2;
   font-weight: bold;
   padding: 2rem;
-  margin-bottom: 4rem;
+  margin: 2rem 0;
 }
 .header__title {
   text-align: center;
   font-size: 3.5rem;
+}
+.header__subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 .header__icon {
   margin-right: 1.2rem;
