@@ -20,7 +20,7 @@ export default function Form({handleChange, userID, handleClick, isDisabled, isL
                         </div>
                         <div className="relative sm:mx-auto sm:max-w-xs mt-4 -mb-6">
                             <a className="absolute top-4 right-2 sm:right-16 px-2 py-1.5" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
-                                <FontAwesomeIcon color='#262626' icon={faQuestionCircle} />
+                                <FontAwesomeIcon className="transition-all text-grey hover:opacity-60" icon={faQuestionCircle} />
                             </a>
                         </div>
                         <div className="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
@@ -41,7 +41,7 @@ export default function Form({handleChange, userID, handleClick, isDisabled, isL
                             <div className="mt-4 sm:mt-0 sm:ml-3">
                                 <button
                                     type="submit"
-                                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10 transition-all disabled:opacity-60 cursor-pointer"
+                                    className="block w-full rounded-md border border-transparent px-5 py-3 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10 transition-all disabled:opacity-60 font-bold cursor-pointer"
                                     onClick={handleClick}
                                     disabled={isDisabled}
                                 >
