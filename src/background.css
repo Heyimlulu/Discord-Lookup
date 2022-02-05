@@ -2,7 +2,7 @@
 
 .area {
   width: 100%;
-  height: 110vh;
+  height: 100vh;
 }
 
 .circles {
@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   overflow: hidden;
   z-index: -1;
 }
