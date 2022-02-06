@@ -7,8 +7,8 @@ Lookup a Discord User or Bot ID
 Simply run the application with
 
 ```shell
-npm install
-npm start
+yarn install
+yarn start
 ```
 
 ## Badges
