@@ -1,5 +1,4 @@
 import React from 'react'
-import Loader from "react-loader-spinner";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faQuestionCircle, faSearch} from '@fortawesome/free-solid-svg-icons';
 

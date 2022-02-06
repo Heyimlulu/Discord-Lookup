@@ -12,7 +12,6 @@ import './background.css'
 import AppFooter from './components/AppFooter';
 import Form from './components/Form';
 import Background from './components/Background';
-import log from "tailwindcss/lib/util/log";
 
 function App () {
 
