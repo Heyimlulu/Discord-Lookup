@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
 
+// Google Analytics
+import ReactGA from 'react-ga';
+
 // STYLES
 import './background.css'
 
@@ -9,6 +12,7 @@ import './background.css'
 import AppFooter from './components/AppFooter';
 import Form from './components/Form';
 import Background from './components/Background';
+import log from "tailwindcss/lib/util/log";
 
 function App () {
 
@@ -20,6 +24,10 @@ function App () {
   const [isDisabled, setIsDisabled] = useState(true);
 
   const [visits, getVisits] = useState(0);
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, [])
 
   useEffect(() => {
     getTodayLogs();
