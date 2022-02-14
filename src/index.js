@@ -6,6 +6,6 @@ import App from './App';
 // Google Analytics
 import ReactGA from 'react-ga';
 
-ReactGA.initialize('G-1SXRHG2L46');
+ReactGA.initialize('UA-149961763-4');
 
 ReactDOM.render(<App />, document.getElementById('root'));
