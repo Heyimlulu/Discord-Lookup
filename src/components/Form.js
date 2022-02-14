@@ -8,7 +8,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userID, h
     return (
         <div className="py-8 sm:py-16">
             <div className="mx-auto">
-                <div className="relative rounded-2xl py-8 overflow-hidden">
+                <div className="relative rounded-2xl px-6 py-8 overflow-hidden">
                     <div className="relative">
                         <div className="text-center">
                             <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
