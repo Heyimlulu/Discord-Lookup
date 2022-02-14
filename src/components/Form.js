@@ -4,11 +4,11 @@ import {faQuestionCircle, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 import '../three-dots.css';
 
-export default function Form({handleChange, userID, handleClick, isDisabled, isLoading}) {
+export default function Form({handleChange, handleKeyUp, handleSubmit, userID, handleClick, isDisabled, isLoading}) {
     return (
         <div className="py-8 sm:py-16">
             <div className="mx-auto">
-                <div className="relative rounded-2xl px-6 py-10 overflow-hidden sm:px-12 sm:py-20">
+                <div className="relative rounded-2xl py-8 overflow-hidden">
                     <div className="relative">
                         <div className="text-center">
                             <h2 className="text-3xl font-extrabold text-white tracking-tight sm:text-4xl">
@@ -24,7 +24,7 @@ export default function Form({handleChange, userID, handleClick, isDisabled, isL
                                 <FontAwesomeIcon className="transition-all text-blue-500 hover:text-blue-400" icon={faQuestionCircle} />
                             </a>
                         </div>
-                        <div className="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
+                        <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
                             <div className="min-w-0 flex-1">
                                 <label htmlFor="cta-id" className="sr-only">
                                     User / Bot ID
@@ -49,7 +49,7 @@ export default function Form({handleChange, userID, handleClick, isDisabled, isL
                                     {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span>Lookup</span>}
                                 </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

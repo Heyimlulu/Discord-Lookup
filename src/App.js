@@ -49,6 +49,18 @@ function App () {
     }
   }
 
+  const handleSubmit = () => {
+    fetchUser();
+  }
+
+  const handleKeyUp = (e) => {
+    const value = e.target.value;
+
+    if (e.key === "Enter" && value.length >= 15) {
+      fetchUser();
+    }
+  }
+
   const getTodayLogs = async () => {
     await fetch(`https://discord-lookup-api.herokuapp.com/api/logs/today`)
         .then((response) => response.json())
@@ -109,12 +121,12 @@ function App () {
     <>
       <Background/>
       <section className={isError || isReady ? 'mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16' : 'h-screen mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16'}>
-        <Form handleChange={handleChange} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
+        <Form handleChange={handleChange} handleKeyUp={handleKeyUp} handleSubmit={handleSubmit} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
         {isError &&
         <>
-          <h2 className='text-center p-4 font-lg font-bold text-red-600'>User not found</h2>
-          <div className='flex justify-center w-full mt-4 font-lg text-white'>
+          <div className='flex justify-center w-full font-lg text-white'>
             <div className='bg-grey p-4 shadow-lg rounded-xl'>
+              <h2 className='text-center my-2 font-bold text-red-600'>User not found</h2>
               <p>
                 <span className='mr-2'>
                   <FontAwesomeIcon icon={faHashtag} />
@@ -168,9 +180,11 @@ function App () {
                   <FontAwesomeIcon icon={faTags} />
                 </span>
                 <strong>Badge: </strong>
-                {discordUser.badges.map((badge, key) => {
-                  return <span key={key} className='inline-block w-6 h-6 bg-no-repeat bg-contain' style={{backgroundImage: `url("/img/badges/${badge}.svg")`}}></span>
-                })}
+                <div className='inline-flex'>
+                  {discordUser.badges.map((badge, key) => {
+                    return <span key={key} className='mr-2 w-8 h-8 bg-no-repeat bg-contain' style={{backgroundImage: `url("/img/badges/${badge}.svg")`}}></span>
+                  })}
+                </div>
               </p>
             }
             <p className='my-2'>
@@ -186,7 +200,7 @@ function App () {
                   <FontAwesomeIcon icon={faPalette} />
                 </span>
                 <strong>Banner Color: </strong>
-                <span style={{color: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
+                <span className='rounded-xl px-2 py-0.5' style={{color: discordUser.bannerColor, backgroundColor: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
               </p>
             }
           </div>
