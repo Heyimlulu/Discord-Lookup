@@ -16,7 +16,7 @@ export default function AppFooter({ visits }) {
                         </p>
                         <p>
                             <span>Feel free to contact me on Discord if you have any questions: </span>
-                            <a className='text-blurple transition-all pl-0 hover:opacity-70' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Luludev#6969</a>
+                            <a className='text-blurple transition-all pl-0 hover:opacity-70' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Lulu 🍉#6969</a>
                         </p>
                     </div>
                 </div>
