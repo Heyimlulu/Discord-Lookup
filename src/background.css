@@ -10,7 +10,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   overflow: hidden;
   z-index: -1;
 }
@@ -22,6 +22,10 @@
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.2);
+  /* background-image: url("./Discord-Logo-White.svg"); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: contain; */
   animation: animate 25s linear infinite;
   bottom: -150px;
 }

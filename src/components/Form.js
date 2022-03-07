@@ -21,7 +21,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userID, h
                         </div>
                         <div className="relative sm:mx-auto sm:max-w-xs mt-4 -mb-6">
                             <a className="absolute top-4 right-2 sm:right-16 px-2 py-1.5" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
-                                <FontAwesomeIcon className="transition-all text-blue-500 hover:text-blue-400" icon={faQuestionCircle} />
+                                <FontAwesomeIcon className="transition-all text-blurple hover:text-opacity-80" icon={faQuestionCircle} />
                             </a>
                         </div>
                         <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="mt-12 sm:mx-auto sm:max-w-lg sm:flex">
@@ -32,7 +32,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userID, h
                                 <input
                                     id="cta-id"
                                     type="text"
-                                    className="block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
+                                    className="block w-full border border-transparent rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blurple"
                                     placeholder="User ID / Bot ID"
                                     maxLength={22}
                                     onChange={handleChange}
