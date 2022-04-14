@@ -73,8 +73,8 @@ export default function Card({ isReady, isError, discordUser }) {
                             <div className='inline-flex'>
                                 {discordUser.badges.map((badge, key) => {
                                     return (
-                                        <span key={key} className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
-                                            <span style={{ backgroundImage: `url("/img/badges/${badge}.svg")` }} className='inline-block h-6 w-6 rounded-full bg-cover bg-no-repeat' />
+                                        <span key={key} className='inline-block bg-gray-200 rounded-full px-4 py-1.5 text-3xl font-semibold text-gray-700 mr-2'>
+                                            <img className='inline-block w-8 h-8' src={`img/badges/${badge}.svg`} alt={badge} />
                                         </span>
                                     )
                                 })}
