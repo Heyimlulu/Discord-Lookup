@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
 
 // Google Analytics
 import ReactGA from 'react-ga';
@@ -9,28 +7,32 @@ import ReactGA from 'react-ga';
 import './background.css'
 
 // COMPONENTS
-import AppFooter from './components/AppFooter';
+import Header from './components/Header';
+import AppFooter from './components/Footer';
 import Form from './components/Form';
-import Background from './components/Background';
+// import Background from './components/Background';
+import Card from './components/Card';
+
+import { getTodayLogs } from './utils/getTodayLogs';
+// import { fetchUser } from './utils/fetchUser';
 
 function App () {
 
   const [discordUser, setDiscordUser] = useState([]);
-  const [userID, setUserID] = useState('');
+  const [userInput, setUserInput] = useState('');
   const [isReady, setIsReady] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-
-  const [visits, getVisits] = useState(0);
+  const [visits, setVisits] = useState(0);
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname);
   }, [])
 
   useEffect(() => {
-    getTodayLogs();
-  }, [userID]);
+    fetchTodayLogs();
+  }, [userInput]);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -38,7 +40,7 @@ function App () {
 
     // Tell that input field only accept numbers
     if (value === '' || regex.test(value)) {
-      setUserID(value);
+      setUserInput(value);
     }
 
     // Enable button on 15th numbers
@@ -49,7 +51,14 @@ function App () {
     }
   }
 
-  const handleSubmit = () => {
+  // const userSearch = () => {
+  //   const data = fetchUser(userInput);
+  //   setDiscordUser(data);
+  // }
+
+  const handleSubmit = (e) => {
+    e.prevendDefault();
+    // userSearch();
     fetchUser();
   }
 
@@ -57,27 +66,29 @@ function App () {
     const value = e.target.value;
 
     if (e.key === "Enter" && value.length >= 15) {
+      // userSearch();
       fetchUser();
     }
   }
 
-  const getTodayLogs = async () => {
-    await fetch(`https://discord-lookup-api.herokuapp.com/api/logs/today`)
+  const handleClick = () => {
+    // userSearch();
+    fetchUser();
+  }
+
+  const fetchTodayLogs = async () => {
+    await fetch('https://api.lookup.social/api/logs/today')
         .then((response) => response.json())
         .then((response) => {
 
           const data = response.data;
 
-          getVisits(data.count);
+          setVisits(data.count);
 
         })
         .catch((error) => {
           console.error(error);
         });
-  }
-
-  const handleClick = () => {
-    fetchUser();
   }
 
   const fetchUser = async () => {
@@ -86,7 +97,7 @@ function App () {
     setIsError(false);
     setIsDisabled(true);
 
-    await fetch(`https://api.lookup.social/api/user/profile?q=${userID}`)
+    await fetch(`https://api.lookup.social/api/user/profile?q=${userInput}`)
     .then((response) => response.json())
     .then((response) => {
 
@@ -97,8 +108,9 @@ function App () {
         setDiscordUser(data);
         setIsLoading(false);
         setIsError(true);
+
         // Reset form
-        setUserID('');
+        setUserInput('');
         return;
       }
 
@@ -106,107 +118,29 @@ function App () {
       setDiscordUser(data);
       setIsReady(true);
       setIsLoading(false);
+
       // Reset form
-      setUserID('');
+      setUserInput('');
     })
     .catch((error) => {
       setIsLoading(false);
       setIsError(true);
+
       // Reset form
-      setUserID('');
+      setUserInput('');
     });
   }
 
   return (
     <>
-      <Background/>
-      <section className={isError || isReady ? 'mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16' : 'h-screen mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16'}>
-        <Form handleChange={handleChange} handleKeyUp={handleKeyUp} handleSubmit={handleSubmit} userID={userID} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
-        {isError &&
-        <>
-          <div className='flex justify-center w-full font-lg text-white'>
-            <div className='bg-grey p-4 shadow-lg rounded-xl'>
-              <h2 className='text-center my-2 font-bold text-red-600'>User not found</h2>
-              <p>
-                <span className='mr-2'>
-                  <FontAwesomeIcon icon={faHashtag} />
-                </span>
-                <strong>User ID: </strong>
-                <span className='text-pink'>{discordUser.id}</span>
-              </p>
-              <p>
-                <span className='mr-2'>
-                  <FontAwesomeIcon icon={faStar} />
-                </span>
-                <strong>Created: </strong>
-                <span className='text-lightgreen'>{discordUser.created}</span>
-              </p>
-            </div>
-          </div>
-        </>
-        }
-        {isReady &&
-        <div className="block sm:flex justify-center w-full mt-4 font-lg text-white">
-          {discordUser.avatar &&
-            <div className='sm:w-1/3 bg-grey p-4 shadow-lg rounded-t-xl sm:rounded-tr-none sm:rounded-l-xl'>
-              <a href={`${discordUser.avatar}?size=1024`} target="_blank" rel="noopener noreferrer">
-                <img className='mx-auto rounded-full transition-all hover:opacity-60' src={discordUser.avatar} alt={`${discordUser.username} avatar`} />
-              </a>
-            </div>
-          }
-          <div className='sm:w-full bg-grey p-4 shadow-lg rounded-b-xl sm:rounded-bl-none sm:rounded-r-xl'>
-            {discordUser.banner &&
-              <a href={`${discordUser.banner}?size=1024`} target="_blank" rel="noopener noreferrer">
-                <img className='mb-4 w-full rounded-lg transition-all hover:opacity-60' src={`${discordUser.banner}?size=1024`} alt={`${discordUser.username} banner`} />
-              </a>
-            }
-            <p className='my-2'>
-              <span className='mr-2'>
-                <FontAwesomeIcon icon={faHashtag} />
-              </span>
-              <strong>User ID: </strong>
-              <span className='text-pink'>{discordUser.id}</span>
-            </p>
-            <p className='my-2'>
-              <span className='mr-2'>
-                <FontAwesomeIcon icon={faIdBadge} />
-              </span>
-              <strong>Username: </strong>
-              <span className='text-lightblue'>{discordUser.username}</span>
-            </p>
-            {discordUser.badges.length !== 0 &&
-              <p className='my-2'>
-                <span className='mr-2'>
-                  <FontAwesomeIcon icon={faTags} />
-                </span>
-                <strong>Badge: </strong>
-                <div className='inline-flex'>
-                  {discordUser.badges.map((badge, key) => {
-                    return <span key={key} className='mr-2 w-8 h-8 bg-no-repeat bg-contain' style={{backgroundImage: `url("/img/badges/${badge}.svg")`}}></span>
-                  })}
-                </div>
-              </p>
-            }
-            <p className='my-2'>
-              <span className='mr-2'>
-                <FontAwesomeIcon icon={faStar} />
-              </span>
-              <strong>Created: </strong>
-              <span className='text-lightgreen'>{discordUser.created}</span>
-            </p>
-            {discordUser.bannerColor &&
-              <p className='my-2'>
-                <span className='mr-2'>
-                  <FontAwesomeIcon icon={faPalette} />
-                </span>
-                <strong>Banner Color: </strong>
-                <span className='rounded-xl px-2 py-0.5' style={{color: discordUser.bannerColor, backgroundColor: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
-              </p>
-            }
-          </div>
+      {/* <Background/> */}
+      <Header />
+      <main className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16'>
+        <div>
+          <Form handleChange={handleChange} handleKeyUp={handleKeyUp} handleSubmit={handleSubmit} userInput={userInput} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
+          <Card isReady={isReady} isError={isError} discordUser={discordUser} />
         </div>
-        }
-      </section>
+      </main>
       <AppFooter visits={visits} />
     </>
   )

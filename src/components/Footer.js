@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AppFooter({ visits }) {
     return (
-        <footer className="bg-grey text-lightgrey">
+        <footer className="text-lightgrey">
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:py-12 lg:px-8">
                     <div className="text-base text-center leading-12 text-md">
                         <p>
