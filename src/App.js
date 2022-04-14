@@ -10,10 +10,10 @@ import './background.css'
 import Header from './components/Header';
 import AppFooter from './components/Footer';
 import Form from './components/Form';
-// import Background from './components/Background';
+import Background from './components/Background';
 import Card from './components/Card';
 
-import { getTodayLogs } from './utils/getTodayLogs';
+// import { getTodayLogs } from './utils/getTodayLogs';
 // import { fetchUser } from './utils/fetchUser';
 
 function App () {
@@ -133,7 +133,7 @@ function App () {
 
   return (
     <>
-      {/* <Background/> */}
+      <Background/>
       <Header />
       <main className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16'>
         <div>
