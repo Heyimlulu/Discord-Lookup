@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
 
 // STYLES
-import './background.css'
+import './styles/background.css';
 
 // COMPONENTS
 import Header from './components/Header';
@@ -13,8 +13,8 @@ import Form from './components/Form';
 import Background from './components/Background';
 import Card from './components/Card';
 
-// import { getTodayLogs } from './utils/getTodayLogs';
-// import { fetchUser } from './utils/fetchUser';
+// SERVICES
+import Api from './services/api';
 
 function App () {
 
@@ -27,13 +27,15 @@ function App () {
   const [visits, setVisits] = useState(0);
 
   useEffect(() => {
+    // Google Analytics
     ReactGA.initialize('UA-149961763-4');
     ReactGA.pageview(window.location.pathname + window.location.search);
-  }, [])
 
-  useEffect(() => {
-    fetchTodayLogs();
-  }, [userInput]);
+    // Get today's logs
+    Api.getTodayLogs().then(data => {
+      setVisits(data);
+    });
+  }, [])
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -52,14 +54,8 @@ function App () {
     }
   }
 
-  // const userSearch = () => {
-  //   const data = fetchUser(userInput);
-  //   setDiscordUser(data);
-  // }
-
   const handleSubmit = (e) => {
     e.prevendDefault();
-    // userSearch();
     fetchUser();
   }
 
@@ -67,29 +63,12 @@ function App () {
     const value = e.target.value;
 
     if (e.key === "Enter" && value.length >= 15) {
-      // userSearch();
       fetchUser();
     }
   }
 
   const handleClick = () => {
-    // userSearch();
     fetchUser();
-  }
-
-  const fetchTodayLogs = async () => {
-    await fetch('https://api.lookup.social/api/logs/today')
-        .then((response) => response.json())
-        .then((response) => {
-
-          const data = response.data;
-
-          setVisits(data.count);
-
-        })
-        .catch((error) => {
-          console.error(error);
-        });
   }
 
   const fetchUser = async () => {
@@ -98,36 +77,15 @@ function App () {
     setIsError(false);
     setIsDisabled(true);
 
-    await fetch(`https://api.lookup.social/api/user/profile?q=${userInput}`)
-    .then((response) => response.json())
-    .then((response) => {
-
-      const data = response.data;
-
-      // On error
-      if (!response.success) {
-        setDiscordUser(data);
-        setIsLoading(false);
-        setIsError(true);
-
-        // Reset form
-        setUserInput('');
-        return;
-      }
-
-      // On success
+    Api.getUser(userInput).then(data => {
       setDiscordUser(data);
       setIsReady(true);
       setIsLoading(false);
-
-      // Reset form
       setUserInput('');
-    })
-    .catch((error) => {
-      setIsLoading(false);
+    }).catch(error => {
       setIsError(true);
-
-      // Reset form
+      setIsLoading(false);
+      setIsDisabled(false);
       setUserInput('');
     });
   }
