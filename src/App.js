@@ -27,7 +27,8 @@ function App () {
   const [visits, setVisits] = useState(0);
 
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname);
+    ReactGA.initialize('UA-149961763-4');
+    ReactGA.pageview(window.location.pathname + window.location.search);
   }, [])
 
   useEffect(() => {
