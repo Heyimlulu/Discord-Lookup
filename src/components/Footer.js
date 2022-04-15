@@ -3,7 +3,7 @@ import React from 'react'
 export default function AppFooter({ visits }) {
     return (
         <footer className="text-lightgrey">
-                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:py-12 lg:px-8">
+                <div className="py-6 lg:py-12">
                     <div className="text-base text-center leading-12 text-md">
                         <p>
                             This website is not affiliated with <a className='text-blurple font-semibold transition-all pl-0 hover:text-gray-300' href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord.</a>

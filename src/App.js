@@ -23,12 +23,12 @@ function App () {
   }, [])
 
   return (
-    <>
+    <div className='max-w-[90%] md:max-w-[60%] lg:max-w-[30%] mx-auto'>
       <Header />
       <Background/>
       <Homepage />
       <Footer visits={visits} />
-    </>
+    </div>
   )
 }
 

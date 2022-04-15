@@ -66,7 +66,7 @@ export default function Homepage() {
     }
 
     return (
-        <main className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:max-w-4xl lg:px-8 pb-8 sm:pb-16'>
+        <main className='mx-auto pb-8 sm:pb-16'>
             <Form handleChange={handleChange} handleKeyUp={handleKeyUp} handleSubmit={handleSubmit} userInput={userInput} handleClick={handleClick} isDisabled={isDisabled} isLoading={isLoading} />
             <Card isReady={isReady} isError={isError} discordUser={discordUser} />
         </main>

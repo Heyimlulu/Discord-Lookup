@@ -6,11 +6,11 @@ import '../styles/three-dots.css';
 
 export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
     return (
-        <div className="mx-auto sm:px-36">
+        <div className="mx-auto">
             <div className="relative rounded-2xl px-6 py-8 overflow-hidden bg-white">
                 {/* HELP */}
                 <div className="relative sm:mx-auto sm:max-w-xs">
-                    <a className="absolute top-2 right-2 sm:right-32 xl:right-16 px-2 py-1.5" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
+                    <a className="absolute top-2 right-2 sm:right-24 xl:right-16 px-2 py-1.5" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon className="transition-all text-blurple hover:text-opacity-80" icon={faQuestionCircle} />
                     </a>
                 </div>
