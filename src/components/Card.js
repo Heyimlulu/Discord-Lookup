@@ -5,8 +5,9 @@ import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/fr
 export default function Card({ isReady, isError, discordUser }) {
     return (
         <div>
+            {/* USER NOT FOUND */}
             {isError &&
-            <div className='flex justify-center w-full font-lg text-white'>
+            <div className='flex justify-center w-full mt-4 font-lg text-white'>
                 <div className='bg-white text-gray-800 p-4 rounded-xl'>
                     <h2 className='text-center my-2 font-bold text-red-600 text-xl'>User not found</h2>
                     {/* USER ID */}
@@ -28,6 +29,7 @@ export default function Card({ isReady, isError, discordUser }) {
                 </div>
             </div>
             }
+            {/* USER FOUND */}
             {isReady &&
             <div className="block sm:flex justify-center w-full mt-4 font-lg text-white">
                 {/* LEFT SIDE */}

@@ -39,7 +39,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userInput
                             onClick={handleClick}
                             disabled={isDisabled}
                         >
-                            {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span>Lookup</span>}
+                            {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span className='font-bold'>Search</span>}
                         </button>
                     </div>
                 </form>

@@ -52,8 +52,16 @@ export default function Homepage() {
       setIsError(false);
       setIsDisabled(true);
 
-      Api.getUser(userInput).then(data => {
-        setDiscordUser(data);
+      Api.getUser(userInput).then(res => {
+        setDiscordUser(res.data);
+
+        if (!res.success) {
+          setIsError(true);
+          setIsLoading(false);
+          setUserInput('');
+          return;
+        } 
+        
         setIsReady(true);
         setIsLoading(false);
         setUserInput('');
