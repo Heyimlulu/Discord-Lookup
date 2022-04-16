@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactCountryFlag from "react-country-flag";
 import FR from '../images/country/france.png';
 import UK from '../images/country/united-kingdom.png';
 
