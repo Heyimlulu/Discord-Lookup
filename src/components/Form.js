@@ -1,31 +1,33 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 import '../styles/three-dots.css';
 
 export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
+
+    const { t } = useTranslation();
+
     return (
         <div className="mx-auto">
             <div className="relative rounded-2xl px-6 py-8 overflow-hidden bg-white">
-                {/* HELP */}
-                <div className="relative sm:mx-auto sm:max-w-xs">
-                    <a className="absolute top-2 right-2 sm:right-24 xl:right-16 px-2 py-1.5" href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon className="transition-all text-blurple hover:text-opacity-80" icon={faQuestionCircle} />
-                    </a>
-                </div>
                 {/* FORM */}
-                <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="sm:flex">
+                <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="sm:inline-flex w-full">
+                    {/* HELP / LEARN MORE BUTTON */}
+                    <div className="absolute top-1">
+                        <a className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-green transition-all rounded-xl' href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
+                            {t('learnmore.description')}
+                        </a>
+                    </div>
                     {/* INPUT TEXT */}
-                    <div className="min-w-0 flex-1">
+                    <div className="flex-1">
                         <label htmlFor="cta-id" className="sr-only">
-                            User / Bot ID
+                            {t('form.input.label')}
                         </label>
                         <input
                             id="cta-id"
                             type="text"
-                            className="transition-all block w-full border rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blurple"
-                            placeholder="User ID / Bot ID"
+                            className="placeholder:text-xs transition-all block w-full border rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blurple"
+                            placeholder={t('form.input.placeholder')}
                             maxLength={22}
                             onChange={handleChange}
                             value={userInput}
@@ -39,7 +41,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userInput
                             onClick={handleClick}
                             disabled={isDisabled}
                         >
-                            {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span className='font-bold'>Search</span>}
+                            {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span className='font-bold'>{t('form.button.label')}</span>}
                         </button>
                     </div>
                 </form>

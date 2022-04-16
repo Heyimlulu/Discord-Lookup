@@ -1,21 +1,25 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHashtag, faIdBadge, faPalette, faStar, faTags } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 export default function Card({ isReady, isError, discordUser }) {
+
+    const { t } = useTranslation();
+
     return (
         <div>
             {/* USER NOT FOUND */}
             {isError &&
             <div className='flex justify-center w-full mt-4 font-lg text-white'>
                 <div className='bg-white text-gray-800 p-4 rounded-xl'>
-                    <h2 className='text-center my-2 font-bold text-red-600 text-xl'>User not found</h2>
+                    <h2 className='text-center my-2 font-bold text-red-600 text-xl'>{t('response.userNotFound')}</h2>
                     {/* USER ID */}
                     <p>
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faHashtag} />
                         </span>
-                        <strong>User ID: </strong>
+                        <strong className='mr-1'>{t('card.userId')}:</strong>
                         <span className='font-bold text-pink'>{discordUser.id}</span>
                     </p>
                     {/* CREATION DATE */}
@@ -23,7 +27,7 @@ export default function Card({ isReady, isError, discordUser }) {
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faStar} />
                         </span>
-                        <strong>Created: </strong>
+                        <strong className='mr-1'>{t('card.created')}:</strong>
                         <span className='font-bold text-lightgreen'>{discordUser.created}</span>
                     </p>
                 </div>
@@ -31,7 +35,7 @@ export default function Card({ isReady, isError, discordUser }) {
             }
             {/* USER FOUND */}
             {isReady &&
-            <div className="block sm:flex justify-center w-full mt-4 font-lg text-white">
+            <div className="block sm:flex justify-center w-full mt-4 text-sm text-white">
                 {/* LEFT SIDE */}
                 {/* AVATAR */}
                 {discordUser.avatar &&
@@ -54,7 +58,7 @@ export default function Card({ isReady, isError, discordUser }) {
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faHashtag} />
                         </span>
-                        <strong>User ID: </strong>
+                        <strong className='mr-1'>{t('card.userId')}:</strong>
                         <span className='font-bold text-pink'>{discordUser.id}</span>
                     </p>
                     {/* USERNAME */}
@@ -62,7 +66,7 @@ export default function Card({ isReady, isError, discordUser }) {
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faIdBadge} />
                         </span>
-                        <strong>Username: </strong>
+                        <strong className='mr-1'>{t('card.username')}:</strong>
                         <span className='font-bold text-lightblue'>{discordUser.username}</span>
                     </p>
                     {/* BADGES */}
@@ -71,7 +75,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <span className='mr-2'>
                                 <FontAwesomeIcon icon={faTags} />
                             </span>
-                            <strong>Badge: </strong>
+                            <strong className='mr-1'>{t('card.badges')}:</strong>
                             <div className='inline-flex'>
                                 {discordUser.badges.map((badge, key) => {
                                     return (
@@ -88,7 +92,7 @@ export default function Card({ isReady, isError, discordUser }) {
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faStar} />
                         </span>
-                        <strong>Created: </strong>
+                        <strong className='mr-1'>{t('card.created')}:</strong>
                         <span className='font-bold text-lightgreen'>{discordUser.created}</span>
                     </p>
                     {/* COLOR */}
@@ -97,7 +101,7 @@ export default function Card({ isReady, isError, discordUser }) {
                         <span className='mr-2'>
                             <FontAwesomeIcon icon={faPalette} />
                         </span>
-                        <strong>Banner Color: </strong>
+                        <strong className='mr-1'>{t('card.bannerColor')}:</strong>
                         <span className='font-bold rounded-xl px-2 py-0.5' style={{color: discordUser.bannerColor, backgroundColor: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
                     </p>
                     }

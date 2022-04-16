@@ -1,0 +1,34 @@
+{
+    "header": {
+        "description": "Lookup for a Discord User or Bot ID."
+    },
+    "learnmore": {
+        "description": "Learn more"
+    },
+    "form": {
+        "input": {
+            "label": "User ID / Bot ID",
+            "placeholder": "User ID / Bot ID"
+        },
+        "button": {
+            "label": "Search"
+        }
+    },
+    "response": {
+        "userFound": "User Found",
+        "userNotFound": "User Not Found"
+    },
+    "card": {
+        "userId": "User ID",
+        "username": "Username",
+        "badges": "Badges",
+        "created": "Created",
+        "bannerColor": "Banner Color"
+    },
+    "footer": {
+        "affiliated": "Not affiliated with",
+        "stats": "Lookups today",
+        "contact": "Feel free to contact me on Discord if you have any questions",
+        "language": "Languages"
+    }
+}

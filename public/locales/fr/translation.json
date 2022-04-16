@@ -1,0 +1,34 @@
+{
+    "header": {
+        "description": "Rechercher n'importe quel utilisateur Discord avec son ID."
+    },
+    "learnmore": {
+        "description": "En savoir plus"
+    },
+    "form": {
+        "input": {
+            "label": "ID de l'utilisateur / N'importe quelle ID",
+            "placeholder": "ID de l'utilisateur / N'importe quelle ID"
+        },
+        "button": {
+            "label": "Rechercher"
+        }
+    },
+    "response": {
+        "userFound": "Utilisateur trouvé",
+        "userNotFound": "Utilisateur inconnu"
+    },
+    "card": {
+        "userId": "ID de l'utilisateur",
+        "username": "Nom d'utilisateur",
+        "badges": "Badges",
+        "created": "Date de création",
+        "bannerColor": "Couleur de la bannière"
+    },
+    "footer": {
+        "affiliated": "Non affilié à",
+        "stats": "Nombre de recherches",
+        "contact": "Contactez-moi si vous avez des questions",
+        "language": "Selection de la langue"
+    }
+}

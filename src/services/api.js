@@ -1,47 +1,37 @@
-import discordUser from '../mocks/discordUser-mock.json';
+import axios from 'axios';
+import userFound from '../mocks/userFound-mock.json';
+// import userNotFound from '../mocks/userNotFound-mock.json';
 
 export default class Api {
     static baseUrl = 'https://api.lookup.social/api/';
     static isDev = false;
-    static datas = discordUser;
+    static datas = userFound;
 
     static async getUser(userID) {
         if (this.isDev) {
+            console.log(this.datas);
             return new Promise((resolve) => {
-                resolve(this.datas.data);
+                resolve(this.datas);
             });
         } 
         
-        return await fetch(`${this.baseUrl}user/profile?q=${userID}`)
-        .then((response) => response.json())
-        .then((response) => {
-
-            // On error
-            if (!response.success) {
-                return response;
+        return await axios.get(`${this.baseUrl}user/profile?q=${userID}`).then((response) => {
+            if (!response.data.success) {
+                return response.data.data;
             }
 
-            // On success
-            return response;
-
-        })
-        .catch((error) => {
-            console.error(error);
+            return response.data;
+        }).catch((error) => {
+            console.log(error);
         });
     }
 
     static async getTodayLogs() {
-        return await fetch(`${this.baseUrl}logs/today`)
-            .then((response) => response.json())
-            .then((response) => {
-
-                const data = response.data.count;
-
-                return data;
-
-            }).catch((error) => {
-                console.error(error);
-            });
+        return await axios.get(`${this.baseUrl}logs/today`).then((response) => {
+            return response.data.data.count;
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
 }

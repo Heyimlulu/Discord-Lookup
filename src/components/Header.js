@@ -1,8 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+const { useTranslation } = require('react-i18next');
 
 export default function Header() {
+
+    const { t } = useTranslation();
+
     return (
         <div className="py-16">
             <div className="text-center">
@@ -10,7 +14,7 @@ export default function Header() {
                     <FontAwesomeIcon className="mr-4" icon={faSearch} />
                     Discord Lookup
                 </h2>
-                <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">Lookup for a Discord User or Bot ID.</p>
+                <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">{t('header.description')}</p>
             </div>
         </div>
     )
