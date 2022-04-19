@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ReactCountryFlag from "react-country-flag";
+import FR from '../images/country/france.png';
+import UK from '../images/country/united-kingdom.png';
 
 export default function AppFooter({ visits }) {
 
@@ -13,20 +14,20 @@ export default function AppFooter({ visits }) {
     return (
         <footer className="text-lightgrey">
             {/* LANGUAGE SELECTION */}
-            <div className="bg-white rounded-2xl p-2 text-center mt-6">
+            <div className="bg-white rounded-2xl text-center mt-6">
                 <span>{t('footer.language')}</span>
-                <p>
-                    <span className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg text-3xl px-1' : 'text-3xl px-1'}>
-                        <button onClick={() => changeLanguage('en')}>
-                            <ReactCountryFlag countryCode="GB" svg style={{ borderRadius: ".5rem" }} />
+                <div>
+                    <span className='mx-0.5'>
+                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'} onClick={() => changeLanguage('en')}>
+                            <img src={UK} alt="United Kingdom" />
                         </button>
                     </span>
-                    <span className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg text-3xl px-1' : 'text-3xl px-1'}>
-                        <button onClick={() => changeLanguage('fr')}>
-                            <ReactCountryFlag countryCode="FR" svg style={{ borderRadius: ".5rem" }} />
+                    <span className='mx-0.5'>
+                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'}  onClick={() => changeLanguage('fr')}>
+                            <img src={FR} alt="France" />
                         </button>
                     </span>
-                </p>
+                </div>
             </div>
             <div className="py-6">
                 <div className="text-sm text-center leading-12 text-md">
