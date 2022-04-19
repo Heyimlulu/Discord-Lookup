@@ -24,13 +24,17 @@
     "react-ga": "^3.3.0",
     "react-i18next": "^11.16.6",
     "react-loader-spinner": "^4.0.0",
+    "react-router": "^6.3.0",
+    "react-router-sitemap": "^1.2.0",
     "react-scripts": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sitemap": "babel-node ./src/sitemap-generator.js",
+    "predeploy": "yarn run sitemap"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +56,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
     "postcss": "^8.4.6",
     "tailwindcss": "^3.0.18"
   }
