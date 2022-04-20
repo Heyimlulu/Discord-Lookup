@@ -10,7 +10,7 @@ ReactGA.initialize('UA-149961763-4');
 
 ReactDOM.render(
     <I18nextProvider i18n={i18n}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className='text-2xl font-bold text-blurple text-center translate-y-1/2'>Loading...</div>}>
             <App />
         </Suspense>
     </I18nextProvider>,
