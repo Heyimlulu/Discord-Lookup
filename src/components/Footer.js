@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import FR from '../images/country/france.png';
 import UK from '../images/country/united-kingdom.png';
+import { event } from '../utils/gtag';
 
 export default function AppFooter({ visits }) {
 
@@ -18,12 +19,12 @@ export default function AppFooter({ visits }) {
                 <span>{t('footer.language')}</span>
                 <div>
                     <span className='mx-0.5'>
-                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'} onClick={() => changeLanguage('en')}>
+                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'} onClick={() => { changeLanguage('en'); event('language', 'language_en', 'language_en', 1); }}>
                             <img src={UK} alt="United Kingdom" />
                         </button>
                     </span>
                     <span className='mx-0.5'>
-                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'}  onClick={() => changeLanguage('fr')}>
+                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'}  onClick={() => { changeLanguage('fr'); event('language', 'language_fr', 'language_fr', 1); }}>
                             <img src={FR} alt="France" />
                         </button>
                     </span>
