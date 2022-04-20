@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ReactGA from 'react-ga';
 import './styles/background.css';
 import Homepage from './pages/Homepage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Background from './components/Background';
 import Api from './services/api';
+import * as gtag from './utils/gtag';
 
 function App () {
 
@@ -13,8 +13,7 @@ function App () {
 
   useEffect(() => {
     // Google Analytics
-    ReactGA.initialize('UA-149961763-4');
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    gtag.pageview(window.location.pathname);
 
     // Get today's logs
     Api.getTodayLogs().then(data => {
