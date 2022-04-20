@@ -25,6 +25,7 @@
     "react-i18next": "^11.16.6",
     "react-loader-spinner": "^4.0.0",
     "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0",
     "react-router-sitemap": "^1.2.0",
     "react-scripts": "^5.0.0"
   },
