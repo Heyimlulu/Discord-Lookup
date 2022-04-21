@@ -1,10 +1,11 @@
 import axios from 'axios';
 import userFound from '../mocks/userFound-mock.json';
 // import userNotFound from '../mocks/userNotFound-mock.json';
+import { environement } from './environement';
 
 export default class Api {
     static baseUrl = 'https://api.lookup.social/api/';
-    static isDev = false;
+    static isDev = environement.isDev;
     static datas = userFound;
 
     static async getUser(userID) {
