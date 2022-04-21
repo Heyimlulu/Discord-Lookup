@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-
 import '../styles/three-dots.css';
+import * as gtag from '../utils/gtag';
 
 export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
 
@@ -14,7 +14,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userInput
                 <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="sm:inline-flex w-full">
                     {/* HELP / LEARN MORE BUTTON */}
                     <div className="absolute top-1">
-                        <a className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-green transition-all rounded-xl' href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
+                        <a onClick={gtag.event('help', 'learn_more', 'learn_more', 1)} className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-green transition-all rounded-xl' href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-" target="_blank" rel="noopener noreferrer">
                             {t('learnmore.description')}
                         </a>
                     </div>
