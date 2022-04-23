@@ -52,7 +52,7 @@ export default function AppFooter({ visits }) {
                     <p>
                         <span>
                             <span>{t('footer.affiliated')}</span>
-                            <a onclick={() => gtag.event('link', 'affiliation', 'affiliation', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord Inc.</a>
+                            <a onClick={() => gtag.event('link', 'affiliation', 'affiliation', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord Inc.</a>
                         </span>
                         <span>
                             <span className='pl-1'>{t('footer.stats')}:</span>
@@ -61,7 +61,7 @@ export default function AppFooter({ visits }) {
                     </p>
                     <p>
                         <span>{t('footer.contact')}</span>
-                        <a onclick={() => gtag.event('link', 'author', 'author', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Lulu 🍉#6969</a>
+                        <a onClick={() => gtag.event('link', 'author', 'author', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Lulu 🍉#6969</a>
                     </p>
                 </div>
             </div>
