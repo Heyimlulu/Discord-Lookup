@@ -71,21 +71,21 @@ export default function Card({ isReady, isError, discordUser }) {
                     </p>
                     {/* BADGES */}
                     {discordUser.badges.length !== 0 &&
-                        <p className='my-2'>
-                            <span className='mr-2'>
-                                <FontAwesomeIcon icon={faTags} />
-                            </span>
-                            <strong className='mr-1'>{t('card.badges')}:</strong>
-                            <div className='inline-flex'>
-                                {discordUser.badges.map((badge, key) => {
-                                    return (
-                                        <span key={key} className='inline-block bg-gray-200 rounded-full px-4 py-1.5 text-3xl font-semibold text-gray-700 mr-2'>
-                                            <img className='inline-block w-8 h-8' src={`img/badges/${badge}.svg`} alt={badge} />
-                                        </span>
-                                    )
-                                })}
-                            </div>
+                    <div className='my-2'>
+                        <span className='mr-2'>
+                            <FontAwesomeIcon icon={faTags} />
+                        </span>
+                        <strong className='mr-1'>{t('card.badges')}:</strong>
+                        <p className='inline-flex'>
+                            {discordUser.badges.map((badge, key) => {
+                                return (
+                                    <span key={key} className='inline-block bg-gray-200 rounded-full px-4 py-1.5 text-3xl font-semibold text-gray-700 mr-2'>
+                                        <img className='inline-block w-8 h-8' src={`img/badges/${badge}.svg`} alt={badge} />
+                                    </span>
+                                )
+                            })}
                         </p>
+                    </div>
                     }
                     {/* CREATION DATE */}
                     <p className='my-2'>

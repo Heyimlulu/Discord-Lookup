@@ -10,7 +10,6 @@ export default class Api {
 
     static async getUser(userID) {
         if (this.isDev) {
-            console.log(this.datas);
             return new Promise((resolve) => {
                 resolve(this.datas);
             });

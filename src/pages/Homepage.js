@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Form from '../components/Form';
 import Card from '../components/Card';
 import Api from '../services/api';
+import * as gtag from '../utils/gtag';
 
 export default function Homepage() {
 
@@ -43,6 +44,7 @@ export default function Homepage() {
     }
 
     const handleClick = () => {
+      gtag.event('button_click', 'submit', 'submit', 1);
       fetchUser();
     }
 
@@ -72,6 +74,11 @@ export default function Homepage() {
         setUserInput('');
       });
     }
+
+    useEffect(() => {
+      // Google Analytics
+      gtag.pageview(window.location.pathname);
+    }, []);
 
     return (
         <main className='mx-auto'>
