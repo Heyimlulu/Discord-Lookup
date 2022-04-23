@@ -25,6 +25,10 @@
         "created": "Date de création",
         "bannerColor": "Couleur de la bannière"
     },
+    "404": {
+        "title": "Cette page n'existe pas",
+        "button": "Retour à la page d'accueil"
+    },
     "footer": {
         "affiliated": "Non affilié à",
         "stats": "Nombre de recherches",

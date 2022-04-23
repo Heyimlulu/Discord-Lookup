@@ -25,6 +25,10 @@
         "created": "Created",
         "bannerColor": "Banner Color"
     },
+    "404": {
+        "title": "Uh Oh... I think you got lost!",
+        "button": "Go back to homepage"
+    },
     "footer": {
         "affiliated": "Not affiliated with",
         "stats": "Lookups today",

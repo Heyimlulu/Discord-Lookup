@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styles/background.css';
 import Homepage from './pages/Homepage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PageNotFound from './pages/PageNotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Background from './components/Background';
@@ -25,7 +27,12 @@ function App () {
     <div className='max-w-[90%] md:max-w-[60%] lg:max-w-[30%] mx-auto'>
       <Header />
       <Background/>
-      <Homepage />
+      <BrowserRouter>
+        <Routes>
+            <Route path='*' element={<PageNotFound />} />
+            <Route exact path='/' element={<Homepage />} />
+        </Routes>
+      </BrowserRouter>
       <Footer visits={visits} />
     </div>
   )
