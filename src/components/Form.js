@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
-import '../styles/three-dots.css';
+import { DotPulse } from '@uiball/loaders'
 import * as gtag from '../utils/gtag';
 
 export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
@@ -41,7 +41,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userInput
                             onClick={handleClick}
                             disabled={isDisabled}
                         >
-                            {isLoading ? <div className="mx-auto my-2 sm:my-0 dot-flashing"></div> : <span className='font-bold'>{t('form.button.label')}</span>}
+                            {isLoading ? <DotPulse size={25} color="#FFF" /> : <span className='font-bold'>{t('form.button.label')}</span>}
                         </button>
                     </div>
                 </form>
