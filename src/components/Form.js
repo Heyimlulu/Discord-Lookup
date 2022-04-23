@@ -2,6 +2,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { DotPulse } from '@uiball/loaders'
 import * as gtag from '../utils/gtag';
+import '../styles/custom.css';
 
 export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
 
@@ -41,7 +42,7 @@ export default function Form({handleChange, handleKeyUp, handleSubmit, userInput
                             onClick={handleClick}
                             disabled={isDisabled}
                         >
-                            {isLoading ? <DotPulse size={25} color="#FFF" /> : <span className='font-bold'>{t('form.button.label')}</span>}
+                            {isLoading ? <DotPulse size={35} color="#FFF" /> : <span className='font-bold'>{t('form.button.label')}</span>}
                         </button>
                     </div>
                 </form>
