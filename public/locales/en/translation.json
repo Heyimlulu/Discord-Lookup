@@ -7,8 +7,8 @@
     },
     "form": {
         "input": {
-            "label": "User ID / Bot ID",
-            "placeholder": "User ID / Bot ID"
+            "label": "User ID / Any ID",
+            "placeholder": "User ID / Any ID"
         },
         "button": {
             "label": "Search"
