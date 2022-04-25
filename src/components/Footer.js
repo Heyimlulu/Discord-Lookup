@@ -51,7 +51,7 @@ export default function AppFooter({ lookupsCount }) {
                 <div className="text-sm text-center leading-12 text-md">
                     <a 
                         onClick={() => gtag.event('click', 'link_author', 'link_author', 1)} 
-                        className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
+                        className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1' 
                         href='https://discord.com/users/265896171384340480'
                         target="_blank" 
                         rel="noopener noreferrer">
@@ -62,18 +62,18 @@ export default function AppFooter({ lookupsCount }) {
                         <span>{t('footer.affiliated')}</span>
                         <a 
                             onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)} 
-                            className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
+                            className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1' 
                             href="https://discord.com" 
                             target="_blank" 
                             rel="noopener noreferrer">
                                 Discord Inc.
                         </a>
                     </span>
-                    {/* <div className='flex items-center'>
-                        <div className='absolute bottom-4 right-4 px-4 py-2 rounded-xl bg-blurple shadow-md overflow-hidden'>
-                            <span className='text-white text-center font-bold text-md md:text-lg'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
+                    <div className='flex items-center'>
+                        <div className='px-4 py-2 rounded-full bg-gradient-to-r from-blurple to-fuschia shadow-md overflow-hidden mt-4 mx-auto'>
+                            <span className='text-white text-center font-bold text-md'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </div>
         </footer>

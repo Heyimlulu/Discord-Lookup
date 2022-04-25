@@ -20,7 +20,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <FontAwesomeIcon icon={faHashtag} />
                         </span>
                         <strong className='mr-1'>{t('card.userId')}:</strong>
-                        <span className='font-bold text-pink'>{discordUser.id}</span>
+                        <span className='font-bold text-fuschia'>{discordUser.id}</span>
                     </p>
                     {/* CREATION DATE */}
                     <p>
@@ -28,7 +28,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <FontAwesomeIcon icon={faStar} />
                         </span>
                         <strong className='mr-1'>{t('card.created')}:</strong>
-                        <span className='font-bold text-lightgreen'>{discordUser.created}</span>
+                        <span className='font-bold text-green'>{discordUser.created}</span>
                     </p>
                 </div>
             </div>
@@ -59,7 +59,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <FontAwesomeIcon icon={faHashtag} />
                         </span>
                         <strong className='mr-1'>{t('card.userId')}:</strong>
-                        <span className='font-bold text-pink'>{discordUser.id}</span>
+                        <span className='font-bold text-fuschia'>{discordUser.id}</span>
                     </p>
                     {/* USERNAME */}
                     <p className='my-2'>
@@ -79,8 +79,8 @@ export default function Card({ isReady, isError, discordUser }) {
                         <p className='inline-flex'>
                             {discordUser.badges.map((badge, key) => {
                                 return (
-                                    <span key={key} className='inline-block bg-gray-200 rounded-full px-4 py-1.5 text-3xl font-semibold text-gray-700 mr-2'>
-                                        <img className='inline-block w-8 h-8' src={`img/badges/${badge}.svg`} alt={badge} />
+                                    <span key={key} className='inline-flex text-3xl font-semibold text-gray-700 mr-2'>
+                                        <img className='w-full h-5' src={`img/badges/${badge}.png`} alt={badge} />
                                     </span>
                                 )
                             })}
@@ -93,7 +93,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <FontAwesomeIcon icon={faStar} />
                         </span>
                         <strong className='mr-1'>{t('card.created')}:</strong>
-                        <span className='font-bold text-lightgreen'>{discordUser.created}</span>
+                        <span className='font-bold text-green'>{discordUser.created}</span>
                     </p>
                     {/* COLOR */}
                     {discordUser.bannerColor &&
@@ -102,7 +102,7 @@ export default function Card({ isReady, isError, discordUser }) {
                             <FontAwesomeIcon icon={faPalette} />
                         </span>
                         <strong className='mr-1'>{t('card.bannerColor')}:</strong>
-                        <span className='font-bold rounded-xl px-2 py-0.5' style={{color: discordUser.bannerColor, backgroundColor: discordUser.bannerColor}}>{discordUser.bannerColor}</span>
+                        <span className='font-bold text-white rounded-xl px-2 py-0.5' style={{ backgroundColor: discordUser.bannerColor }}>{discordUser.bannerColor}</span>
                     </p>
                     }
                 </div>
