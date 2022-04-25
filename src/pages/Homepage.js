@@ -44,7 +44,7 @@ export default function Homepage() {
     }
 
     const handleClick = () => {
-      gtag.event('button_click', 'submit', 'submit', 1);
+      gtag.event('click', 'btn_submit', 'btn_submit', 1);
       fetchUser();
     }
 

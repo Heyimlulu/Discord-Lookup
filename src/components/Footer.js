@@ -16,15 +16,15 @@ export default function AppFooter({ lookupsCount }) {
         switch (lng) {
             case 'fr':
                 changeLanguage('fr');
-                gtag.event('language', 'language_fr', 'language_fr', 1);
+                gtag.event('language', 'lang_fr', 'lang_fr', 1);
                 break;
             case 'en':
                 changeLanguage('en');
-                gtag.event('language', 'language_en', 'language_en', 1);
+                gtag.event('language', 'lang_en', 'lang_en', 1);
                 break;
             default:
                 changeLanguage('en');
-                gtag.event('language', 'language_en', 'language_en', 1);
+                gtag.event('language', 'lang_en', 'lang_en', 1);
                 break;
         }
     }
@@ -50,7 +50,7 @@ export default function AppFooter({ lookupsCount }) {
             <div className="py-6">
                 <div className="text-sm text-center leading-12 text-md">
                     <a 
-                        onClick={() => gtag.event('link', 'author', 'author', 1)} 
+                        onClick={() => gtag.event('click', 'link_author', 'link_author', 1)} 
                         className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
                         href='https://discord.com/users/265896171384340480'
                         target="_blank" 
@@ -61,7 +61,7 @@ export default function AppFooter({ lookupsCount }) {
                     <span>
                         <span>{t('footer.affiliated')}</span>
                         <a 
-                            onClick={() => gtag.event('link', 'affiliation', 'affiliation', 1)} 
+                            onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)} 
                             className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
                             href="https://discord.com" 
                             target="_blank" 
