@@ -4,7 +4,7 @@ import FR from '../images/country/france.png';
 import UK from '../images/country/united-kingdom.png';
 import * as gtag from '../utils/gtag';
 
-export default function AppFooter({ visits }) {
+export default function AppFooter({ lookupsCount }) {
 
     const { t, i18n } = useTranslation();
 
@@ -49,20 +49,30 @@ export default function AppFooter({ visits }) {
             </div>
             <div className="py-6">
                 <div className="text-sm text-center leading-12 text-md">
-                    <p>
-                        <span>
-                            <span>{t('footer.affiliated')}</span>
-                            <a onClick={() => gtag.event('link', 'affiliation', 'affiliation', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href="https://discord.com" target="_blank" rel="noopener noreferrer">Discord Inc.</a>
-                        </span>
-                        <span>
-                            <span className='pl-1'>{t('footer.stats')}:</span>
-                            <span className="text-blurple font-semibold pl-1">{ visits }</span>    
-                        </span> 
-                    </p>
-                    <p>
-                        <span>{t('footer.contact')}</span>
-                        <a onClick={() => gtag.event('link', 'author', 'author', 1)} className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' href='https://discord.com/users/265896171384340480' target="_blank" rel="noopener noreferrer">Lulu 🍉#6969</a>
-                    </p>
+                    <a 
+                        onClick={() => gtag.event('link', 'author', 'author', 1)} 
+                        className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
+                        href='https://discord.com/users/265896171384340480'
+                        target="_blank" 
+                        rel="noopener noreferrer">
+                            Lulu 🍉#6969
+                    </a>
+                    <span className='mx-1'>-</span>
+                    <span>
+                        <span>{t('footer.affiliated')}</span>
+                        <a 
+                            onClick={() => gtag.event('link', 'affiliation', 'affiliation', 1)} 
+                            className='text-blurple font-semibold transition-all pl-0 hover:text-green pl-1' 
+                            href="https://discord.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer">
+                                Discord Inc.
+                        </a>
+                    </span>
+                    {/* <div className='mt-2'>
+                        <span className='pl-1'>{t('footer.stats')}:</span>
+                        <span className="text-blurple font-semibold pl-1">{lookupsCount ? lookupsCount : '-'}</span>    
+                    </div>  */}
                 </div>
             </div>
         </footer>

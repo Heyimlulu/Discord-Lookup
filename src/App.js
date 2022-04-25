@@ -11,7 +11,7 @@ import * as gtag from './utils/gtag';
 
 function App () {
 
-  const [visits, setVisits] = useState(0);
+  const [lookupsCount, setLookupsCount] = useState(0);
 
   useEffect(() => {
     // Google Analytics
@@ -19,7 +19,7 @@ function App () {
 
     // Get today's logs
     Api.getTodayLogs().then(data => {
-      setVisits(data);
+      setLookupsCount(data);
     });
   }, [])
 
@@ -33,7 +33,7 @@ function App () {
             <Route exact path='/' element={<Homepage />} />
         </Routes>
       </BrowserRouter>
-      <Footer visits={visits} />
+      <Footer lookupsCount={lookupsCount} />
     </div>
   )
 }
