@@ -69,10 +69,11 @@ export default function AppFooter({ lookupsCount }) {
                                 Discord Inc.
                         </a>
                     </span>
-                    {/* <div className='mt-2'>
-                        <span className='pl-1'>{t('footer.stats')}:</span>
-                        <span className="text-blurple font-semibold pl-1">{lookupsCount ? lookupsCount : '-'}</span>    
-                    </div>  */}
+                    {/* <div className='flex items-center'>
+                        <div className='absolute bottom-4 right-4 px-4 py-2 rounded-xl bg-blurple shadow-md overflow-hidden'>
+                            <span className='text-white text-center font-bold text-md md:text-lg'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
+                        </div>
+                    </div> */}
                 </div>
             </div>
         </footer>
