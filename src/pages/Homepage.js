@@ -49,6 +49,8 @@ export default function Homepage() {
     }
 
     const fetchUser = async () => {
+      gtag.event('set_search', 'search', 'search', parseInt(userInput));
+
       setIsReady(false);
       setIsLoading(true);
       setIsError(false);
