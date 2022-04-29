@@ -22,7 +22,7 @@
         "userId": "User ID",
         "username": "Username",
         "badges": "Badges",
-        "created": "Created",
+        "created": "Creation date",
         "bannerColor": "Banner Color"
     },
     "404": {

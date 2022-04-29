@@ -1,0 +1,38 @@
+{
+    "header": {
+        "description": "Suchen Sie nach einer Discord Benutzer oder Beliebige ID."
+    },
+    "learnmore": {
+        "description": "Mehr erfahren"
+    },
+    "form": {
+        "input": {
+            "label": "Benutzer ID / Beliebige ID",
+            "placeholder": "Benutzer ID / Beliebige ID"
+        },
+        "button": {
+            "label": "Suche"
+        }
+    },
+    "response": {
+        "userFound": "Benutzer gefunden",
+        "userNotFound": "Benutzer nicht gefunden"
+    },
+    "card": {
+        "userId": "Benutzer ID",
+        "username": "Benutzername",
+        "badges": "Abzeichen",
+        "created": "Erstellungsdatum",
+        "bannerColor": "Banner Farbe"
+    },
+    "404": {
+        "title": "Diese Seite gibt es nicht",
+        "button": "Zurück zur Startseite"
+    },
+    "footer": {
+        "affiliated": "Nicht angegliedert an",
+        "stats": "Heute suchen",
+        "contact": "Können Sie mich gerne auf Discord kontaktieren",
+        "language": "Sprachen"
+    }
+}

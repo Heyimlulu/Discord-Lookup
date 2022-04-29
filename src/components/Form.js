@@ -1,12 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
 import { DotPulse } from '@uiball/loaders'
 import * as gtag from '../utils/gtag';
 import '../styles/custom.css';
 
-export default function Form({handleChange, handleKeyUp, handleSubmit, userInput, handleClick, isDisabled, isLoading}) {
+export default function Form({ retrieveUser }) {
 
     const { t } = useTranslation();
+
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [userInput, setUserInput] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleChange = (e) => {
+        const value = e.target.value;
+        const regex = /^[0-9\b]+$/;
+
+        // Tell that input field only accept numbers
+        if (value === '' || regex.test(value)) {
+            setUserInput(value);
+        }
+
+        // Enable button on 15th numbers
+        if (value.length >= 15) {
+            setIsDisabled(false);
+        } else {
+            setIsDisabled(true);
+        }
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        await fetchUser();
+    }
+
+    const handleKeyUp = async (e) => {
+        const value = e.target.value;
+
+        if (e.key === "Enter" && value.length >= 15) {
+            await fetchUser();
+        }
+    }
+
+    const handleClick = async () => {
+        await fetchUser();
+    }
+
+    const fetchUser = async () => {
+        gtag.event('submit', 'btn_submit', 'btn_submit', 1);
+
+        setIsLoading(true);
+        setIsDisabled(true);
+
+        await retrieveUser(userInput).then(() => {
+            setIsLoading(false);
+            setUserInput('');
+        });
+    }
 
     return (
         <div className="mx-auto">

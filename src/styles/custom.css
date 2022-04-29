@@ -1,3 +1,6 @@
-.DotPulse-module_container__Q1oww {
-    margin: auto;
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
+
+body {
+    background: #f3f4f6;
+    font-family: "Lato", sans-serif;
 }

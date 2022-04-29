@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga';
 import './index.css';
+import './styles/custom.css';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './utils/i18n';
 import * as gtag from './utils/gtag';

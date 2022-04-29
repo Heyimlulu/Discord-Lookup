@@ -1,8 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import FR from '../images/country/france.png';
-import UK from '../images/country/united-kingdom.png';
 import * as gtag from '../utils/gtag';
+import ReactCountryFlag from "react-country-flag";
 
 export default function AppFooter({ lookupsCount }) {
 
@@ -22,6 +21,10 @@ export default function AppFooter({ lookupsCount }) {
                 changeLanguage('en');
                 gtag.event('language', 'lang_en', 'lang_en', 1);
                 break;
+            case 'de':
+                changeLanguage('de');
+                gtag.event('language', 'lang_de', 'lang_de', 1);
+                break;
             default:
                 changeLanguage('en');
                 gtag.event('language', 'lang_en', 'lang_en', 1);
@@ -36,35 +39,40 @@ export default function AppFooter({ lookupsCount }) {
                 <span>{t('footer.language')}</span>
                 <div>
                     <span className='mx-0.5'>
-                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'} onClick={() => handleLanguageChange('en')}>
-                            <img src={UK} alt="United Kingdom" />
+                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'} onClick={() => handleLanguageChange('en')}>
+                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="GB" svg />
                         </button>
                     </span>
                     <span className='mx-0.5'>
-                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10'}  onClick={() => handleLanguageChange('fr')}>
-                            <img src={FR} alt="France" />
+                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('fr')}>
+                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="FR" svg />
+                        </button>
+                    </span>
+                    <span className='mx-0.5'>
+                        <button className={i18n.language === 'de' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('de')}>
+                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="DE" svg />
                         </button>
                     </span>
                 </div>
             </div>
             <div className="py-6">
                 <div className="text-sm text-center leading-12 text-md">
-                    <a 
-                        onClick={() => gtag.event('click', 'link_author', 'link_author', 1)} 
-                        className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1' 
+                    <a
+                        onClick={() => gtag.event('click', 'link_author', 'link_author', 1)}
+                        className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
                         href='https://discord.com/users/265896171384340480'
-                        target="_blank" 
+                        target="_blank"
                         rel="noopener noreferrer">
                             Lulu 🍉#6969
                     </a>
                     <span className='mx-1'>-</span>
                     <span>
                         <span>{t('footer.affiliated')}</span>
-                        <a 
-                            onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)} 
-                            className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1' 
-                            href="https://discord.com" 
-                            target="_blank" 
+                        <a
+                            onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)}
+                            className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
+                            href="https://discord.com"
+                            target="_blank"
                             rel="noopener noreferrer">
                                 Discord Inc.
                         </a>
