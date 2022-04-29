@@ -25,6 +25,10 @@ export default function AppFooter({ lookupsCount }) {
                 changeLanguage('de');
                 gtag.event('language', 'lang_de', 'lang_de', 1);
                 break;
+            case 'it':
+                changeLanguage('it');
+                gtag.event('language', 'lang_it', 'lang_it', 1);
+                break;
             default:
                 changeLanguage('en');
                 gtag.event('language', 'lang_en', 'lang_en', 1);
@@ -51,6 +55,11 @@ export default function AppFooter({ lookupsCount }) {
                     <span className='mx-0.5'>
                         <button className={i18n.language === 'de' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('de')}>
                             <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="DE" svg />
+                        </button>
+                    </span>
+                    <span className='mx-0.5'>
+                        <button className={i18n.language === 'it' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('it')}>
+                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="IT" svg />
                         </button>
                     </span>
                 </div>
