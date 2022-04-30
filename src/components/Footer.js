@@ -71,7 +71,9 @@ export default function AppFooter({ lookupsCount }) {
                         className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
                         href='https://discord.com/users/265896171384340480'
                         target="_blank"
-                        rel="noopener noreferrer">
+                        rel="noopener noreferrer"
+                        aria-label="Lulu 🍉#6969"
+                    >
                             Lulu 🍉#6969
                     </a>
                     <span className='mx-1'>-</span>
@@ -82,7 +84,9 @@ export default function AppFooter({ lookupsCount }) {
                             className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
                             href="https://discord.com"
                             target="_blank"
-                            rel="noopener noreferrer">
+                            rel="noopener noreferrer"
+                            aria-label="Discord Inc"
+                        >
                                 Discord Inc.
                         </a>
                     </span>

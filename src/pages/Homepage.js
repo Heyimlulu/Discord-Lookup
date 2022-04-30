@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Form from '../components/Form';
 import Card from '../components/Card';
 import Api from '../services/api';
@@ -29,11 +29,6 @@ export default function Homepage() {
         setIsError(true);
       });
     }
-
-    useEffect(() => {
-      // Google Analytics
-      gtag.pageview(window.location.pathname);
-    }, []);
 
     return (
         <main className='mx-auto'>
