@@ -41,25 +41,25 @@ export default function AppFooter({ lookupsCount }) {
             {/* LANGUAGE SELECTION */}
             <div className="bg-white rounded-2xl text-center mt-6">
                 <span>{t('footer.language')}</span>
-                <div>
+                <div className="block">
                     <span className='mx-0.5'>
                         <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'} onClick={() => handleLanguageChange('en')}>
-                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="GB" svg />
+                            <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="GB" aria-label="Great Britain" title="Great Britain" svg />
                         </button>
                     </span>
                     <span className='mx-0.5'>
                         <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('fr')}>
-                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="FR" svg />
+                            <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="FR" aria-label="France" title="France" svg />
                         </button>
                     </span>
                     <span className='mx-0.5'>
                         <button className={i18n.language === 'de' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('de')}>
-                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="DE" svg />
+                            <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="DE" aria-label="Germany" title="Germany" svg />
                         </button>
                     </span>
                     <span className='mx-0.5'>
                         <button className={i18n.language === 'it' ? 'bg-[#f3f4f6] rounded-lg p-1 w-10' : 'p-1 w-10 mb-2'}  onClick={() => handleLanguageChange('it')}>
-                            <ReactCountryFlag style={{ "fontSize": "1.6rem", "borderRadius": ".5rem" }} countryCode="IT" svg />
+                            <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="IT" aria-label="Italy" title="Italy" svg />
                         </button>
                     </span>
                 </div>
