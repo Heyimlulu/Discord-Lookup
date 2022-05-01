@@ -80,7 +80,7 @@ export default function Card({ isSuccess, isError, userInfos }) {
                             {userInfos.badges.map((badge, key) => {
                                 return (
                                     <span key={key} className='inline-flex text-3xl font-semibold text-gray-700 mr-2'>
-                                        <img className='w-full h-5' src={`img/badges/${badge}.png`} alt={badge} />
+                                        <img className='w-full h-5' src={`assets/badges/PNG/${badge}.png`} alt={badge} />
                                     </span>
                                 )
                             })}

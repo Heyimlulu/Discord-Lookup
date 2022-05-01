@@ -16,7 +16,7 @@
     },
     "response": {
         "userFound": "Utente trovato",
-        "userNotFound": "Utente non conosciuto"
+        "userNotFound": "Utente non trovato"
     },
     "card": {
         "userId": "Identità dell'utente",
@@ -31,7 +31,7 @@
     },
     "footer": {
         "affiliated": "Non affiliato a",
-        "stats": "Numero di ricerche",
+        "stats": "Cerca oggi",
         "contact": "Contattatemi se avete delle domande",
         "language": "Lingue"
     }
