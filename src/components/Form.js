@@ -54,14 +54,16 @@ export default function Form({ retrieveUser }) {
         setIsDisabled(true);
 
         await retrieveUser(userInput).then(() => {
-            setIsLoading(false);
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 500);
             setUserInput('');
         });
     }
 
     return (
         <div className="mx-auto">
-            <div className="relative rounded-2xl px-6 py-8 overflow-hidden bg-white">
+            <div className="relative rounded-md px-6 py-8 overflow-hidden bg-white">
                 {/* FORM */}
                 <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="sm:inline-flex w-full">
                     {/* HELP / LEARN MORE BUTTON */}

@@ -15,13 +15,9 @@
         }
     },
     "response": {
-        "userFound": "Utilisateur trouvé",
-        "userNotFound": "Utilisateur inconnu"
+        "error": "Cet utilisateur n'existe pas"
     },
-    "card": {
-        "userId": "ID de l'utilisateur",
-        "username": "Nom d'utilisateur",
-        "badges": "Badges",
+    "result": {
         "created": "Date de création",
         "bannerColor": "Couleur de la bannière"
     },

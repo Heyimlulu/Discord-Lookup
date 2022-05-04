@@ -15,13 +15,9 @@
         }
     },
     "response": {
-        "userFound": "Utente trovato",
-        "userNotFound": "Utente non trovato"
+        "error": "Questo utente non esiste"
     },
-    "card": {
-        "userId": "Identità dell'utente",
-        "username": "Nome dell'utente",
-        "badges": "Distintivi",
+    "result": {
         "created": "Data della creazione",
         "bannerColor": "Colore del banner"
     },

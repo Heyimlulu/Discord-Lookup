@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Form from '../components/Form';
-import Card from '../components/Card';
+import Result from '../components/Result';
 import Api from '../services/api';
 import * as gtag from '../utils/gtag';
 
@@ -33,7 +33,7 @@ export default function Homepage() {
     return (
         <main className='mx-auto'>
             <Form retrieveUser={retrieveUser} />
-            <Card isSuccess={isSuccess} isError={isError} userInfos={userInfos} />
+            <Result isSuccess={isSuccess} isError={isError} userInfos={userInfos} />
         </main>
     )
 }
