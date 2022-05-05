@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import defaultAvatar from '../images/defaultAvatar.png';
+import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
 export default function Result({ isSuccess, isError, userInfos }) {
 
@@ -19,7 +19,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                 <div className="flex items-center py-3 px-4 border-b">
                     {/* AVATAR */}
                     <div className="group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]">
-                        <img src={defaultAvatar} alt="default discord avatar" className="h-full w-full object-cover object-center relative z-20"/>
+                        <img src={discordLogo} alt="default discord avatar" className="bg-[#262626] h-full w-full p-[14px] object-contain object-center relative z-20"/>
                     </div>
                     {/* INFOS */}
                     <div className="flex flex-col">
@@ -52,7 +52,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                 <a className="group flex relative w-full h-[120px]" target="_blank" rel="noopener noreferrer" href={`${userInfos.banner}?size=1024`}>
                                     <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-current text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                         </svg>
                                     </div>
                                     {userInfos.banner &&
@@ -66,9 +66,9 @@ export default function Result({ isSuccess, isError, userInfos }) {
                     <div className="flex items-center py-3 px-4 border-b">
                         {/* AVATAR */}
                         <a href={`${userInfos.avatar}?size=1024`} target="_blank" rel="noopener noreferrer" className="group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]">
-                            <div class="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
+                            <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-current text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                             </div>
                             {userInfos.avatar &&
@@ -83,18 +83,18 @@ export default function Result({ isSuccess, isError, userInfos }) {
                         {/* INFOS */}
                         <div className="flex flex-col">
                             {/* USERNAME AND DISCRIMINATOR */}
-                            <div className="inline-block w-[fit-content] text-xl font-semibold hover:bg-gray-100 px-1.5 ml-1 rounded-md transition-colors cursor-pointer">
-                                <a href={ "https://discord.com/users/" + userInfos.id } target="_blank" rel="noopener noreferrer">
+                            <div className="inline-block w-[fit-content] text-xl font-semibold px-1.5 ml-1">
+                                <div>
                                     { userInfos.username.split('#')[0] }
                                     <small className="font-normal text-md font-mono ml-[1px]">#{ userInfos.username.split('#')[1] }</small>
-                                </a>
+                                </div>
                             </div>
                             {/* BADGES */}
                             <div className="flex items-center px-2 mt-[1px] select-none">
                                     {userInfos.badges.map((badge, key) => {
                                         return (
-                                            <div className="h-[30px] p-[4px] mr-[1px] cursor-pointer">
-                                                <img key={key} src={`./assets/badges/SVG/${badge}.svg`} alt="flag" className="w-full h-full object-contain" />
+                                            <div key={key} className="h-[30px] p-[4px] mr-[1px]">
+                                                <img src={`./assets/badges/SVG/${badge}.svg`} alt="flag" className="w-full h-full object-contain" />
                                             </div>
                                         )
                                     })}

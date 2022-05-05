@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next';
-import { DotPulse } from '@uiball/loaders'
 import * as gtag from '../utils/gtag';
 import '../styles/custom.css';
 
@@ -98,12 +97,18 @@ export default function Form({ retrieveUser }) {
                     <div className="mt-4 sm:mt-0 sm:ml-3">
                         <button
                             type="submit"
-                            className="block h-full w-full rounded-md border border-transparent px-5 py-3 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10 transition-all disabled:opacity-60 font-bold cursor-pointer"
+                            className="block h-full w-full rounded-md border border-transparent px-5 py-2 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10 transition-all disabled:opacity-60 font-bold cursor-pointer"
                             onClick={handleClick}
                             disabled={isDisabled}
                             aria-label={t('form.button.label')}
                         >
-                            {isLoading ? <DotPulse size={35} color="#FFF" /> : <span className='font-bold'>{t('form.button.label')}</span>}
+                            {isLoading ?
+                                <div className="dot-pulse">
+                                    <div className="dot-pulse__dot"></div>
+                                </div>
+                                :
+                                <span className='font-bold'>{t('form.button.label')}</span>
+                            }
                         </button>
                     </div>
                 </form>
