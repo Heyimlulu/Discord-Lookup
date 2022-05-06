@@ -14,7 +14,9 @@
             "HypeSquad_Events",
             "Partnered_Server_Owner",
             "Bug_Hunter_Level_2",
-            "Discord_Employee"
+            "Discord_Employee",
+            "Bot",
+            "Verified_Bot"
         ],
         "timestamp": 1483464987,
         "created": "Tue, 03 Jan 2017 17:36:27 GMT"
