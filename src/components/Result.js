@@ -112,13 +112,15 @@ export default function Result({ isSuccess, isError, userInfos }) {
                             <p className="text-sm text-gray-500">{ userInfos.created }</p>
                         </div>
                         {/* BANNER COLOR */}
-                        <div>
-                            <div className="flex">
-                                <FontAwesomeIcon className="mr-2" icon={faStar} />
-                                <p className="text-sm font-medium text-gray-900">{ t("result.bannerColor") }</p>
+                        {userInfos.bannerColor && (
+                            <div>
+                                <div className="flex">
+                                    <FontAwesomeIcon className="mr-2" icon={faStar} />
+                                    <p className="text-sm font-medium text-gray-900">{ t("result.bannerColor") }</p>
+                                </div>
+                                <p className="text-sm text-gray-500">{ userInfos.bannerColor }</p>
                             </div>
-                            <p className="text-sm text-gray-500">{ userInfos.bannerColor }</p>
-                        </div>
+                        )}
                     </div>
                 </div>
             }
