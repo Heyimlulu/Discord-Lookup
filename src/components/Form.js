@@ -70,7 +70,7 @@ export default function Form({ retrieveUser }) {
                         <a
                             onClick={gtag.event('click', 'link_learn_more', 'link_learn_more', 1)}
                             className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-indigo-400 transition-all rounded-xl'
-                            href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-"
+                            href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={t('learnmore.description')}

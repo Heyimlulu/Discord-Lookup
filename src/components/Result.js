@@ -19,7 +19,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                 <div className="flex items-center py-3 px-4 border-b">
                     {/* AVATAR */}
                     <div className="group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]">
-                        <img src={discordLogo} alt="default discord avatar" className="bg-[#262626] h-full w-full p-[14px] object-contain object-center relative z-20"/>
+                        <img loading="lazy" src={discordLogo} alt="default discord avatar" className="bg-[#262626] h-full w-full p-[14px] object-contain object-center relative z-20"/>
                     </div>
                     {/* INFOS */}
                     <div className="flex flex-col">
@@ -56,7 +56,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                         </svg>
                                     </div>
                                     {userInfos.banner &&
-                                        <img className="h-full w-full object-cover object-center rounded-t-md relative z-20" src={`${userInfos.banner}?size=1024`} alt={userInfos.username}/>
+                                        <img loading="lazy" className="h-full w-full object-cover object-center rounded-t-md relative z-20" src={`${userInfos.banner}?size=1024`} alt={userInfos.username}/>
                                     }
                                 </a>
                             }
@@ -72,7 +72,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                 </svg>
                             </div>
                             {userInfos.avatar &&
-                                <img src={userInfos.avatar} alt={userInfos.username} className="h-full w-full object-cover object-center relative z-20" />
+                                <img loading="lazy" src={userInfos.avatar} alt={userInfos.username} className="h-full w-full object-cover object-center relative z-20" />
                             }
                             <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center duration-200 z-10">
                                 <svg className="fill-current text-gray-300" width="28" height="20" viewBox="0 0 28 20">
@@ -94,7 +94,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                     {userInfos.badges.map((badge, key) => {
                                         return (
                                             <div key={key} className="h-[30px] p-[4px] mr-[1px]">
-                                                <img src={`./assets/badges/SVG/${badge}.svg`} alt="flag" className="w-full h-full object-contain" />
+                                                <img loading="lazy" src={`./assets/badges/SVG/${badge}.svg`} alt="flag" className="w-full h-full object-contain" />
                                             </div>
                                         )
                                     })}

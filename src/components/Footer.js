@@ -68,7 +68,7 @@ export default function AppFooter({ lookupsCount }) {
                 <div className="text-sm text-center leading-12 text-md">
                     <a
                         onClick={() => gtag.event('click', 'link_author', 'link_author', 1)}
-                        className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
+                        className='text-blurple font-semibold transition-all pl-0 hover:text-blurple/50 pl-1'
                         href='https://discord.com/users/265896171384340480'
                         target="_blank"
                         rel="noopener noreferrer"
@@ -78,10 +78,10 @@ export default function AppFooter({ lookupsCount }) {
                     </a>
                     <span className='mx-1'>-</span>
                     <span>
-                        <span>{t('footer.affiliated')}</span>
+                        <span className="text-gray-800">{t('footer.affiliated')}</span>
                         <a
                             onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)}
-                            className='text-blurple font-semibold transition-all pl-0 hover:text-indigo-400 pl-1'
+                            className='text-blurple font-semibold transition-all pl-0 hover:text-blurple/50 pl-1'
                             href="https://discord.com"
                             target="_blank"
                             rel="noopener noreferrer"

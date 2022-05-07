@@ -14,7 +14,7 @@ export default function Header() {
                     <FontAwesomeIcon className="mr-4" icon={faSearch} />
                     Discord Lookup
                 </h2>
-                <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">{t('header.description')}</p>
+                <p className="max-w-xl mt-5 mx-auto text-xl text-gray-800">{t('header.description')}</p>
             </div>
         </header>
     )
