@@ -1,21 +1,20 @@
 import axios from 'axios';
 import userFound from '../mocks/userFound-mock.json';
-// import userNotFound from '../mocks/userNotFound-mock.json';
-import { environement } from './environement';
+import userNotFound from '../mocks/userNotFound-mock.json';
 
 export default class Api {
-    static baseUrl = 'https://api.lookup.social/api/';
-    static isDev = environement.isDev;
-    static datas = userFound;
+    static BASE_URL = 'https://lookupsocial.herokuapp.com/api/';
+    static IS_DEV = false;
+    static MOCK = userFound || userNotFound;
 
     static async getUser(userID) {
-        if (this.isDev) {
+        if (this.IS_DEV) {
             return new Promise((resolve) => {
-                resolve(this.datas);
+                resolve(this.MOCK);
             });
-        } 
-        
-        return await axios.get(`${this.baseUrl}user/profile?q=${userID}`).then((response) => {
+        }
+
+        return await axios.get(`${this.BASE_URL}user/profile?q=${userID}`).then((response) => {
             if (!response.data.success) {
                 return response.data.data;
             }
@@ -27,7 +26,7 @@ export default class Api {
     }
 
     static async getTodayLogs() {
-        return await axios.get(`${this.baseUrl}logs/today`).then((response) => {
+        return await axios.get(`${this.BASE_URL}logs/today`).then((response) => {
             return response.data.data.count;
         }).catch((error) => {
             console.log(error);

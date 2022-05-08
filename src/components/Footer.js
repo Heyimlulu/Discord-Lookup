@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import * as gtag from '../utils/gtag';
 import ReactCountryFlag from "react-country-flag";
+import Api from "../services/api";
 
-export default function AppFooter({ lookupsCount }) {
+export default function AppFooter() {
 
     const { t, i18n } = useTranslation();
+
+    const [lookupsCount, setLookupsCount] = useState(0);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -36,6 +39,13 @@ export default function AppFooter({ lookupsCount }) {
         }
     }
 
+    useEffect(() => {
+        // Get today's logs
+        Api.getTodayLogs().then(data => {
+            setLookupsCount(data);
+        });
+    }, []);
+
     return (
         <footer className="text-lightgrey">
             {/* LANGUAGE SELECTION */}
@@ -65,10 +75,10 @@ export default function AppFooter({ lookupsCount }) {
                 </div>
             </div>
             <div className="py-6">
-                <div className="text-sm text-center leading-12 text-md">
+                <div className="text-center leading-12 text-sm">
                     <a
                         onClick={() => gtag.event('click', 'link_author', 'link_author', 1)}
-                        className='text-blurple font-semibold transition-all pl-0 hover:text-blurple/50 pl-1'
+                        className='text-blue-600 font-semibold transition-all pl-0 hover:text-blue-600/50 pl-1'
                         href='https://discord.com/users/265896171384340480'
                         target="_blank"
                         rel="noopener noreferrer"
@@ -81,7 +91,7 @@ export default function AppFooter({ lookupsCount }) {
                         <span className="text-gray-800">{t('footer.affiliated')}</span>
                         <a
                             onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)}
-                            className='text-blurple font-semibold transition-all pl-0 hover:text-blurple/50 pl-1'
+                            className='text-blue-600 font-semibold transition-all pl-0 hover:text-blue-600/50 pl-1'
                             href="https://discord.com"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -92,7 +102,7 @@ export default function AppFooter({ lookupsCount }) {
                     </span>
                     <div className='flex items-center'>
                         <div className='px-4 py-2 rounded-full bg-gradient-to-r from-blurple to-fuschia shadow-md overflow-hidden mt-4 mx-auto'>
-                            <span className='text-white text-center font-bold text-md'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
+                            <span className='text-white text-center font-bold'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
                         </div>
                     </div>
                 </div>

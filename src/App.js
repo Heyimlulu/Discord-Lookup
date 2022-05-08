@@ -1,27 +1,20 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import './styles/background.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Api from './services/api';
 import * as gtag from './utils/gtag';
+import loadable from '@loadable/component';
 
 export default function App () {
 
-  const [lookupsCount, setLookupsCount] = useState(0);
-
-  const Header = lazy(() => import('./components/Header'));
-  const Footer = lazy(() => import('./components/Footer'));
-  const Background = lazy(() => import('./components/Background'));
-  const Homepage = lazy(() => import('./pages/Homepage'));
-  const PageNotFound = lazy(() => import('./pages/PageNotFound'));
+  const Header = loadable(() => import('./components/Header'));
+  const Footer = loadable(() => import('./components/Footer'));
+  const Homepage = loadable(() => import('./pages/Homepage'));
+  const PageNotFound = loadable(() => import('./pages/PageNotFound'));
+  const Background = loadable(() => import('./components/Background'));
 
   useEffect(() => {
     // Google Analytics
     gtag.pageview(window.location.pathname);
-
-    // Get today's logs
-    Api.getTodayLogs().then(data => {
-      setLookupsCount(data);
-    });
   }, [])
 
   return (
@@ -35,7 +28,7 @@ export default function App () {
                   <Route exact path='/' element={<Homepage />} />
               </Routes>
           </BrowserRouter>
-          <Footer lookupsCount={lookupsCount} />
+          <Footer />
       </Suspense>
     </div>
   )

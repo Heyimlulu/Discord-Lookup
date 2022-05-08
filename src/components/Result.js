@@ -8,6 +8,16 @@ export default function Result({ isSuccess, isError, userInfos }) {
 
     const { t } = useTranslation();
 
+    const importAll = (r) => {
+        let images = {};
+        r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
+        return images
+    }
+
+    const images = importAll(require.context('../images/assets/badges/SVG', false, /\.svg$/));
+
+    // console.log(images['Bot.svg']);
+
     return (
         <div>
             {/* USER NOT FOUND */}
@@ -94,7 +104,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                     {userInfos.badges.map((badge, key) => {
                                         return (
                                             <div key={key} className="h-[30px] p-[4px] mr-[1px]">
-                                                <img loading="lazy" src={`./assets/badges/SVG/${badge}.svg`} alt="flag" className="w-full h-full object-contain" />
+                                                <img loading="lazy" src={images[`${badge}.svg`]} alt={badge} className="w-full h-full object-contain" />
                                             </div>
                                         )
                                     })}

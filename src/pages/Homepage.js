@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Form from '../components/Form';
-import Result from '../components/Result';
 import Api from '../services/api';
 import * as gtag from '../utils/gtag';
+import loadable from '@loadable/component';
 
 export default function Homepage() {
 
@@ -29,6 +28,9 @@ export default function Homepage() {
         setIsError(true);
       });
     }
+
+    const Form = loadable(() => import('../components/Form'));
+    const Result = loadable(() => import('../components/Result'));
 
     return (
         <main className='mx-auto'>
