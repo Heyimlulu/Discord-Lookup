@@ -21,11 +21,11 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(88, 101, 242, .1);
-  /* background-image: url("./Discord-Logo-White.svg"); */
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
-  /* background-size: contain; */
+  /* background: rgba(88, 101, 242, .1); */
+  background-image: url("../images/logo/Discord-Logo-White.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
