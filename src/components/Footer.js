@@ -77,7 +77,7 @@ export default function AppFooter() {
                 </div>
             </div>
             <div className="py-6">
-                <div className="text-center leading-12 text-sm">
+                <div className="text-gray-800 text-center leading-12 text-sm">
                     <span>Made with <FontAwesomeIcon className="text-red mx-[2px]" icon={faHeart} /> by</span>
                     <a
                         onClick={() => gtag.event('click', 'link_author', 'link_author', 1)}
@@ -91,7 +91,7 @@ export default function AppFooter() {
                     </a>
                     <span className='mx-1'>-</span>
                     <span>
-                        <span className="text-gray-800">{t('footer.affiliated')}</span>
+                        <span>{t('footer.affiliated')}</span>
                         <a
                             onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)}
                             className='text-blue-600 font-semibold transition-all pl-0 hover:text-blue-600/50 pl-1'
