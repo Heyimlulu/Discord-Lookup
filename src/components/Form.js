@@ -53,9 +53,7 @@ export default function Form({ retrieveUser }) {
         setIsDisabled(true);
 
         await retrieveUser(userInput).then(() => {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 500);
+            setIsLoading(false);
             setUserInput('');
         });
     }
@@ -104,7 +102,7 @@ export default function Form({ retrieveUser }) {
                         >
                             {isLoading ?
                                 <div className="dot-pulse">
-                                    <div className="dot-pulse__dot"></div>
+                                    <div className="dot-pulse__dot"/>
                                 </div>
                                 :
                                 <span className='font-bold'>{t('form.button.label')}</span>

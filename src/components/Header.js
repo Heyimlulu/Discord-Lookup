@@ -10,11 +10,11 @@ export default function Header() {
     return (
         <header className="py-16">
             <div className="text-center">
-                <h2 className="mt-1 text-4xl font-extrabold text-blurple sm:text-5xl sm:tracking-tight lg:text-6xl">
+                <h2 className="mt-1 font-extrabold text-blurple text-3xl lg:text-4xl 2xl:text-5xl sm:tracking-tight">
                     <FontAwesomeIcon className="mr-4" icon={faSearch} />
                     Discord Lookup
                 </h2>
-                <p className="max-w-xl mt-5 mx-auto text-xl text-gray-800">{t('header.description')}</p>
+                <p className="max-w-xl mt-5 mx-auto text-md lg:text-lg text-gray-800">{t('header.description')}</p>
             </div>
         </header>
     )

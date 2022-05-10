@@ -4,12 +4,16 @@
 
 ---
 
+## Deployment status
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fbe54b40-943c-4270-9490-ef2aff505f80/deploy-status)](https://app.netlify.com/sites/discord-lookup/deploys)
+
 ## Getting started
 
 ### Install
 
 ```bash
-yarn install
+yarn
 ```
 
 ### Development
