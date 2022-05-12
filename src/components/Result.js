@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -8,6 +8,8 @@ export default function Result({ isSuccess, isError, userInfos }) {
 
     const { t } = useTranslation();
 
+    const [hover, setHover] = useState(false);
+
     const importAll = (r) => {
         let images = {};
         r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -16,7 +18,9 @@ export default function Result({ isSuccess, isError, userInfos }) {
 
     const images = importAll(require.context('../images/assets/badges/SVG', false, /\.svg$/));
 
-    // console.log(images['Bot.svg']);
+    const toggleHover = () => {
+        setHover(!hover);
+    }
 
     return (
         <div>
@@ -128,7 +132,27 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                     <FontAwesomeIcon className="mr-2" icon={faStar} />
                                     <p className="text-sm font-medium text-gray-900">{ t("result.bannerColor") }</p>
                                 </div>
-                                <p className="text-sm text-gray-500">{ userInfos.bannerColor }</p>
+                                {hover ? (
+                                    <p className="transition ease duration-200 inline-flex px-[10px] rounded-full text-sm" style={{
+                                        color: userInfos.bannerColor,
+                                        border: `1px solid ${userInfos.bannerColor}`,
+                                        boxShadow: "rgb(167, 86, 255) 0px 0px 2px"
+                                    }}
+                                        onMouseEnter={() => toggleHover()}
+                                        onMouseLeave={() => toggleHover()}
+                                    >
+                                        {userInfos.bannerColor}
+                                    </p>
+                                ) : (
+                                    <p className="transition ease duration-200 px-[10px] rounded-full text-sm w-[4.2rem] h-[1.5rem]"
+                                       style={{ backgroundColor: userInfos.bannerColor }}
+                                       onMouseEnter={() => toggleHover()}
+                                       onMouseLeave={() => toggleHover()}
+                                    >
+                                        <span className="sr-only">{userInfos.bannerColor}</span>
+                                    </p>
+                                    )
+                                }
                             </div>
                         )}
                     </div>
