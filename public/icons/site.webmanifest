@@ -1,6 +1,8 @@
 {
     "name": "Discord Lookup",
     "short_name": "Discord Lookup",
+    "description": "Discord Lookup is a web app that allows you to search for Discord users and bots by his ID.",
+    "start_url": ".",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +15,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#5865f2",
+    "background_color": "#5865f2",
     "display": "standalone"
 }
