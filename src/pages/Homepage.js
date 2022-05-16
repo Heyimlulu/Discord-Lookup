@@ -34,7 +34,7 @@ export default function Homepage() {
     const Result = loadable(() => import('../components/Result'));
 
     return (
-        <main className='lg:h-1/2 mx-auto'>
+        <main>
             <Form retrieveUser={retrieveUser} />
             <Result isSuccess={isSuccess} isError={isError} data={data} />
         </main>
