@@ -1,11 +1,14 @@
 import axios from 'axios';
 import userFound from '../mocks/userFound-mock.json';
-import userNotFound from '../mocks/userNotFound-mock.json';
+//import userNotFound from '../mocks/userNotFound-mock.json';
+//import queryError from '../mocks/queryError-mock.json';
+//import lengthError from '../mocks/lengthError-mock.json';
+//import regexError from '../mocks/regexError-mock.json';
 
 export default class Api {
     static BASE_URL = 'https://lookupsocial.herokuapp.com/api/';
     static IS_DEV = false;
-    static MOCK = userFound || userNotFound;
+    static MOCK = userFound;
 
     static async getUser(userID) {
         if (this.IS_DEV) {

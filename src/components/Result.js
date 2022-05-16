@@ -4,7 +4,7 @@ import { faPalette, faStar } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
 import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
-export default function Result({ isSuccess, isError, userInfos }) {
+export default function Result({ isSuccess, isError, data }) {
 
     const { t } = useTranslation();
 
@@ -44,6 +44,7 @@ export default function Result({ isSuccess, isError, userInfos }) {
                     </div>
                 </div>
                 {/* OTHERS INFOS */}
+                {!data &&
                 <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
                     {/* CREATED DATE */}
                     <div>
@@ -51,26 +52,33 @@ export default function Result({ isSuccess, isError, userInfos }) {
                             <FontAwesomeIcon className="mr-2" icon={faPalette}/>
                             <p className="text-sm font-medium text-gray-900">{t("result.created")}</p>
                         </div>
-                        <p className="text-sm text-gray-500">{userInfos.created}</p>
+                        <p className="text-sm text-gray-500">{data.created}</p>
                     </div>
                 </div>
+                }
+                {data &&
+                <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
+                    {/* ERROR */}
+                    <p className="text-sm text-red">{data}</p>
+                </div>
+                }
             </div>
             }
             {/* USER FOUND */}
             {isSuccess &&
                 <div className="bg-white shadow rounded-md mt-4">
                     {/* BANNER */}
-                    {userInfos.bannerColor &&
-                        <div className="border-b rounded-t-md w-full min-h-[60px]" style={{backgroundColor: userInfos.bannerColor}}>
-                            {userInfos.banner &&
-                                <a className="group flex relative w-full h-[120px]" target="_blank" rel="noopener noreferrer" href={`${userInfos.banner}?size=1024`}>
+                    {data.bannerColor &&
+                        <div className="border-b rounded-t-md w-full min-h-[60px]" style={{backgroundColor: data.bannerColor}}>
+                            {data.banner &&
+                                <a className="group flex relative w-full h-[120px]" target="_blank" rel="noopener noreferrer" href={`${data.banner}?size=1024`}>
                                     <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-current text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                                         </svg>
                                     </div>
-                                    {userInfos.banner &&
-                                        <img loading="lazy" className="h-full w-full object-cover object-center rounded-t-md relative z-20" src={`${userInfos.banner}?size=1024`} alt={userInfos.username}/>
+                                    {data.banner &&
+                                        <img loading="lazy" className="h-full w-full object-cover object-center rounded-t-md relative z-20" src={`${data.banner}?size=1024`} alt={data.username}/>
                                     }
                                 </a>
                             }
@@ -79,14 +87,14 @@ export default function Result({ isSuccess, isError, userInfos }) {
                     {/* USERS */}
                     <div className="flex items-center py-3 px-4 border-b">
                         {/* AVATAR */}
-                        <a href={`${userInfos.avatar}?size=1024`} target="_blank" rel="noopener noreferrer" className="group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]">
+                        <a href={`${data.avatar}?size=1024`} target="_blank" rel="noopener noreferrer" className="group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]">
                             <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 stroke-current text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                             </div>
-                            {userInfos.avatar &&
-                                <img loading="lazy" src={userInfos.avatar} alt={userInfos.username} className="h-full w-full object-cover object-center relative z-20" />
+                            {data.avatar &&
+                                <img loading="lazy" src={data.avatar} alt={data.username} className="h-full w-full object-cover object-center relative z-20" />
                             }
                             <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center duration-200 z-10">
                                 <svg className="fill-current text-gray-300" width="28" height="20" viewBox="0 0 28 20">
@@ -99,13 +107,13 @@ export default function Result({ isSuccess, isError, userInfos }) {
                             {/* USERNAME AND DISCRIMINATOR */}
                             <div className="inline-block w-[fit-content] text-xl font-semibold px-1.5 ml-1">
                                 <div>
-                                    { userInfos.username.split('#')[0] }
-                                    <small className="font-normal text-md font-mono ml-[1px]">#{ userInfos.username.split('#')[1] }</small>
+                                    { data.username.split('#')[0] }
+                                    <small className="font-normal text-md font-mono ml-[1px]">#{ data.username.split('#')[1] }</small>
                                 </div>
                             </div>
                             {/* BADGES */}
                             <div className="flex items-center px-2 mt-[1px] select-none">
-                                    {userInfos.badges.map((badge, key) => {
+                                    {data.badges.map((badge, key) => {
                                         return (
                                             <div key={key} className="h-[30px] p-[4px] mr-[1px]">
                                                 <img loading="lazy" src={images[`${badge}.svg`]} alt={badge} className="w-full h-full object-contain" />
@@ -123,10 +131,10 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                 <FontAwesomeIcon className="mr-2" icon={faPalette} />
                                 <p className="text-sm font-medium text-gray-900">{ t("result.created") }</p>
                             </div>
-                            <p className="text-sm text-gray-500">{ userInfos.created }</p>
+                            <p className="text-sm text-gray-500">{ data.created }</p>
                         </div>
                         {/* BANNER COLOR */}
-                        {userInfos.bannerColor && (
+                        {data.bannerColor && (
                             <div>
                                 <div className="flex">
                                     <FontAwesomeIcon className="mr-2" icon={faStar} />
@@ -134,22 +142,22 @@ export default function Result({ isSuccess, isError, userInfos }) {
                                 </div>
                                 {hover ? (
                                     <p className="transition ease duration-200 inline-flex px-[10px] rounded-full text-sm" style={{
-                                        color: userInfos.bannerColor,
-                                        border: `1px solid ${userInfos.bannerColor}`,
+                                        color: data.bannerColor,
+                                        border: `1px solid ${data.bannerColor}`,
                                         boxShadow: "rgb(167, 86, 255) 0px 0px 2px"
                                     }}
                                         onMouseEnter={() => toggleHover()}
                                         onMouseLeave={() => toggleHover()}
                                     >
-                                        {userInfos.bannerColor}
+                                        {data.bannerColor}
                                     </p>
                                 ) : (
                                     <p className="transition ease duration-200 px-[10px] rounded-full text-sm w-[4.2rem] h-[1.5rem]"
-                                       style={{ backgroundColor: userInfos.bannerColor }}
+                                       style={{ backgroundColor: data.bannerColor }}
                                        onMouseEnter={() => toggleHover()}
                                        onMouseLeave={() => toggleHover()}
                                     >
-                                        <span className="sr-only">{userInfos.bannerColor}</span>
+                                        <span className="sr-only">{data.bannerColor}</span>
                                     </p>
                                     )
                                 }

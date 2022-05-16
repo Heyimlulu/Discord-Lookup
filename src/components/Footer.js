@@ -49,7 +49,7 @@ export default function AppFooter() {
     }, []);
 
     return (
-        <footer className="text-lightgrey">
+        <footer className="mt-auto text-lightgrey">
             {/* LANGUAGE SELECTION */}
             <div className="bg-white rounded-md text-center mt-6">
                 <span>{t('footer.language')}</span>

@@ -5,7 +5,7 @@ import loadable from '@loadable/component';
 
 export default function Homepage() {
 
-    const [userInfos, setUserInfos] = useState([]);
+    const [data, setData] = useState([]);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -16,10 +16,11 @@ export default function Homepage() {
       setIsError(false);
 
       Api.getUser(id).then(res => {
-        setUserInfos(res.data);
+        setData(res.data);
 
         if (!res.success) {
           setIsError(true);
+          setData(res.message);
           return;
         }
 
@@ -33,9 +34,9 @@ export default function Homepage() {
     const Result = loadable(() => import('../components/Result'));
 
     return (
-        <main className='mx-auto'>
+        <main className='lg:h-1/2 mx-auto'>
             <Form retrieveUser={retrieveUser} />
-            <Result isSuccess={isSuccess} isError={isError} userInfos={userInfos} />
+            <Result isSuccess={isSuccess} isError={isError} data={data} />
         </main>
     )
 }
