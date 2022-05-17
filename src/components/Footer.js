@@ -104,8 +104,11 @@ export default function AppFooter() {
                         </a>
                     </span>
                     <div className='flex items-center'>
-                        <div className='px-4 py-2 rounded-full bg-gradient-to-r from-blurple to-fuschia shadow-md overflow-hidden mt-4 mx-auto'>
+                        {/*<div className='px-4 py-2 rounded-full bg-gradient-to-r from-blurple to-fuschia shadow-md overflow-hidden mt-4 mx-auto'>
                             <span className='text-white text-center font-bold'>{t('footer.stats')} : {lookupsCount ? lookupsCount : '-'}</span>
+                        </div>*/}
+                        <div className='hidden md:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow-md mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
+                            {lookupsCount ? lookupsCount : '-'}
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ export default function App () {
   }, [])
 
   return (
-    <div className='max-w-[90%] md:max-w-[60%] lg:max-w-[40%] 2xl:max-w-[30%] w-full h-screen flex flex-col mx-auto'>
+    <div className='max-w-[400px] px-4 sm:max-w-[550px] w-full h-screen flex flex-col mx-auto'>
       <Suspense fallback={<div className='text-2xl font-bold text-blurple text-center translate-y-1/2'>Loading...</div>}>
           <Header />
           <Background />
