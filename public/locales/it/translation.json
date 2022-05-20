@@ -18,6 +18,7 @@
         "error": "Questo utente non esiste"
     },
     "result": {
+        "id": "ID dell'utente",
         "created": "Data della creazione",
         "bannerColor": "Colore del banner"
     },

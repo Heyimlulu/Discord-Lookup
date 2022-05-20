@@ -18,6 +18,7 @@
         "error": "Dieser Benutzer existiert nicht"
     },
     "result": {
+        "id": "Benutzer ID",
         "created": "Erstellungsdatum",
         "bannerColor": "Banner Farbe"
     },

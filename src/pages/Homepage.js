@@ -10,24 +10,23 @@ export default function Homepage() {
     const [isError, setIsError] = useState(false);
 
     const retrieveUser = async (id) => {
-      gtag.event('set_search', 'search', 'search', id);
+        gtag.event('set_search', 'search', 'search', id);
 
-      setIsSuccess(false);
-      setIsError(false);
+        setIsSuccess(false);
+        setIsError(false);
 
-      Api.getUser(id).then(res => {
-        setData(res.data);
+        Api.getUser(id).then(res => {
+            setData(res.data);
 
-        if (!res.success) {
-          setIsError(true);
-          setData(res.message);
-          return;
-        }
+            if (!res.success) {
+                setIsError(true);
+                return;
+            }
 
-        setIsSuccess(true);
-      }).catch(() => {
-        setIsError(true);
-      });
+            setIsSuccess(true);
+        }).catch(() => {
+            setIsError(true);
+        });
     }
 
     const Form = loadable(() => import('../components/Form'));

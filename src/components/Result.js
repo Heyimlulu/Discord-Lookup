@@ -9,6 +9,7 @@ export default function Result({ isSuccess, isError, data }) {
     const { t } = useTranslation();
 
     const [hover, setHover] = useState(false);
+    const [copySuccess, setCopySuccess] = useState(data.bannerColor);
 
     const importAll = (r) => {
         let images = {};
@@ -22,13 +23,21 @@ export default function Result({ isSuccess, isError, data }) {
         setHover(!hover);
     }
 
+    const clipboard = () => {
+        setCopySuccess('Copied!');
+        navigator.clipboard.writeText(data.bannerColor);
+        setTimeout(() => {
+            setCopySuccess(data.bannerColor);
+        }, 2000)
+    }
+
     return (
         <div>
             {/* USER NOT FOUND */}
             {isError &&
-            <div className="bg-white shadow rounded-md mt-4">
+            <div className="bg-white shadow rounded-md">
                 {/* BANNER COLOR */}
-                <div className="border-b rounded-t-md w-full min-h-[60px] bg-[#262626]"></div>
+                <div className="border-b rounded-t-md w-full min-h-[60px] bg-[#262626]"/>
                 {/* USERS */}
                 <div className="flex items-center py-3 px-4 border-b">
                     {/* AVATAR */}
@@ -44,8 +53,15 @@ export default function Result({ isSuccess, isError, data }) {
                     </div>
                 </div>
                 {/* OTHERS INFOS */}
-                {!data &&
                 <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
+                    {/* USER ID */}
+                    <div>
+                        <div className="flex">
+                            <FontAwesomeIcon className="mr-2" icon={faPalette}/>
+                            <p className="text-sm font-medium text-gray-900">{t("result.id")}</p>
+                        </div>
+                        <p className="text-sm text-gray-500">{data.id}</p>
+                    </div>
                     {/* CREATED DATE */}
                     <div>
                         <div className="flex">
@@ -55,18 +71,11 @@ export default function Result({ isSuccess, isError, data }) {
                         <p className="text-sm text-gray-500">{data.created}</p>
                     </div>
                 </div>
-                }
-                {data &&
-                <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
-                    {/* ERROR */}
-                    <p className="text-sm text-red">{data}</p>
-                </div>
-                }
             </div>
             }
             {/* USER FOUND */}
             {isSuccess &&
-                <div className="bg-white shadow rounded-md mt-4">
+                <div className="bg-white shadow rounded-md">
                     {/* BANNER */}
                     {data.bannerColor &&
                         <div className="border-b rounded-t-md w-full min-h-[60px]" style={{backgroundColor: data.bannerColor}}>
@@ -148,8 +157,9 @@ export default function Result({ isSuccess, isError, data }) {
                                     }}
                                         onMouseEnter={() => toggleHover()}
                                         onMouseLeave={() => toggleHover()}
+                                       onClick={() => clipboard()}
                                     >
-                                        {data.bannerColor}
+                                        {copySuccess}
                                     </p>
                                 ) : (
                                     <p className="transition ease duration-200 px-[10px] rounded-full text-sm w-[4.2rem] h-[1.5rem]"
@@ -157,7 +167,7 @@ export default function Result({ isSuccess, isError, data }) {
                                        onMouseEnter={() => toggleHover()}
                                        onMouseLeave={() => toggleHover()}
                                     >
-                                        <span className="sr-only">{data.bannerColor}</span>
+                                        <span className="sr-only">{copySuccess}</span>
                                     </p>
                                     )
                                 }
