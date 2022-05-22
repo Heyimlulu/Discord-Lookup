@@ -92,16 +92,6 @@ export default function AppFooter() {
                     <span className='mx-1'>-</span>
                     <span>
                         <span>{t('footer.affiliated')}</span>
-                        <a
-                            onClick={() => gtag.event('click', 'link_affiliation', 'link_affiliation', 1)}
-                            className='text-blue-600 font-semibold transition-all pl-0 hover:text-blue-600/50 pl-1'
-                            href="https://discord.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Discord Inc"
-                        >
-                                Discord Inc.
-                        </a>
                     </span>
                     <div className='hidden lg:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow-md mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
                         {lookupsCount ? lookupsCount : '-'}
