@@ -63,14 +63,14 @@ export default function Form({ retrieveUser }) {
 
     return (
         <div className="mx-auto mb-4">
-            <div className="relative rounded-md px-6 py-8 overflow-hidden bg-white">
+            <div className="relative rounded-lg px-6 py-8 overflow-hidden shadow bg-white">
                 {/* FORM */}
                 <form onKeyUp={handleKeyUp} onSubmit={handleSubmit} className="sm:inline-flex w-full">
                     {/* HELP / LEARN MORE BUTTON */}
                     <div className="absolute top-1">
                         <a
                             onClick={gtag.event('click', 'link_learn_more', 'link_learn_more', 1)}
-                            className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-indigo-400 transition-all rounded-xl'
+                            className='px-2 py-0.5 bg-blurple text-white text-xs font-bold hover:bg-indigo-400 transition-all rounded-full'
                             href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
                             target="_blank"
                             rel="noopener noreferrer"

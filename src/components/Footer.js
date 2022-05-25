@@ -93,7 +93,7 @@ export default function AppFooter() {
                     <span>
                         <span>{t('footer.affiliated')}</span>
                     </span>
-                    <div className='hidden lg:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow-md mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
+                    <div className='hidden lg:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
                         {lookupsCount ? lookupsCount : '-'}
                     </div>
                 </div>

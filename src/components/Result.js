@@ -35,7 +35,7 @@ export default function Result({ isSuccess, isError, data }) {
         <div>
             {/* USER NOT FOUND */}
             {isError &&
-            <div className="bg-white shadow rounded-md">
+            <div className="bg-white shadow rounded-lg">
                 {/* BANNER COLOR */}
                 <div className="border-b rounded-t-md w-full min-h-[60px] bg-[#262626]"/>
                 {/* USERS */}
@@ -52,30 +52,15 @@ export default function Result({ isSuccess, isError, data }) {
                         </div>
                     </div>
                 </div>
-                {/* OTHERS INFOS */}
+                {/* ERROR */}
                 <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
-                    {/* USER ID */}
-                    <div>
-                        <div className="flex">
-                            <FontAwesomeIcon className="mr-2" icon={faPalette}/>
-                            <p className="text-sm font-medium text-gray-900">{t("result.id")}</p>
-                        </div>
-                        <p className="text-sm text-gray-500">{data.id}</p>
-                    </div>
-                    {/* CREATED DATE */}
-                    <div>
-                        <div className="flex">
-                            <FontAwesomeIcon className="mr-2" icon={faPalette}/>
-                            <p className="text-sm font-medium text-gray-900">{t("result.created")}</p>
-                        </div>
-                        <p className="text-sm text-gray-500">{data.created}</p>
-                    </div>
+                    <p className="text-sm text-red">{data}</p>
                 </div>
             </div>
             }
             {/* USER FOUND */}
             {isSuccess &&
-                <div className="bg-white shadow rounded-md">
+                <div className="bg-white shadow rounded-lg">
                     {/* BANNER */}
                     {data.bannerColor &&
                         <div className="border-b rounded-t-md w-full min-h-[60px]" style={{backgroundColor: data.bannerColor}}>
