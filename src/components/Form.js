@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import * as gtag from '../utils/gtag';
 import '../styles/custom.css';
 
-export default function Form({ retrieveUser }) {
+export default function Form({ fetchDiscordUser }) {
 
     const { t } = useTranslation();
 
@@ -31,34 +31,31 @@ export default function Form({ retrieveUser }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await fetchUser();
+        await submitRequest();
     }
 
     const handleKeyUp = async (e) => {
         const value = e.target.value;
 
         if (e.key === "Enter" && value.length >= 15) {
-            await fetchUser();
+            await submitRequest();
         }
     }
 
     const handleClick = async () => {
-        await fetchUser();
+        await submitRequest();
     }
 
-    const fetchUser = async () => {
+    const submitRequest = async () => {
         gtag.event('submit', 'btn_submit', 'btn_submit', 1);
 
         setIsLoading(true);
         setIsDisabled(true);
 
-        setTimeout(async () => {
-            await retrieveUser(userInput).then(() => {
-                setIsLoading(false);
-            });
-        }, 1000);
-
-        setUserInput('');
+        await fetchDiscordUser(userInput).then(() => {
+            setIsLoading(false);
+            setUserInput('');
+        });
     }
 
     return (
@@ -103,12 +100,13 @@ export default function Form({ retrieveUser }) {
                             disabled={isDisabled}
                             aria-label={t('form.button.label')}
                         >
-                            {isLoading ?
+                            {isLoading ? (
                                 <div className="dot-pulse">
                                     <div className="dot-pulse__dot"/>
                                 </div>
-                                :
-                                <span className='font-bold'>{t('form.button.label')}</span>
+                                ) : (
+                                    <span className='font-bold'>{t('form.button.label')}</span>
+                                )
                             }
                         </button>
                     </div>

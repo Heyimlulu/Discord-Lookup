@@ -9,16 +9,18 @@ export default function Homepage() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const retrieveUser = async (id) => {
+    const fetchDiscordUser = (id) => {
         gtag.event('set_search', 'search', 'search', id);
 
         setIsSuccess(false);
         setIsError(false);
 
         Api.getUser(id).then(res => {
-            setData(res.data);
+            const data = res.data;
+            setData(data);
 
             if (!res.success) {
+                setData(res.message);
                 setIsError(true);
                 return;
             }
@@ -34,7 +36,7 @@ export default function Homepage() {
 
     return (
         <main>
-            <Form retrieveUser={retrieveUser} />
+            <Form fetchDiscordUser={fetchDiscordUser} />
             <Result isSuccess={isSuccess} isError={isError} data={data} />
         </main>
     )
