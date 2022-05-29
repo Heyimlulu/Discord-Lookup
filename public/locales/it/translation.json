@@ -22,6 +22,9 @@
         "created": "Data della creazione",
         "bannerColor": "Colore del banner"
     },
+    "misc": {
+        "clipboard": "Copia!"
+    },
     "404": {
         "title": "Pagina non trovata",
         "button": "Torna alla pagina iniziale"

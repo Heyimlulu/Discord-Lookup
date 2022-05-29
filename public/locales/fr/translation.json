@@ -22,6 +22,9 @@
         "created": "Date de création",
         "bannerColor": "Couleur de la bannière"
     },
+    "misc": {
+        "clipboard": "Copié!"
+    },
     "404": {
         "title": "Cette page n'existe pas",
         "button": "Retour à la page d'accueil"

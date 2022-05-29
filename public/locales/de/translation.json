@@ -22,6 +22,9 @@
         "created": "Erstellungsdatum",
         "bannerColor": "Banner Farbe"
     },
+    "misc": {
+        "clipboard": "Kopiert!"
+    },
     "404": {
         "title": "Diese Seite gibt es nicht",
         "button": "Zurück zur Startseite"

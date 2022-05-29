@@ -22,6 +22,9 @@
         "created": "Creation date",
         "bannerColor": "Banner Color"
     },
+    "misc": {
+        "clipboard": "Copied!"
+    },
     "404": {
         "title": "Uh Oh... I think you got lost!",
         "button": "Go back to homepage"

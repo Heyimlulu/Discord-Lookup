@@ -24,7 +24,7 @@ export default function Result({ isSuccess, isError, data }) {
     }
 
     const clipboard = () => {
-        setCopySuccess('Copied!');
+        setCopySuccess(t('misc.clipboard'));
         navigator.clipboard.writeText(data.bannerColor);
         setTimeout(() => {
             setCopySuccess(data.bannerColor);
