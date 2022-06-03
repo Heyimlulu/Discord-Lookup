@@ -52,25 +52,25 @@ export default function AppFooter() {
         <footer className="mt-auto text-lightgrey">
             {/* LANGUAGE SELECTION */}
             <div className="bg-white rounded-md text-center mt-6">
-                <span>{t('footer.language')}</span>
+                <p>{t('footer.language')}</p>
                 <div className="block">
                     <span className='mx-1'>
-                        <button className={i18n.language === 'en' ? 'bg-[#f3f4f6] rounded-md px-1.5 py-1' : 'px-1.5 mb-2'} onClick={() => handleLanguageChange('en')}>
+                        <button className={i18n.language === 'en' ? 'bg-neutral-200 rounded-md p-1.5 ' : 'p-1.5 mb-2'} onClick={() => handleLanguageChange('en')}>
                             <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="GB" aria-label="Great Britain" title="Great Britain" svg />
                         </button>
                     </span>
                     <span className='mx-1'>
-                        <button className={i18n.language === 'fr' ? 'bg-[#f3f4f6] rounded-md px-1.5 py-1' : 'px-1.5 mb-2'}  onClick={() => handleLanguageChange('fr')}>
+                        <button className={i18n.language === 'fr' ? 'bg-neutral-200 rounded-md p-1.5 ' : 'p-1.5 mb-2'}  onClick={() => handleLanguageChange('fr')}>
                             <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="FR" aria-label="France" title="France" svg />
                         </button>
                     </span>
                     <span className='mx-1'>
-                        <button className={i18n.language === 'de' ? 'bg-[#f3f4f6] rounded-md px-1.5 py-1' : 'px-1.5 mb-2'}  onClick={() => handleLanguageChange('de')}>
+                        <button className={i18n.language === 'de' ? 'bg-neutral-200 rounded-md p-1.5 ' : 'p-1.5 mb-2'}  onClick={() => handleLanguageChange('de')}>
                             <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="DE" aria-label="Germany" title="Germany" svg />
                         </button>
                     </span>
                     <span className='mx-1'>
-                        <button className={i18n.language === 'it' ? 'bg-[#f3f4f6] rounded-md px-1.5 py-1' : 'px-1.5 mb-2'}  onClick={() => handleLanguageChange('it')}>
+                        <button className={i18n.language === 'it' ? 'bg-neutral-200 rounded-md p-1.5 ' : 'p-1.5 mb-2'}  onClick={() => handleLanguageChange('it')}>
                             <ReactCountryFlag style={{ "display": "block", "margin": "0 auto", "height": "1.2rem", "fontSize": "1.6rem", "borderRadius": ".2rem" }} countryCode="IT" aria-label="Italy" title="Italy" svg />
                         </button>
                     </span>
@@ -94,7 +94,7 @@ export default function AppFooter() {
                         <span>{t('footer.affiliated')}</span>
                     </span>
                     <div className='hidden lg:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
-                        {lookupsCount ? lookupsCount : '-'}
+                        {lookupsCount ? lookupsCount : '0'}
                     </div>
                 </div>
             </div>
