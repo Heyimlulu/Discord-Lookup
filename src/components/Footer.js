@@ -10,7 +10,7 @@ export default function AppFooter() {
 
     const { t, i18n } = useTranslation();
 
-    const [lookupsCount, setLookupsCount] = useState(0);
+    // const [lookupsCount, setLookupsCount] = useState(0);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -41,12 +41,12 @@ export default function AppFooter() {
         }
     }
 
-    useEffect(() => {
-        // Get today's logs
-        Api.getTodayLogs().then(data => {
-            setLookupsCount(data);
-        });
-    }, []);
+    // useEffect(() => {
+    //     // Get today's logs
+    //     Api.getTodayLogs().then(data => {
+    //         setLookupsCount(data);
+    //     });
+    // }, []);
 
     return (
         <footer className="mt-auto text-lightgrey">
