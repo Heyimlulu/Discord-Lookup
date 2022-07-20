@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import * as gtag from '../utils/gtag';
 import ReactCountryFlag from "react-country-flag";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import Api from "../services/api";
 
 export default function AppFooter() {
 
     const { t, i18n } = useTranslation();
-
-    // const [lookupsCount, setLookupsCount] = useState(0);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
@@ -40,13 +37,6 @@ export default function AppFooter() {
                 break;
         }
     }
-
-    // useEffect(() => {
-    //     // Get today's logs
-    //     Api.getTodayLogs().then(data => {
-    //         setLookupsCount(data);
-    //     });
-    // }, []);
 
     return (
         <footer className="mt-auto text-lightgrey">
@@ -93,9 +83,6 @@ export default function AppFooter() {
                     <span>
                         <span>{t('footer.affiliated')}</span>
                     </span>
-                    {/* <div className='hidden lg:flex items-center justify-center absolute bottom-4 right-4 w-[3.5rem] h-[3.5rem] shadow mx-auto text-white text-[1.2rem] text-center font-bold rounded-full bg-blurple'>
-                        {lookupsCount ? lookupsCount : '0'}
-                    </div> */}
                 </div>
             </div>
         </footer>
