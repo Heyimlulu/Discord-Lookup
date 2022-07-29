@@ -6,7 +6,7 @@ import userFound from '../mocks/userFound-mock.json';
 // import regexError from '../mocks/regexError-mock.json';
 
 export default class Api {
-    static BASE_URL = 'https://lookupsocial.herokuapp.com/api';
+    static BASE_URL = 'https://api.discord.name/api';
     static IS_DEV = false;
     static MOCK = userFound;
 
