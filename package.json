@@ -29,7 +29,8 @@
   "scripts": {
     "serve": "serve -s build",
     "start": "react-scripts start",
-    "build": "react-scripts build && compress-cra",
+    "buildandcompress": "react-scripts build && compress-cra",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
