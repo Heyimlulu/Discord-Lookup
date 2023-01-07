@@ -16,6 +16,6 @@
     ],
     "theme_color": "#5865f2",
     "background_color": "#5865f2",
-    "start_url": "https://discord.name",
+    "start_url": "/",
     "display": "standalone"
 }
