@@ -6,7 +6,7 @@ import userFound from '../mocks/userFound-mock.json';
 // import regexError from '../mocks/regexError-mock.json';
 
 export default class Api {
-    static BASE_URL = "http://localhost:8080";
+    static BASE_URL = process.env.REACT_APP_API_URL;
     static IS_DEV = false;
     static MOCK = userFound;
 
