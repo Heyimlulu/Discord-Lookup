@@ -1,6 +1,6 @@
 import ReactGA from 'react-ga';
 
-export const GA_TRACKING_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
+export const GA_TRACKING_ID = parseInt(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
 /**
  * Custom tracking event for Google Analytics on a webpage visit.
