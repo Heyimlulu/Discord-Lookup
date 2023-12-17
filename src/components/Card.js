@@ -8,7 +8,7 @@ import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
 export default function Result({ isSuccess, isError, data }) {
 
-    const { type, id, username, discriminator, displayName, avatar, banner, avatarDecoration, accentColor, flags, createdAt, accountAge } = data;
+    const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, flags, createdAt, accountAge } = data;
 
     const { t } = useTranslation();
 

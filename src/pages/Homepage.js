@@ -35,12 +35,12 @@ export default function Homepage() {
     }
 
     const Form = loadable(() => import('../components/Form'));
-    const Result = loadable(() => import('../components/Result'));
+    const Card = loadable(() => import('../components/Card'));
 
     return (
         <main>
             <Form fetchDiscordUser={fetchDiscordUser} />
-            <Result isSuccess={isSuccess} isError={isError} data={data} />
+            <Card isSuccess={isSuccess} isError={isError} data={data} />
         </main>
     )
 }
