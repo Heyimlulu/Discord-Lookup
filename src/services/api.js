@@ -10,30 +10,24 @@ export default class Api {
     static IS_DEV = false;
     static MOCK = userFound;
 
-    static async getUser(userID) {
+    static async getUser(userId) {
         if (this.IS_DEV) {
             return new Promise((resolve) => {
                 resolve(this.MOCK);
             });
         }
 
-        return await axios.get(`${this.BASE_URL}/user/${userID}`).then((response) => {
+        try {
+            const response = await axios.get(`${this.BASE_URL}/v1/user/${userId}`);
+
             if (!response.data.success) {
                 return response.data;
             }
-
+    
             return response.data;
-        }).catch((error) => {
-            console.log(error);
-        });
+        } catch(error) {
+            console.error("error: ", error);
+            return error;
+        }
     }
-
-    static async getTodayLogs() {
-        return await axios.get(`${this.BASE_URL}/logs/today`).then((response) => {
-            return response.data.data.count;
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
-
 }

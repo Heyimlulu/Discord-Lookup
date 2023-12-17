@@ -19,8 +19,11 @@
     },
     "result": {
         "id": "ID de l'utilisateur",
-        "created": "Date de création",
-        "bannerColor": "Couleur de la bannière"
+        "createdAt": "Date de création",
+        "accentColor": "Couleur d'accentuation",
+        "accountTypeUser": "Type d'utilisateur",
+        "accountAge": "Age du compte",
+        "age": "an(s)"
     },
     "misc": {
         "clipboard": "Copié!"

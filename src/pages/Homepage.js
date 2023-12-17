@@ -9,26 +9,29 @@ export default function Homepage() {
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
 
-    const fetchDiscordUser = (id) => {
-        gtag.event('set_search', 'search', 'search', id);
+    const fetchDiscordUser = async (userId) => {
+        gtag.event('set_search', 'search', 'search', userId);
 
         setIsSuccess(false);
         setIsError(false);
 
-        Api.getUser(id).then(res => {
-            const data = res.data;
-            setData(data);
+        try {
+            const response = await Api.getUser(userId);
 
-            if (!res.success) {
-                setData(res.message);
+            const data = response.data;
+            
+            if (!response.success) {
+                setData(response.message);
                 setIsError(true);
                 return;
             }
-
+    
+            setData(data);
             setIsSuccess(true);
-        }).catch(() => {
+        } catch (error) {
+            console.error("error: ", error);
             setIsError(true);
-        });
+        }
     }
 
     const Form = loadable(() => import('../components/Form'));
