@@ -18,7 +18,7 @@ export default class Api {
         }
 
         try {
-            const response = await axios.get(`${this.BASE_URL}/v1/user/${userId}`);
+            const response = await axios.get(`${this.BASE_URL}/v1/user/lookup/${userId}`);
 
             if (!response.data.success) {
                 return response.data;
