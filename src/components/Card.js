@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faStar, faIdBadge, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -11,15 +11,9 @@ export default function Result({ isSuccess, isError, data }) {
     const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, badges, createdAt, accountAge } = data;
 
     const { t } = useTranslation();
-    const convertColor = (color) => {
-        if (color) {
-            const hex = color.toString(16);
-            return `#${hex.slice(0, 6)}`;
-        }
-    }
-    const [color, setColor] = useState(convertColor(accentColor));
+
     const [hover, setHover] = useState(false);
-    const [copySuccess, setCopySuccess] = useState(color);
+    const [copySuccess, setCopySuccess] = useState(accentColor);
 
     const toggleHover = () => {
         setHover(!hover);
@@ -27,9 +21,9 @@ export default function Result({ isSuccess, isError, data }) {
 
     const clipboard = () => {
         setCopySuccess(t('misc.clipboard'));
-        navigator.clipboard.writeText(color);
+        navigator.clipboard.writeText(accentColor);
         setTimeout(() => {
-            setCopySuccess(color);
+            setCopySuccess(accentColor);
         }, 2000)
     }
 
@@ -72,7 +66,7 @@ export default function Result({ isSuccess, isError, data }) {
         return (
             <div className="bg-white shadow rounded-lg">
                 {/* BANNER */}
-                <div className={classNames(accentColor ? `bg-${color}` : "bg-blurple", "border-b rounded-t-md w-full min-h-[60px]")}>
+                <div className={classNames(accentColor ? `bg-${accentColor}` : "bg-blurple", "border-b rounded-t-md w-full min-h-[60px]")}>
                     {banner.url &&
                         <a className="group flex relative w-full h-[120px]" target="_blank" rel="noopener noreferrer" href={`${banner.url}?size=2048`}>
                             <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
@@ -148,8 +142,8 @@ export default function Result({ isSuccess, isError, data }) {
                             </div>
                             {hover ? (
                                 <p className="transition ease duration-200 inline-flex px-[10px] rounded-full text-sm" style={{
-                                    color: color,
-                                    border: `1px solid ${color}`,
+                                    color: accentColor,
+                                    border: `1px solid ${accentColor}`,
                                     boxShadow: "rgb(167, 86, 255) 0px 0px 2px"
                                 }}
                                     onMouseEnter={() => toggleHover()}
@@ -160,7 +154,7 @@ export default function Result({ isSuccess, isError, data }) {
                                 </p>
                             ) : (
                                 <p className="transition ease duration-200 px-[10px] rounded-full text-sm w-[4.2rem] h-[1.5rem]"
-                                   style={{ backgroundColor: color }}
+                                   style={{ backgroundColor: accentColor }}
                                    onMouseEnter={() => toggleHover()}
                                    onMouseLeave={() => toggleHover()}
                                 >
