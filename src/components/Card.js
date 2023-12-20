@@ -8,7 +8,7 @@ import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
 export default function Result({ isSuccess, isError, data }) {
 
-    const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, flags, createdAt, accountAge } = data;
+    const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, badges, createdAt, accountAge } = data;
 
     const { t } = useTranslation();
 
@@ -111,11 +111,11 @@ export default function Result({ isSuccess, isError, data }) {
                         </div>
                         {/* BADGES */}
                         <div className="flex items-center px-2 mt-[1px] select-none">
-                            {flags.map((flag, key) => {
+                            {badges.map((badge, key) => {
                                 return (
-                                    <ToolTip tooltip={flag.name}>
+                                    <ToolTip tooltip={badge.name}>
                                         <div key={key} className="h-[30px] p-[4px] mr-[1px]">
-                                            <img loading="lazy" src={flag.image} alt={flag.name} className="w-full h-full object-contain" />
+                                            <img loading="lazy" src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
                                         </div>
                                     </ToolTip>
                                 )
