@@ -1,19 +1,38 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-const { useTranslation } = require('react-i18next');
+import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
+import ReactCountryFlag from "react-country-flag";
+import * as gtag from '../utils/gtag';
 
 export default function Header() {
 
-    const { t } = useTranslation();
+    const { i18n } = useTranslation();
+
+    const languageOptions = [
+        { value: 'en', label: <ReactCountryFlag countryCode="GB" svg style={{ width: '2em', height: '1em' }} />, title: 'English' },
+        { value: 'de', label: <ReactCountryFlag countryCode="DE" svg style={{ width: '2em', height: '1em' }} />, title: 'Deutsch' },
+        { value: 'it', label: <ReactCountryFlag countryCode="IT" svg style={{ width: '2em', height: '1em' }} />, title: 'Italiano' },
+        { value: 'fr', label: <ReactCountryFlag countryCode="FR" svg style={{ width: '2em', height: '1em' }} />, title: 'Français' },
+    ];
+
+    const handleLanguageChange = (lng) => {
+        const language = lng.value;
+        i18n.changeLanguage(language);
+        gtag.event('language', `lang_${language}`, `lang_${language}`, 1);
+    };
 
     return (
-        <header className="my-4 sm:my-6 text-center">
-            <h2 className="font-extrabold text-blurple text-[2.5rem] lg:text-[3rem] 2xl:text-[3.5rem] sm:tracking-tight">
-                <FontAwesomeIcon className="mr-4" icon={faSearch} />
-                Discord Lookup
-            </h2>
-            <p className="hidden sm:block max-w-xl mx-auto text-md lg:text-lg text-gray-800">{t('header.description')}</p>
+        <header className="flex justify-end items-center my-4">
+            <Select 
+                options={languageOptions}
+                onChange={handleLanguageChange}
+                getOptionLabel={(option) => (
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                        {option.label} <span style={{ marginLeft: 10 }}>{option.title}</span>
+                    </div>
+                )}
+                value={languageOptions.find(option => option.value === i18n.language)}
+            />
         </header>
     )
 }

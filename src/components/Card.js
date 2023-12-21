@@ -6,7 +6,7 @@ import { classNames } from '../utils/classNames';
 import ToolTip from './Tooltip';
 import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
-export default function Result({ isSuccess, isError, data }) {
+export default function Card({ isSuccess, isError, data }) {
 
     const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, badges, createdAt, accountAge } = data;
 
@@ -53,10 +53,6 @@ export default function Result({ isSuccess, isError, data }) {
                             {t('response.error')}
                         </div>
                     </div>
-                </div>
-                {/* ERROR */}
-                <div className="grid sm:grid-cols-2 auto-rows-auto py-3 px-4 gap-3">
-                    <p className="text-sm text-red">{data}</p>
                 </div>
             </div>
         )
@@ -113,11 +109,13 @@ export default function Result({ isSuccess, isError, data }) {
                         <div className="flex items-center px-2 mt-[1px] select-none">
                             {badges.map((badge, key) => {
                                 return (
-                                    <ToolTip tooltip={badge.name}>
-                                        <div key={key} className="h-[30px] p-[4px] mr-[1px]">
-                                            <img loading="lazy" src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
-                                        </div>
-                                    </ToolTip>
+                                    <div key={key}>
+                                        <ToolTip tooltip={badge.name}>
+                                            <div className="h-[30px] p-[4px] mr-[1px]">
+                                                <img loading="lazy" src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
+                                            </div>
+                                        </ToolTip>
+                                    </div>
                                 )
                             })}
                         </div>
@@ -129,7 +127,7 @@ export default function Result({ isSuccess, isError, data }) {
                     <div>
                         <div className="flex">
                             <FontAwesomeIcon className="mr-2" icon={faIdBadge} />
-                            <p className="text-sm font-medium text-gray-900">{ t("result.accountTypeUser") }</p>
+                            <p className="text-sm font-medium text-gray-900">{ t("card.accountTypeUser") }</p>
                         </div>
                         <p className="inline-block rounded-full px-[10px] text-sm font-bold text-white bg-blurple">{ type }</p>
                     </div>
@@ -138,7 +136,7 @@ export default function Result({ isSuccess, isError, data }) {
                         <div>
                             <div className="flex">
                                 <FontAwesomeIcon className="mr-2" icon={faStar} />
-                                <p className="text-sm font-medium text-gray-900">{ t("result.accentColor") }</p>
+                                <p className="text-sm font-medium text-gray-900">{ t("card.accentColor") }</p>
                             </div>
                             {hover ? (
                                 <p className="transition ease duration-200 inline-flex px-[10px] rounded-full text-sm" style={{
@@ -169,7 +167,7 @@ export default function Result({ isSuccess, isError, data }) {
                     <div>
                         <div className="flex">
                             <FontAwesomeIcon className="mr-2" icon={faPalette} />
-                            <p className="text-sm font-medium text-gray-900">{ t("result.createdAt") }</p>
+                            <p className="text-sm font-medium text-gray-900">{ t("card.createdAt") }</p>
                         </div>
                         <p className="text-sm text-gray-500">{ createdAt }</p>
                     </div>
@@ -179,9 +177,9 @@ export default function Result({ isSuccess, isError, data }) {
                         <div>
                             <div className="flex">
                                 <FontAwesomeIcon className="mr-2" icon={faHourglassHalf} />
-                                <p className="text-sm font-medium text-gray-900">{ t("result.accountAge") }</p>
+                                <p className="text-sm font-medium text-gray-900">{ t("card.accountAge") }</p>
                             </div>
-                            <p className="text-sm text-gray-500">{ `${accountAge} ${t("result.age")}` }</p>
+                            <p className="text-sm text-gray-500">{ `${accountAge} ${t("card.age")}` }</p>
                         </div>
                     )}
                 </div>

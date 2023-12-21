@@ -12,12 +12,16 @@
         },
         "button": {
             "label": "Search"
+        },
+        "error_message": {
+            "id_length": "ID must be at least {{LENGTH}} characters long.",
+            "only_numbers": "Only numbers are allowed."
         }
     },
     "response": {
         "error": "This user doesn't exist"
     },
-    "result": {
+    "card": {
         "id": "User ID",
         "createdAt": "Creation date",
         "accentColor": "Accent Color",
