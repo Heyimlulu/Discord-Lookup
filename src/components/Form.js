@@ -3,15 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import * as gtag from '../utils/gtag';
+import { classNames } from "../utils/classNames";
 import '../styles/custom.css';
 
-export default function Form({ fetchUserFromApi }) {
+export default function Form({ searchUserById, isLoading, defaultValue }) {
 
     const { t } = useTranslation();
 
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState(defaultValue || '');
     const [isDisabled, setIsDisabled] = useState(true);
-    const [isLoading, setIsLoading] = useState(false);
     const [debounceTimeout, setDebounceTimeout] = useState(null);
     const [isOnlyNumbers, setIsOnlyNumbers] = useState(false);
     const [isIdLength, setIsIdLength] = useState(false);
@@ -49,13 +49,8 @@ export default function Form({ fetchUserFromApi }) {
 
         gtag.event('submit', 'form_submit', 'form_submit', 1);
 
-        setIsLoading(true);
         setIsDisabled(true);
-
-        fetchUserFromApi(inputValue).then(() => {
-            setIsLoading(false);
-            setInputValue('');
-        });
+        searchUserById(inputValue);
     }
 
     useEffect(() => {
@@ -82,7 +77,7 @@ export default function Form({ fetchUserFromApi }) {
                             href="https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={t('learnmore.description')}
+                            aria-label={t('learnMore.desc')}
                         >
                             <FontAwesomeIcon className='text-blurple' icon={faCircleInfo} />
                         </a>
@@ -93,39 +88,39 @@ export default function Form({ fetchUserFromApi }) {
                                 className="placeholder:text-xs transition-all block w-full border rounded-md px-5 py-3 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blurple"
                                 placeholder={t('form.input.placeholder')}
                                 onChange={handleChange}
-                                value={inputValue}
+                                value={inputValue}  
                             />
                         </div>
                         {(isOnlyNumbers || isIdLength) &&
                             <div className="mt-2 text-red-500 text-xs">
                                 {isOnlyNumbers && 
                                     <>
-                                        <span>{t("form.error_message.only_numbers")}</span>
+                                        <span>{t("form.errorMsg.numeric")}</span>
                                         <br />
                                     </>
                                 }
                                 {isIdLength && 
                                     <>
-                                        <span>{t("form.error_message.id_length").replace("{{LENGTH}}", inputValue.length < 15 ? 15 : inputValue > 22 ? 22 : 22)}</span>
+                                        <span>{t("form.errorMsg.idLength").replace("{{LENGTH}}", inputValue.length < 15 ? 15 : inputValue > 22 ? 22 : 22)}</span>
                                         <br />
                                     </>
                                 }
                             </div>
                         }
                     </div>
-                    <div className="mt-2">
+                    <div className="flex justify-between items-center mt-2">
                         <button
                             type="submit"
-                            className="block h-full w-full rounded-md border border-transparent px-5 py-2 bg-indigo-500 text-base font-medium text-white shadow hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600 sm:px-10 transition-all disabled:opacity-60 font-bold cursor-pointer"
+                            className={classNames(isLoading ? "bg-gray-600 hover:bg-gray-500" : "bg-blurple hover:bg-blurple/80", "flex justify-center items-center h-full w-full rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-blurple focus:outline-offset-2 sm:px-10 transition disabled:opacity-60 font-bold cursor-pointer")}
                             disabled={isDisabled}
-                            aria-label={t('form.button.label')}
+                            aria-label={t('form.submitBtn')}
                         >
                             {isLoading ? (
                                 <div className="dot-pulse">
                                     <div className="dot-pulse__dot"/>
                                 </div>
                                 ) : (
-                                    <span className='font-bold'>{t('form.button.label')}</span>
+                                    <span className='font-bold'>{t('form.submitBtn')}</span>
                                 )
                             }
                         </button>

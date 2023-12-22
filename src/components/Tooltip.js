@@ -30,7 +30,7 @@ export default function ToolTip({ children, tooltip }) {
       {tooltip ? (
         <span
           ref={tooltipRef}
-          className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition bg-blurple font-semibold text-sm text-white p-1 rounded absolute top-full mt-2 whitespace-nowrap"
+          className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition bg-gray-500 font-semibold text-xs text-white p-1 rounded absolute top-full mt-2 whitespace-nowrap"
         >
           {tooltip}
         </span>

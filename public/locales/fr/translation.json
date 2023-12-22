@@ -1,45 +1,45 @@
 {
     "header": {
-        "description": "Rechercher n'importe quel utilisateur Discord avec son ID."
+        "desc": "Rechercher un ID d'utilisateur/de bot Discord."
     },
-    "learnmore": {
-        "description": "En savoir plus"
+    "learnMore": {
+        "desc": "En savoir plus"
     },
     "form": {
         "input": {
-            "label": "ID de l'utilisateur / N'importe quelle ID",
-            "placeholder": "ID de l'utilisateur / N'importe quelle ID"
+            "label": "ID Discord",
+            "placeholder": "Saisir l'ID de l'utilisateur"
         },
-        "button": {
-            "label": "Rechercher"
-        },
-        "error_message": {
-            "id_length": "L'ID doit comporter au moins {{LENGTH}} caractères.",
-            "only_numbers": "Seuls les chiffres sont autorisés."
+        "submitBtn": "Rechercher",
+        "errorMsg": {
+            "idLength": "L'ID doit comporter au moins {{LENGTH}} caractères.",
+            "numeric": "Seuls les chiffres sont autorisés."
         }
     },
     "response": {
-        "error": "Cet utilisateur n'existe pas"
+        "userNotFound": "Utilisateur introuvable."
     },
-    "card": {
-        "id": "ID de l'utilisateur",
-        "createdAt": "Date de création",
-        "accentColor": "Couleur d'accentuation",
-        "accountTypeUser": "Type d'utilisateur",
-        "accountAge": "Age du compte",
-        "age": "an(s)"
+    "userCard": {
+        "id": "ID",
+        "createdOn": "Créé le",
+        "accent": "Couleur d'accentuation",
+        "accountType": "Type",
+        "accountAge": {
+            "title": "Âge du compte",
+            "years": "ans"
+        }
     },
     "misc": {
-        "clipboard": "Copié!"
+        "copiedToClipboard": "Copié !"
     },
-    "404": {
-        "title": "Cette page n'existe pas",
-        "button": "Retour à la page d'accueil"
+    "error404": {
+        "title": "Oups... Je pense que vous vous êtes perdu !",
+        "backBtn": "Retour à la page d'accueil"
     },
     "footer": {
-        "affiliated": "Non affilié à Discord Inc.",
-        "stats": "Nombre de recherches",
-        "contact": "Contactez-moi si vous avez des questions",
-        "language": "Langues"
-    }
+        "disclaimer": "Indépendant de Discord Inc.",
+        "credits": "Fait avec ❤️ par {{AUTHOR}}"
+    },
+    "recentSearches": "Mes dernières recherches",
+    "noRecentSearches": "Pas de recherches récentes pour l'instant"
 }

@@ -1,45 +1,45 @@
 {
     "header": {
-        "description": "Lookup for a Discord User or Bot ID."
+        "desc": "Search Discord User/Bot ID."
     },
-    "learnmore": {
-        "description": "Learn more"
+    "learnMore": {
+        "desc": "Learn more"
     },
     "form": {
         "input": {
-            "label": "User ID / Any ID",
-            "placeholder": "User ID / Any ID"
+            "label": "Discord ID",
+            "placeholder": "Enter Discord ID"
         },
-        "button": {
-            "label": "Search"
-        },
-        "error_message": {
-            "id_length": "ID must be at least {{LENGTH}} characters long.",
-            "only_numbers": "Only numbers are allowed."
+        "submitBtn": "Search",
+        "errorMsg": {
+            "idLength": "ID must be at least {{LENGTH}} characters.",
+            "numeric": "Only numbers allowed."
         }
     },
     "response": {
-        "error": "This user doesn't exist"
+        "userNotFound": "User not found."
     },
-    "card": {
-        "id": "User ID",
-        "createdAt": "Creation date",
-        "accentColor": "Accent Color",
-        "accountTypeUser": "Account Type",
-        "accountAge": "Account Age",
-        "age": "year(s)"
+    "userCard": {
+        "id": "ID",
+        "createdOn": "Created On",
+        "accent": "Accent",
+        "accountType": "Type",
+        "accountAge": {
+            "title": "Account Age",
+            "years": "years"
+        }
     },
     "misc": {
-        "clipboard": "Copied!"
+        "copiedToClipboard": "Copied!"
     },
-    "404": {
+    "error404": {
         "title": "Uh Oh... I think you got lost!",
-        "button": "Go back to homepage"
+        "backBtn": "Bring me back to the homepage"
     },
     "footer": {
-        "affiliated": "Not affiliated with Discord Inc.",
-        "stats": "Lookups today",
-        "contact": "Feel free to contact me on Discord if you have any questions",
-        "language": "Languages"
-    }
+        "disclaimer": "Independent from Discord Inc.",
+        "credits": "Made with ❤️ by {{AUTHOR}}"
+    },
+    "recentSearches": "Recent Searches",
+    "noRecentSearches": "No Recent Searches"
 }

@@ -1,45 +1,45 @@
 {
     "header": {
-        "description": "Suchen Sie nach einer Discord Benutzer oder Beliebige ID."
+        "desc": "Suche Discord Benutzer/Bot ID."
     },
-    "learnmore": {
-        "description": "Mehr erfahren"
+    "learnMore": {
+        "desc": "Erfahre mehr"
     },
     "form": {
         "input": {
-            "label": "Benutzer ID / Beliebige ID",
-            "placeholder": "Benutzer ID / Beliebige ID"
+            "label": "Discord ID",
+            "placeholder": "Discord ID eingeben"
         },
-        "button": {
-            "label": "Suche"
-        },
-        "error_message": {
-            "id_length": "Die ID muss mindestens {{LENGTH}} Zeichen lang sein.",
-            "only_numbers": "Nur Zahlen sind erlaubt."
+        "submitBtn": "Suchen",
+        "errorMsg": {
+            "idLength": "ID muss mindestens {{LENGTH}} Zeichen lang sein.",
+            "numeric": "Nur Zahlen erlaubt."
         }
     },
     "response": {
-        "error": "Dieser Benutzer existiert nicht"
+        "userNotFound": "Benutzer nicht gefunden."
     },
-    "card": {
-        "id": "Benutzer ID",
-        "createdAt": "Erstellungsdatum",
-        "accentColor": "Akzentfarbe",
-        "accountTypeUser": "Kontotyp",
-        "accountAge": "Kontoalter",
-        "age": "Jahr(e)"
+    "userCard": {
+        "id": "ID",
+        "createdOn": "Erstellt am",
+        "accent": "Akzent",
+        "accountType": "Typ",
+        "accountAge": {
+            "title": "Kontoalter",
+            "years": "Jahre"
+        }
     },
     "misc": {
-        "clipboard": "Kopiert!"
+        "copiedToClipboard": "Kopiert!"
     },
-    "404": {
-        "title": "Diese Seite gibt es nicht",
-        "button": "Zurück zur Startseite"
+    "error404": {
+        "title": "Oh Oh... Ich glaube, du hast dich verlaufen!",
+        "backBtn": "Bring mich zurück zur Startseite"
     },
     "footer": {
-        "affiliated": "Nicht mit Discord Inc. verbunden",
-        "stats": "Heute suchen",
-        "contact": "Können Sie mich gerne auf Discord kontaktieren",
-        "language": "Sprachen"
-    }
+        "disclaimer": "Unabhängig von Discord Inc.",
+        "credits": "Mit ❤️ gemacht von {{AUTHOR}}"
+    },
+    "recentSearches": "Letzte Suchen",
+    "noRecentSearches": "Keine letzten Suchen"
 }

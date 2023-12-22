@@ -1,45 +1,45 @@
 {
     "header": {
-        "description": "Cerca qualsiasi utente di Discord con il suo ID."
+        "desc": "Cerca ID Utente/Bot Discord."
     },
-    "learnmore": {
-        "description": "Imparare di più"
+    "learnMore": {
+        "desc": "Scopri di più"
     },
     "form": {
         "input": {
-            "label": "ID dell'utente / Qualsiasi ID",
-            "placeholder": "ID dell'utente / Qualsiasi ID"
+            "label": "ID Discord",
+            "placeholder": "Inserisci ID Discord"
         },
-        "button": {
-            "label": "Cerca"
-        },
-        "error_message": {
-            "id_length": "L'ID deve essere lungo almeno {{LENGTH}} caratteri.",
-            "only_numbers": "Sono ammessi solo numeri."
+        "submitBtn": "Cerca",
+        "errorMsg": {
+            "idLength": "L'ID deve essere di almeno {{LENGTH}} caratteri.",
+            "numeric": "Sono consentiti solo numeri."
         }
     },
     "response": {
-        "error": "Questo utente non esiste"
+        "userNotFound": "Utente non trovato."
     },
-    "card": {
-        "id": "ID dell'utente",
-        "createdAt": "Data della creazione",
-        "accentColor": "Colore di accento",
-        "accountTypeUser": "Tipo di utente",
-        "accountAge": "Età dell'account",
-        "age": "anno"
+    "userCard": {
+        "id": "ID",
+        "createdOn": "Creato il",
+        "accent": "Accento",
+        "accountType": "Tipo",
+        "accountAge": {
+            "title": "Età dell'account",
+            "years": "anni"
+        }
     },
     "misc": {
-        "clipboard": "Copia!"
+        "copiedToClipboard": "Copiato!"
     },
-    "404": {
-        "title": "Pagina non trovata",
-        "button": "Torna alla pagina iniziale"
+    "error404": {
+        "title": "Uh Oh... Penso che ti sei perso!",
+        "backBtn": "Riportami alla homepage"
     },
     "footer": {
-        "affiliated": "Non affiliato a Discord Inc.",
-        "stats": "Cerca oggi",
-        "contact": "Contattatemi se avete delle domande",
-        "language": "Lingue"
-    }
+        "disclaimer": "Indipendente da Discord Inc.",
+        "credits": "Realizzato con ❤️ da {{AUTHOR}}"
+    },
+    "recentSearches": "Ricerche recenti",
+    "noRecentSearches": "Nessuna ricerca recente"
 }

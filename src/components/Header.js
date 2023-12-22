@@ -13,6 +13,7 @@ export default function Header() {
         { value: 'de', label: <ReactCountryFlag countryCode="DE" svg style={{ width: '2em', height: '1em' }} />, title: 'Deutsch' },
         { value: 'it', label: <ReactCountryFlag countryCode="IT" svg style={{ width: '2em', height: '1em' }} />, title: 'Italiano' },
         { value: 'fr', label: <ReactCountryFlag countryCode="FR" svg style={{ width: '2em', height: '1em' }} />, title: 'Français' },
+        { value: 'jp', label: <ReactCountryFlag countryCode="JP" svg style={{ width: '2em', height: '1em' }} />, title: '日本語' },
     ];
 
     const handleLanguageChange = (lng) => {
@@ -22,8 +23,8 @@ export default function Header() {
     };
 
     return (
-        <header className="flex justify-end items-center my-4">
-            <Select 
+        <header className="flex justify-end items-center my-4 z-50">
+            <Select
                 options={languageOptions}
                 onChange={handleLanguageChange}
                 getOptionLabel={(option) => (

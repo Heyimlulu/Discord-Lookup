@@ -20,7 +20,7 @@ export default function Card({ isSuccess, isError, data }) {
     }
 
     const clipboard = () => {
-        setCopySuccess(t('misc.clipboard'));
+        setCopySuccess(t('misc.copiedToClipboard'));
         navigator.clipboard.writeText(accentColor);
         setTimeout(() => {
             setCopySuccess(accentColor);
@@ -50,7 +50,7 @@ export default function Card({ isSuccess, isError, data }) {
                     <div className="flex flex-col">
                         {/* USERNAME AND DISCRIMINATOR */}
                         <div className="inline-block w-[fit-content] text-xl font-semibold px-1.5 ml-1">
-                            {t('response.error')}
+                            {t('response.userNotFound')}
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ export default function Card({ isSuccess, isError, data }) {
         return (
             <div className="bg-white shadow rounded-lg">
                 {/* BANNER */}
-                <div className={classNames(accentColor ? `bg-${accentColor}` : "bg-blurple", "border-b rounded-t-md w-full min-h-[60px]")}>
+                <div className="bg-blurple border-b rounded-t-md w-full min-h-[60px]">
                     {banner.url &&
                         <a className="group flex relative w-full h-[120px]" target="_blank" rel="noopener noreferrer" href={`${banner.url}?size=2048`}>
                             <div className="absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30">
@@ -84,7 +84,7 @@ export default function Card({ isSuccess, isError, data }) {
                             </svg>
                         </div>
                         {avatar.url ?
-                            <img loading="lazy" src={avatar.url} alt={username} className={classNames(avatarDecoration && "p-[6px]", "h-full w-full rounded-full  object-cover object-center relative z-0")} />
+                            <img loading="lazy" src={avatar.url} alt={username} className={classNames(avatarDecoration && "p-[6px]", "h-full w-full rounded-full object-cover object-center relative z-0")} />
                             :
                             <div className="absolute top-0 left-0 h-full w-full flex items-center justify-center z-10">
                                 <svg className="fill-current text-gray-300" width="28" height="20" viewBox="0 0 28 20">
@@ -106,16 +106,14 @@ export default function Card({ isSuccess, isError, data }) {
                             </div>
                         </div>
                         {/* BADGES */}
-                        <div className="flex items-center px-2 mt-[1px] select-none">
+                        <div className="flex items-center mx-2 mt-[1px] select-none">
                             {badges.map((badge, key) => {
                                 return (
-                                    <div key={key}>
-                                        <ToolTip tooltip={badge.name}>
-                                            <div className="h-[30px] p-[4px] mr-[1px]">
-                                                <img loading="lazy" src={badge.image} alt={badge.name} className="w-full h-full object-contain" />
-                                            </div>
-                                        </ToolTip>
-                                    </div>
+                                    <ToolTip key={key} tooltip={badge.name}>
+                                        <div className="flex justify-center items-center rounded-lg transition hover:bg-gray-300 h-[2rem] p-[4px] mx-[2px]">
+                                            <img loading="lazy" src={badge.image} alt={badge.name} className="h-full w-full object-contain" />
+                                        </div>
+                                    </ToolTip>
                                 )
                             })}
                         </div>
@@ -127,7 +125,7 @@ export default function Card({ isSuccess, isError, data }) {
                     <div>
                         <div className="flex">
                             <FontAwesomeIcon className="mr-2" icon={faIdBadge} />
-                            <p className="text-sm font-medium text-gray-900">{ t("card.accountTypeUser") }</p>
+                            <p className="text-sm font-medium text-gray-900">{ t("userCard.accountType") }</p>
                         </div>
                         <p className="inline-block rounded-full px-[10px] text-sm font-bold text-white bg-blurple">{ type }</p>
                     </div>
@@ -136,7 +134,7 @@ export default function Card({ isSuccess, isError, data }) {
                         <div>
                             <div className="flex">
                                 <FontAwesomeIcon className="mr-2" icon={faStar} />
-                                <p className="text-sm font-medium text-gray-900">{ t("card.accentColor") }</p>
+                                <p className="text-sm font-medium text-gray-900">{ t("userCard.accent") }</p>
                             </div>
                             {hover ? (
                                 <p className="transition ease duration-200 inline-flex px-[10px] rounded-full text-sm" style={{
@@ -167,19 +165,19 @@ export default function Card({ isSuccess, isError, data }) {
                     <div>
                         <div className="flex">
                             <FontAwesomeIcon className="mr-2" icon={faPalette} />
-                            <p className="text-sm font-medium text-gray-900">{ t("card.createdAt") }</p>
+                            <p className="text-sm font-medium text-gray-900">{ t("userCard.createdOn") }</p>
                         </div>
                         <p className="text-sm text-gray-500">{ createdAt }</p>
                     </div>
 
                     {/* ACCOUNT AGE */}
-                    {accentColor && (
+                    {accountAge && (
                         <div>
                             <div className="flex">
                                 <FontAwesomeIcon className="mr-2" icon={faHourglassHalf} />
-                                <p className="text-sm font-medium text-gray-900">{ t("card.accountAge") }</p>
+                                <p className="text-sm font-medium text-gray-900">{ t("userCard.accountAge.title") }</p>
                             </div>
-                            <p className="text-sm text-gray-500">{ `${accountAge} ${t("card.age")}` }</p>
+                            <p className="text-sm text-gray-500">{ `${accountAge} ${t("userCard.accountAge.years")}` }</p>
                         </div>
                     )}
                 </div>
