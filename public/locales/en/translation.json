@@ -32,7 +32,7 @@
     "misc": {
         "copiedToClipboard": "Copied!"
     },
-    "error404": {
+    "home": {
         "title": "Uh Oh... I think you got lost!",
         "backBtn": "Bring me back to the homepage"
     },

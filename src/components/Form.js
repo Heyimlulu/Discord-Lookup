@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faHome } from '@fortawesome/free-solid-svg-icons';
 import * as gtag from '../utils/gtag';
 import { classNames } from "../utils/classNames";
 import '../styles/custom.css';
@@ -12,6 +12,7 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
 
     const [inputValue, setInputValue] = useState(defaultValue || '');
     const [isDisabled, setIsDisabled] = useState(true);
+
     const [debounceTimeout, setDebounceTimeout] = useState(null);
     const [isOnlyNumbers, setIsOnlyNumbers] = useState(false);
     const [isIdLength, setIsIdLength] = useState(false);
@@ -44,12 +45,8 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
         }
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
+    const handleClick = () => {        
         gtag.event('submit', 'form_submit', 'form_submit', 1);
-
-        setIsDisabled(true);
         searchUserById(inputValue);
     }
 
@@ -63,10 +60,9 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
     }, [debounceTimeout]);
 
     return (
-        <div className="mx-auto mb-4">
+        <div className="mx-auto mb-3">
             <div className="rounded-lg p-4 overflow-hidden shadow bg-white">
-                {/* FORM */}
-                <form onSubmit={handleSubmit} className="flex flex-col">
+                <div className="flex flex-col">
                     <div className='relative'>
                         <label className='text-sm font-medium' htmlFor="user-id">
                             {t('form.input.label')}
@@ -108,10 +104,11 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
                             </div>
                         }
                     </div>
-                    <div className="flex justify-between items-center mt-2">
+                    <div className="flex space-x-2 mt-3">
                         <button
-                            type="submit"
-                            className={classNames(isLoading ? "bg-gray-600 hover:bg-gray-500" : "bg-blurple hover:bg-blurple/80", "flex justify-center items-center h-full w-full rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-blurple focus:outline-offset-2 sm:px-10 transition disabled:opacity-60 font-bold cursor-pointer")}
+                            type="button"
+                            onClick={() => handleClick()}
+                            className={classNames(isLoading ? "bg-gray-600 hover:bg-gray-500" : "bg-blurple hover:bg-blurple/80", "flex justify-center items-center h-8 w-full rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-blurple focus:outline-offset-2 sm:px-10 transition disabled:opacity-60 font-bold cursor-pointer")}
                             disabled={isDisabled}
                             aria-label={t('form.submitBtn')}
                         >
@@ -124,8 +121,16 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
                                 )
                             }
                         </button>
+                        <button
+                            type="button"
+                            onClick={() => window.location.href = '/'}
+                            className="bg-green-500 hover:bg-green-400 flex justify-center items-center h-8 w-4 rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-green-500 focus:outline-offset-2 sm:px-10 transition font-bold cursor-pointer ml-4"
+                            aria-label={t('home.backBtn')}
+                        >
+                            <FontAwesomeIcon icon={faHome} />
+                        </button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     )

@@ -18,11 +18,10 @@ export default function RecentSearch({ searchUserById }) {
 
     const handleRemoveFromHistory = (e, idx) => {
         e.stopPropagation(); // Prevent triggering onClick of parent div
-        console.log(idx);
         const { getItem, setItem } = localstorage();
         const history = getItem('DiscordNameHistory') || [];
         history.splice(idx, 1);
-        setItem('DiscordNameHistory', history);
+        setItem('DiscordNameHistory', [...history]);
         setRecentSearches(history);
     }
 
@@ -33,8 +32,8 @@ export default function RecentSearch({ searchUserById }) {
     }, [])
 
     return (
-        <div>
-            <div className="mx-auto my-4 rounded-lg p-4 overflow-hidden shadow bg-white">
+        <div className="overflow-hidden">
+            <div className="mx-auto my-4 rounded-lg p-4 shadow bg-white">
                 {
                     recentSearches.length > 0 ? (
                         <div className="flex items-center">

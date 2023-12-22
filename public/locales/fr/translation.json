@@ -32,13 +32,13 @@
     "misc": {
         "copiedToClipboard": "Copié !"
     },
-    "error404": {
+    "home": {
         "title": "Oups... Je pense que vous vous êtes perdu !",
         "backBtn": "Retour à la page d'accueil"
     },
     "footer": {
         "disclaimer": "Indépendant de Discord Inc.",
-        "credits": "Fait avec ❤️ par {{AUTHOR}}"
+        "credits": "Créé avec ❤️ par {{AUTHOR}}"
     },
     "recentSearches": "Mes dernières recherches",
     "noRecentSearches": "Pas de recherches récentes pour l'instant"

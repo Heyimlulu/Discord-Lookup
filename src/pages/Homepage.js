@@ -10,46 +10,50 @@ export default function Homepage() {
     const recentSearches = new Set(getItem('DiscordNameHistory') || []);
 
     const [defaultValue, setDefaultValue] = useState('');
+    const [lastInputValue, setLastInputValue] = useState('');
     const [data, setData] = useState([]);
     const [isSuccess, setIsSuccess] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     const searchUserById = async (userId) => {
-        gtag.event('set_search', 'search', 'search', userId);
-
-        setDefaultValue(userId);
-        setData([]);
-
-        setIsSuccess(false);
-        setIsError(false);
-        setIsLoading(true);
-
-        try {
-            const response = await Api.getUserById(userId);
-            const data = response.data;
-
-            for (const recentSearch of recentSearches) {
-                if (recentSearch.id === data.id) {
-                    recentSearches.delete(recentSearch);
-                    break;
-                }
-            }
-            recentSearches.add(data);
-            setItem('DiscordNameHistory', [...recentSearches]);
+        if (userId !== lastInputValue) {
+            gtag.event('set_search', 'search', 'search', userId);
     
-            setData(data);
-
-            setIsSuccess(true);
-            setIsLoading(false);
-        } catch (error) {
-            recentSearches.add({ id: userId });
-            setItem('DiscordNameHistory', [...recentSearches]);
-
-            setData(error.response.data);
-
-            setIsError(true);
-            setIsLoading(false);
+            setLastInputValue(userId);
+            setDefaultValue(userId);
+            setData([]);
+    
+            setIsSuccess(false);
+            setIsError(false);
+            setIsLoading(true);
+    
+            try {
+                const response = await Api.getUserById(userId);
+                const data = response.data;
+    
+                for (const recentSearch of recentSearches) {
+                    if (recentSearch.id === data.id) {
+                        recentSearches.delete(recentSearch);
+                        break;
+                    }
+                }
+                recentSearches.add(data);
+                setItem('DiscordNameHistory', [...recentSearches]);
+        
+                setData(data);
+    
+                setIsSuccess(true);
+                setIsLoading(false);
+            } catch (error) {
+                recentSearches.add({ id: userId });
+                setItem('DiscordNameHistory', [...recentSearches]);
+    
+                setData(error.response.data);
+    
+                setIsError(true);
+                setIsLoading(false);
+            }
         }
     }
 
@@ -60,7 +64,6 @@ export default function Homepage() {
     return (
         <main>
             <Form searchUserById={searchUserById} isLoading={isLoading} defaultValue={defaultValue} />
-            
             {(isSuccess || isError) ? (
                 <Card isSuccess={isSuccess} isError={isError} data={data} />
                 ) : (
