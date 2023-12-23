@@ -1,45 +1,45 @@
 {
-    "header": {
-        "desc": "Rechercher un ID d'utilisateur/de bot Discord."
+  "header": {
+    "desc": "Rechercher un ID d'utilisateur/de bot Discord."
+  },
+  "learnMore": {
+    "desc": "En savoir plus"
+  },
+  "form": {
+    "input": {
+      "label": "ID Discord",
+      "placeholder": "Saisir l'ID de l'utilisateur"
     },
-    "learnMore": {
-        "desc": "En savoir plus"
-    },
-    "form": {
-        "input": {
-            "label": "ID Discord",
-            "placeholder": "Saisir l'ID de l'utilisateur"
-        },
-        "submitBtn": "Rechercher",
-        "errorMsg": {
-            "idLength": "L'ID doit comporter au moins {{LENGTH}} caractères.",
-            "numeric": "Seuls les chiffres sont autorisés."
-        }
-    },
-    "response": {
-        "userNotFound": "Utilisateur introuvable."
-    },
-    "userCard": {
-        "id": "ID",
-        "createdOn": "Créé le",
-        "accent": "Couleur d'accentuation",
-        "accountType": "Type",
-        "accountAge": {
-            "title": "Âge du compte",
-            "years": "ans"
-        }
-    },
-    "misc": {
-        "copiedToClipboard": "Copié !"
-    },
-    "home": {
-        "title": "Oups... Je pense que vous vous êtes perdu !",
-        "backBtn": "Retour à la page d'accueil"
-    },
-    "footer": {
-        "disclaimer": "Indépendant de Discord Inc.",
-        "credits": "Créé avec ❤️ par {{AUTHOR}}"
-    },
-    "recentSearches": "Mes dernières recherches",
-    "noRecentSearches": "Pas de recherches récentes pour l'instant"
+    "submitBtn": "Rechercher",
+    "errorMsg": {
+      "idLength": "L'ID doit comporter au moins {{LENGTH}} caractères.",
+      "numeric": "Seuls les chiffres sont autorisés."
+    }
+  },
+  "response": {
+    "userNotFound": "Utilisateur introuvable."
+  },
+  "userCard": {
+    "id": "ID",
+    "createdOn": "Créé le",
+    "accent": "Couleur d'accentuation",
+    "accountType": "Type",
+    "accountAge": {
+      "title": "Âge du compte",
+      "years": "ans"
+    }
+  },
+  "misc": {
+    "copiedToClipboard": "Copié !"
+  },
+  "home": {
+    "title": "Oups... Je pense que vous vous êtes perdu !",
+    "backBtn": "Retour à la page d'accueil"
+  },
+  "footer": {
+    "disclaimer": "Indépendant de Discord Inc.",
+    "credits": "Créé avec ❤️ par {{AUTHOR}}"
+  },
+  "recentSearches": "Mes dernières recherches",
+  "noRecentSearches": "Pas de recherches récentes pour l'instant"
 }

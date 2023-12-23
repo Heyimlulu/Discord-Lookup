@@ -1,45 +1,45 @@
 {
-    "header": {
-        "desc": "Search Discord User/Bot ID."
+  "header": {
+    "desc": "Search Discord User/Bot ID."
+  },
+  "learnMore": {
+    "desc": "Learn more"
+  },
+  "form": {
+    "input": {
+      "label": "Discord ID",
+      "placeholder": "Enter Discord ID"
     },
-    "learnMore": {
-        "desc": "Learn more"
-    },
-    "form": {
-        "input": {
-            "label": "Discord ID",
-            "placeholder": "Enter Discord ID"
-        },
-        "submitBtn": "Search",
-        "errorMsg": {
-            "idLength": "ID must be at least {{LENGTH}} characters.",
-            "numeric": "Only numbers allowed."
-        }
-    },
-    "response": {
-        "userNotFound": "User not found."
-    },
-    "userCard": {
-        "id": "ID",
-        "createdOn": "Created On",
-        "accent": "Accent",
-        "accountType": "Type",
-        "accountAge": {
-            "title": "Account Age",
-            "years": "years"
-        }
-    },
-    "misc": {
-        "copiedToClipboard": "Copied!"
-    },
-    "home": {
-        "title": "Uh Oh... I think you got lost!",
-        "backBtn": "Bring me back to the homepage"
-    },
-    "footer": {
-        "disclaimer": "Independent from Discord Inc.",
-        "credits": "Made with ❤️ by {{AUTHOR}}"
-    },
-    "recentSearches": "Recent Searches",
-    "noRecentSearches": "No Recent Searches"
+    "submitBtn": "Search",
+    "errorMsg": {
+      "idLength": "ID must be at least {{LENGTH}} characters.",
+      "numeric": "Only numbers allowed."
+    }
+  },
+  "response": {
+    "userNotFound": "User not found."
+  },
+  "userCard": {
+    "id": "ID",
+    "createdOn": "Created On",
+    "accent": "Accent",
+    "accountType": "Type",
+    "accountAge": {
+      "title": "Account Age",
+      "years": "years"
+    }
+  },
+  "misc": {
+    "copiedToClipboard": "Copied!"
+  },
+  "home": {
+    "title": "Uh Oh... I think you got lost!",
+    "backBtn": "Bring me back to the homepage"
+  },
+  "footer": {
+    "disclaimer": "Independent from Discord Inc.",
+    "credits": "Made with ❤️ by {{AUTHOR}}"
+  },
+  "recentSearches": "Recent Searches",
+  "noRecentSearches": "No Recent Searches"
 }

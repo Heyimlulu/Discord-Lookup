@@ -31,6 +31,7 @@ yarn build
 ## Badges
 
 You can find all used Official Discord badges for this project in SVG files. (Discord Nitro, boosting server and partner badges are not available)
+
 - Bot and Verified Bot badges may look different because they cannot be found in the official Discord assets
 
 ## Aknowledgements

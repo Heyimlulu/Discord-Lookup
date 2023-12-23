@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from 'react';
 
 export default function ToolTip({ children, tooltip }) {
   const tooltipRef = useRef(null);
@@ -21,20 +21,16 @@ export default function ToolTip({ children, tooltip }) {
   };
 
   return (
-    <div
-      ref={containerRef}
-      onMouseEnter={handleMouseEnter}
-      className="group relative inline-block"
-    >
+    <div ref={containerRef} onMouseEnter={handleMouseEnter} className='group relative inline-block'>
       {children}
       {tooltip ? (
         <span
           ref={tooltipRef}
-          className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition bg-gray-500 font-semibold text-xs text-white p-1 rounded absolute top-full mt-2 whitespace-nowrap"
+          className='invisible group-hover:visible opacity-0 group-hover:opacity-100 transition bg-gray-500 font-semibold text-xs text-white p-1 rounded absolute top-full mt-2 whitespace-nowrap'
         >
           {tooltip}
         </span>
       ) : null}
     </div>
   );
-};
+}

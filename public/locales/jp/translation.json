@@ -1,45 +1,45 @@
 {
-    "header": {
-        "desc": "Discordのユーザー/ボットIDを検索。"
+  "header": {
+    "desc": "Discordのユーザー/ボットIDを検索。"
+  },
+  "learnMore": {
+    "desc": "もっと詳しく"
+  },
+  "form": {
+    "input": {
+      "label": "Discord ID",
+      "placeholder": "Discord IDを入力"
     },
-    "learnMore": {
-        "desc": "もっと詳しく"
-    },
-    "form": {
-        "input": {
-            "label": "Discord ID",
-            "placeholder": "Discord IDを入力"
-        },
-        "submitBtn": "検索",
-        "errorMsg": {
-            "idLength": "IDは最低{{LENGTH}}文字必要です。",
-            "numeric": "数字のみ使用可能です。"
-        }
-    },
-    "response": {
-        "userNotFound": "ユーザーが見つかりません。"
-    },
-    "userCard": {
-        "id": "ID",
-        "createdOn": "作成日",
-        "accent": "アクセント",
-        "accountType": "タイプ",
-        "accountAge": {
-            "title": "アカウントの年齢",
-            "years": "年"
-        }
-    },
-    "misc": {
-        "copiedToClipboard": "コピーしました！"
-    },
-    "home": {
-        "title": "おっと... 道に迷ったようです！",
-        "backBtn": "ホームページに戻る"
-    },
-    "footer": {
-        "disclaimer": "Discord Inc.とは無関係です。",
-        "credits": "{{AUTHOR}}による❤️で作成"
-    },
-    "recentSearches": "最近の検索",
-    "noRecentSearches": "最近の検索はありません"
+    "submitBtn": "検索",
+    "errorMsg": {
+      "idLength": "IDは最低{{LENGTH}}文字必要です。",
+      "numeric": "数字のみ使用可能です。"
+    }
+  },
+  "response": {
+    "userNotFound": "ユーザーが見つかりません。"
+  },
+  "userCard": {
+    "id": "ID",
+    "createdOn": "作成日",
+    "accent": "アクセント",
+    "accountType": "タイプ",
+    "accountAge": {
+      "title": "アカウントの年齢",
+      "years": "年"
+    }
+  },
+  "misc": {
+    "copiedToClipboard": "コピーしました！"
+  },
+  "home": {
+    "title": "おっと... 道に迷ったようです！",
+    "backBtn": "ホームページに戻る"
+  },
+  "footer": {
+    "disclaimer": "Discord Inc.とは無関係です。",
+    "credits": "{{AUTHOR}}による❤️で作成"
+  },
+  "recentSearches": "最近の検索",
+  "noRecentSearches": "最近の検索はありません"
 }

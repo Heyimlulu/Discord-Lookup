@@ -1,45 +1,45 @@
 {
-    "header": {
-        "desc": "Cerca ID Utente/Bot Discord."
+  "header": {
+    "desc": "Cerca ID Utente/Bot Discord."
+  },
+  "learnMore": {
+    "desc": "Scopri di più"
+  },
+  "form": {
+    "input": {
+      "label": "ID Discord",
+      "placeholder": "Inserisci ID Discord"
     },
-    "learnMore": {
-        "desc": "Scopri di più"
-    },
-    "form": {
-        "input": {
-            "label": "ID Discord",
-            "placeholder": "Inserisci ID Discord"
-        },
-        "submitBtn": "Cerca",
-        "errorMsg": {
-            "idLength": "L'ID deve essere di almeno {{LENGTH}} caratteri.",
-            "numeric": "Sono consentiti solo numeri."
-        }
-    },
-    "response": {
-        "userNotFound": "Utente non trovato."
-    },
-    "userCard": {
-        "id": "ID",
-        "createdOn": "Creato il",
-        "accent": "Accento",
-        "accountType": "Tipo",
-        "accountAge": {
-            "title": "Età dell'account",
-            "years": "anni"
-        }
-    },
-    "misc": {
-        "copiedToClipboard": "Copiato!"
-    },
-    "home": {
-        "title": "Uh Oh... Penso che ti sei perso!",
-        "backBtn": "Riportami alla homepage"
-    },
-    "footer": {
-        "disclaimer": "Indipendente da Discord Inc.",
-        "credits": "Realizzato con ❤️ da {{AUTHOR}}"
-    },
-    "recentSearches": "Ricerche recenti",
-    "noRecentSearches": "Nessuna ricerca recente"
+    "submitBtn": "Cerca",
+    "errorMsg": {
+      "idLength": "L'ID deve essere di almeno {{LENGTH}} caratteri.",
+      "numeric": "Sono consentiti solo numeri."
+    }
+  },
+  "response": {
+    "userNotFound": "Utente non trovato."
+  },
+  "userCard": {
+    "id": "ID",
+    "createdOn": "Creato il",
+    "accent": "Accento",
+    "accountType": "Tipo",
+    "accountAge": {
+      "title": "Età dell'account",
+      "years": "anni"
+    }
+  },
+  "misc": {
+    "copiedToClipboard": "Copiato!"
+  },
+  "home": {
+    "title": "Uh Oh... Penso che ti sei perso!",
+    "backBtn": "Riportami alla homepage"
+  },
+  "footer": {
+    "disclaimer": "Indipendente da Discord Inc.",
+    "credits": "Realizzato con ❤️ da {{AUTHOR}}"
+  },
+  "recentSearches": "Ricerche recenti",
+  "noRecentSearches": "Nessuna ricerca recente"
 }

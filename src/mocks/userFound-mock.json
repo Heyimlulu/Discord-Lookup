@@ -1,24 +1,24 @@
 {
-    "success": true,
-    "message": "User found",
-    "data": {
-        "id": 265896171384340480,
-        "username": "Lulu 🍉#6969",
-        "avatar": "https://cdn.discordapp.com/avatars/265896171384340480/a_df4816d026b656ba2a1a419226d2a95b",
-        "banner": "https://cdn.discordapp.com/banners/265896171384340480/a_fd3396c6c42339d5fee187968940c0c4",
-        "bannerColor": "#8f7cff",
-        "badges": [
-            "House_Bravery",
-            "Early_Supporter",
-            "Early_Verified_Bot_Developer",
-            "HypeSquad_Events",
-            "Partnered_Server_Owner",
-            "Bug_Hunter_Level_2",
-            "Discord_Employee",
-            "Bot",
-            "Verified_Bot"
-        ],
-        "timestamp": 1483464987,
-        "created": "Tue, 03 Jan 2017 17:36:27 GMT"
-    }
+  "success": true,
+  "message": "User found",
+  "data": {
+    "id": 265896171384340480,
+    "username": "Lulu 🍉#6969",
+    "avatar": "https://cdn.discordapp.com/avatars/265896171384340480/a_df4816d026b656ba2a1a419226d2a95b",
+    "banner": "https://cdn.discordapp.com/banners/265896171384340480/a_fd3396c6c42339d5fee187968940c0c4",
+    "bannerColor": "#8f7cff",
+    "badges": [
+      "House_Bravery",
+      "Early_Supporter",
+      "Early_Verified_Bot_Developer",
+      "HypeSquad_Events",
+      "Partnered_Server_Owner",
+      "Bug_Hunter_Level_2",
+      "Discord_Employee",
+      "Bot",
+      "Verified_Bot"
+    ],
+    "timestamp": 1483464987,
+    "created": "Tue, 03 Jan 2017 17:36:27 GMT"
+  }
 }
