@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
+import localizedFormat from "dayjs/plugin/localizedFormat";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/en";
+import "dayjs/locale/fr";
+import "dayjs/locale/de";
+import "dayjs/locale/it";
+import "dayjs/locale/ja";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faStar, faIdBadge, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
@@ -8,9 +16,12 @@ import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
 export default function Card({ isSuccess, isError, data }) {
 
-    const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, badges, createdAt, accountAge } = data;
+    dayjs.extend(localizedFormat);
+    dayjs.extend(relativeTime);
 
-    const { t } = useTranslation();
+    const { type, username, displayName, avatar, banner, avatarDecoration, accentColor, badges, accountAge, timestamp } = data;
+
+    const { t, i18n } = useTranslation();
 
     const [hover, setHover] = useState(false);
     const [copySuccess, setCopySuccess] = useState(accentColor);
@@ -167,7 +178,7 @@ export default function Card({ isSuccess, isError, data }) {
                             <FontAwesomeIcon className="mr-2" icon={faPalette} />
                             <p className="text-sm font-medium text-gray-900">{ t("userCard.createdOn") }</p>
                         </div>
-                        <p className="text-sm text-gray-500">{ createdAt }</p>
+                        <p className="text-sm text-gray-500">{ dayjs(timestamp).locale(i18n.language === "jp" ? "ja" : i18n.language).format("LLL") }</p>
                     </div>
 
                     {/* ACCOUNT AGE */}
@@ -177,7 +188,7 @@ export default function Card({ isSuccess, isError, data }) {
                                 <FontAwesomeIcon className="mr-2" icon={faHourglassHalf} />
                                 <p className="text-sm font-medium text-gray-900">{ t("userCard.accountAge.title") }</p>
                             </div>
-                            <p className="text-sm text-gray-500">{ `${accountAge} ${t("userCard.accountAge.years")}` }</p>
+                            <p className="text-sm text-gray-500">{ dayjs(timestamp).locale(i18n.language === "jp" ? "ja" : i18n.language).fromNow() }</p>
                         </div>
                     )}
                 </div>
