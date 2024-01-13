@@ -1,15 +1,14 @@
 import React, { useEffect, Suspense } from 'react';
 import './styles/background.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import * as gtag from './utils/gtag';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import loadable from '@loadable/component';
+import * as gtag from './utils/gtag';
 
 export default function App() {
-  const Header = loadable(() => import('./components/Header'));
-  const Footer = loadable(() => import('./components/Footer'));
+  const Header = loadable(() => import('./components/Layout/Header'));
+  const Footer = loadable(() => import('./components/Layout/Footer'));
+  const Background = loadable(() => import('./components/Layout/Background'));
   const Homepage = loadable(() => import('./pages/Homepage'));
-  const PageNotFound = loadable(() => import('./pages/PageNotFound'));
-  const Background = loadable(() => import('./components/Background'));
 
   useEffect(() => {
     // Google Analytics
@@ -27,12 +26,13 @@ export default function App() {
       >
         <Header />
         <Background />
-        <BrowserRouter>
+        <Router>
           <Routes>
-            <Route path='*' element={<PageNotFound />} />
             <Route exact path='/' element={<Homepage />} />
+            <Route path='/:userId' element={<Homepage />} />
+            <Route path='*' element={<Homepage />} />
           </Routes>
-        </BrowserRouter>
+        </Router>
         <Footer />
       </Suspense>
     </div>

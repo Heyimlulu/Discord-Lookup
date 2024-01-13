@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../images/NotFound/wutface.png';
+import img from '../images/notfound/wutface.png';
 import { useTranslation } from 'react-i18next';
 
 function PageNotFound() {

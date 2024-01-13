@@ -1,74 +1,66 @@
-import React, { useState } from 'react';
-import Api from '../services/api';
-import * as gtag from '../utils/gtag';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import loadable from '@loadable/component';
+import * as gtag from '../utils/gtag';
 import { localstorage } from '../utils/localstorage';
+import DiscordLookupRESTApi from '../services/api';
 
 export default function Homepage() {
-  const { getItem, setItem } = localstorage();
+  const { userId } = useParams();
 
-  const recentSearches = new Set(getItem('DiscordNameHistory') || []);
-
-  const [defaultValue, setDefaultValue] = useState('');
-  const [lastInputValue, setLastInputValue] = useState('');
-  const [data, setData] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [result, setResult] = useState([]);
+  const [lastId, setLastId] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const searchUserById = async (userId) => {
-    if (userId !== lastInputValue) {
+  const { getItem, setItem } = localstorage();
+  const recentSearches = new Set(getItem('DiscordNameHistory') || []);
+
+  const searchUserById = async () => {
+    if (userId !== lastId) {
       gtag.event('set_search', 'search', 'search', userId);
 
-      setLastInputValue(userId);
-      setDefaultValue(userId);
-      setData([]);
-
-      setIsSuccess(false);
-      setIsError(false);
       setIsLoading(true);
+      setLastId(userId);
 
       try {
-        const response = await Api.getUserById(userId);
-        const data = response.data;
+        const { data } = await DiscordLookupRESTApi.getUserById(userId);
 
-        for (const recentSearch of recentSearches) {
+        recentSearches.forEach((recentSearch) => {
           if (recentSearch.id === data.id) {
             recentSearches.delete(recentSearch);
-            break;
           }
-        }
+        });
         recentSearches.add(data);
         setItem('DiscordNameHistory', [...recentSearches]);
 
-        setData(data);
-
-        setIsSuccess(true);
-        setIsLoading(false);
+        setResult(data);
       } catch (error) {
         recentSearches.add({ id: userId });
         setItem('DiscordNameHistory', [...recentSearches]);
-
-        setData(error.response.data);
-
-        setIsError(true);
+        setResult(error.response.message);
+      } finally {
         setIsLoading(false);
       }
     }
   };
 
-  const Form = loadable(() => import('../components/Form'));
-  const Card = loadable(() => import('../components/Card'));
+  const InputForm = loadable(() => import('../components/InputForm'));
   const RecentSearch = loadable(() => import('../components/RecentSearch'));
+  const Placeholder = loadable(() => import('../components/Card/Placeholder'));
+  const UserCard = loadable(() => import('../components/Card/UserCard'));
+
+  useEffect(() => {
+    if (userId) {
+      searchUserById();
+    }
+  }, [userId]);
 
   return (
-    <main>
-      <Form searchUserById={searchUserById} isLoading={isLoading} defaultValue={defaultValue} />
-      {isSuccess || isError ? (
-        <Card isSuccess={isSuccess} isError={isError} data={data} />
-      ) : (
-        <RecentSearch searchUserById={searchUserById} />
-      )}
-    </main>
+    <div>
+      <InputForm isLoading={isLoading} />
+      {isLoading || (window.location.pathname === '/' && <RecentSearch />)}
+      {isLoading && <Placeholder />}
+      {!isLoading && <UserCard result={result} />}
+    </div>
   );
 }

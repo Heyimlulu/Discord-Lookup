@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faHome } from '@fortawesome/free-solid-svg-icons';
@@ -6,10 +7,13 @@ import * as gtag from '../utils/gtag';
 import { classNames } from '../utils/classNames';
 import '../styles/custom.css';
 
-export default function Form({ searchUserById, isLoading, defaultValue }) {
+export default function InputForm({ isLoading }) {
+  const navigate = useNavigate();
+  const { userId } = useParams();
+
   const { t } = useTranslation();
 
-  const [inputValue, setInputValue] = useState(defaultValue || '');
+  const [inputValue, setInputValue] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
 
   const [debounceTimeout, setDebounceTimeout] = useState(null);
@@ -17,7 +21,7 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
   const [isIdLength, setIsIdLength] = useState(false);
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     setInputValue(value);
 
     if (debounceTimeout) {
@@ -50,8 +54,10 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
   };
 
   const handleClick = () => {
-    gtag.event('submit', 'form_submit', 'form_submit', 1);
-    searchUserById(inputValue);
+    if (userId !== inputValue) {
+      gtag.event('submit', 'form_submit', 'form_submit', 1);
+      navigate(`/${inputValue}`);
+    }
   };
 
   useEffect(() => {
@@ -62,6 +68,12 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
       }
     };
   }, [debounceTimeout]);
+
+  useEffect(() => {
+    if (userId) {
+      setInputValue(userId);
+    }
+  }, [userId]);
 
   return (
     <div className='mx-auto mb-3'>
@@ -132,14 +144,16 @@ export default function Form({ searchUserById, isLoading, defaultValue }) {
                 <span className='font-bold'>{t('form.submitBtn')}</span>
               )}
             </button>
-            <button
-              type='button'
-              onClick={() => (window.location.href = '/')}
-              className='bg-green-500 hover:bg-green-400 flex justify-center items-center h-8 w-4 rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-green-500 focus:outline-offset-2 sm:px-10 transition font-bold cursor-pointer ml-4'
-              aria-label={t('home.backBtn')}
-            >
-              <FontAwesomeIcon icon={faHome} />
-            </button>
+            {window.location.pathname !== '/' && (
+              <button
+                type='button'
+                onClick={() => (window.location.href = '/')}
+                className='bg-green-500 hover:bg-green-400 flex justify-center items-center h-8 w-4 rounded-md border border-transparent px-5 py-2 text-base font-medium text-white shadow focus:outline focus:outline-green-500 focus:outline-offset-2 sm:px-10 transition font-bold cursor-pointer ml-4'
+                aria-label={t('home.backBtn')}
+              >
+                <FontAwesomeIcon icon={faHome} />
+              </button>
+            )}
           </div>
         </div>
       </div>

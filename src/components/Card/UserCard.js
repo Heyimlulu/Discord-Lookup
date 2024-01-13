@@ -1,58 +1,27 @@
-import React, { useState } from 'react';
 import dayjs from 'dayjs';
+import React, { useState } from 'react';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
 import relativeTime from 'dayjs/plugin/relativeTime';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPalette, faStar, faIdBadge, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
+import { classNames } from '../../utils/classNames';
+import ToolTip from './Tooltip';
+import discordLogo from '../../images/logo/Discord-Logo-White.svg';
+
 import 'dayjs/locale/en';
 import 'dayjs/locale/fr';
 import 'dayjs/locale/de';
 import 'dayjs/locale/it';
 import 'dayjs/locale/ja';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPalette, faStar, faIdBadge, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
-import { useTranslation } from 'react-i18next';
-import { classNames } from '../utils/classNames';
-import ToolTip from './Tooltip';
-import discordLogo from '../images/logo/Discord-Logo-White.svg';
 
-export default function Card({ isSuccess, isError, data }) {
-  dayjs.extend(localizedFormat);
-  dayjs.extend(relativeTime);
+dayjs.extend(localizedFormat);
+dayjs.extend(relativeTime);
 
-  const {
-    type,
-    username,
-    displayName,
-    avatar,
-    banner,
-    avatarDecoration,
-    accentColor,
-    badges,
-    accountAge,
-    timestamp,
-  } = data;
-
+export default function UserCard({ result }) {
   const { t, i18n } = useTranslation();
 
-  const [hover, setHover] = useState(false);
-  const [copySuccess, setCopySuccess] = useState(accentColor);
-
-  const toggleHover = () => {
-    setHover(!hover);
-  };
-
-  const clipboard = () => {
-    setCopySuccess(t('misc.copiedToClipboard'));
-    navigator.clipboard.writeText(accentColor);
-    setTimeout(() => {
-      setCopySuccess(accentColor);
-    }, 2000);
-  };
-
-  if (!data && !isSuccess && !isError) {
-    return <div className='bg-white shadow rounded-lg'>Loading...</div>;
-  }
-
-  if (isError) {
+  if (!result) {
     return (
       <div className='bg-white shadow rounded-lg'>
         {/* BANNER COLOR */}
@@ -80,7 +49,35 @@ export default function Card({ isSuccess, isError, data }) {
     );
   }
 
-  if (isSuccess) {
+  if (result.length !== 0) {
+    const {
+      type,
+      username,
+      displayName,
+      avatar,
+      banner,
+      avatarDecoration,
+      accentColor,
+      badges,
+      accountAge,
+      timestamp,
+    } = result;
+
+    const [hover, setHover] = useState(false);
+    const [copySuccess, setCopySuccess] = useState(accentColor);
+
+    const toggleHover = () => {
+      setHover(!hover);
+    };
+
+    const clipboard = (color) => {
+      setCopySuccess(t('misc.copiedToClipboard'));
+      navigator.clipboard.writeText(color);
+      setTimeout(() => {
+        setCopySuccess(color);
+      }, 2000);
+    };
+
     return (
       <div className='bg-white shadow rounded-lg'>
         {/* BANNER */}
@@ -124,7 +121,7 @@ export default function Card({ isSuccess, isError, data }) {
             href={avatar.url && `${avatar.url}?size=2048`}
             target='_blank'
             rel='noopener noreferrer'
-            className='group flex-none mr-1.5 rounded-full bg-gray-100 overflow-hidden relative w-[4.3rem] h-[4.3rem]'
+            className='group flex-none mr-1.5 rounded-full bg-gray-100 relative w-[4.3rem] h-[4.3rem]'
           >
             <div className='absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30'>
               <svg
@@ -235,7 +232,7 @@ export default function Card({ isSuccess, isError, data }) {
                   }}
                   onMouseEnter={() => toggleHover()}
                   onMouseLeave={() => toggleHover()}
-                  onClick={() => clipboard()}
+                  onClick={() => clipboard(accentColor)}
                 >
                   {copySuccess}
                 </p>

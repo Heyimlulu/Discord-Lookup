@@ -38,15 +38,7 @@
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "sitemap": "babel-node ./src/sitemap-generator.js",
     "predeploy": "yarn run sitemap",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config .prettierrc.json"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -67,13 +59,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.26.0",
     "compress-create-react-app": "^1.2.1",
-    "eslint": "^7.32.0 || ^8.2.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "postcss": "^8.4.16",
     "prettier": "^3.1.1",
     "tailwindcss": "^3.1.8",

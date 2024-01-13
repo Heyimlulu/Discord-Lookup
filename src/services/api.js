@@ -5,9 +5,11 @@ import QUERY_ERROR from '../mocks/queryError-mock.json';
 import LENGTH_ERROR from '../mocks/lengthError-mock.json';
 import REGEX_ERROR from '../mocks/regexError-mock.json';
 
-export default class Api {
+export default class DiscordLookupRESTApi {
   static BASE_URL = process.env.REACT_APP_API_URL;
+
   static IS_DEV = false;
+
   static MOCK = {
     USER_FOUND,
     USER_NOT_FOUND,

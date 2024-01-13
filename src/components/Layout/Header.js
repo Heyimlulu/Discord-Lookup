@@ -2,7 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import { useTranslation } from 'react-i18next';
 import ReactCountryFlag from 'react-country-flag';
-import * as gtag from '../utils/gtag';
+import * as gtag from '../../utils/gtag';
 
 export default function Header() {
   const { i18n } = useTranslation();

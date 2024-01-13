@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faClockRotateLeft } from '@fortawesome/free-solid-svg-icons';
 import { localstorage } from '../utils/localstorage';
 import * as gtag from '../utils/gtag';
 
-export default function RecentSearch({ searchUserById }) {
+export default function RecentSearch() {
+  const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [recentSearches, setRecentSearches] = useState([]);
 
   const handleSearch = (userId) => {
     gtag.event('click', 'history_click', 'history_click', 1);
-    searchUserById(userId);
+    navigate(`/${userId}`);
   };
 
   const handleRemoveFromHistory = (e, idx) => {

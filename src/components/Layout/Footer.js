@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import * as gtag from '../utils/gtag';
+import * as gtag from '../../utils/gtag';
 
 export default function AppFooter() {
   const { t } = useTranslation();

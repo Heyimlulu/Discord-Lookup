@@ -16,10 +16,6 @@ body {
   justify-content: space-between;
   width: var(--uib-size);
   height: calc(var(--uib-size) * 0.27);
-
-  /* CUSTOM */
-  margin: auto;
-  padding: 12px 0;
 }
 
 .dot-pulse__dot,
