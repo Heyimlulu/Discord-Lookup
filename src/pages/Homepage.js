@@ -1,66 +1,49 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { GET_DISCORD_USER } from '../graphql/queries';
 import { useParams } from 'react-router-dom';
 import loadable from '@loadable/component';
 import * as gtag from '../utils/gtag';
 import { localstorage } from '../utils/localstorage';
-import DiscordLookupRESTApi from '../services/api';
 
 export default function Homepage() {
   const { userId } = useParams();
 
-  const [result, setResult] = useState([]);
   const [lastId, setLastId] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
-  const { getItem, setItem } = localstorage();
-  const recentSearches = new Set(getItem('DiscordNameHistory') || []);
-
-  const searchUserById = async () => {
-    if (userId !== lastId) {
-      gtag.event('set_search', 'search', 'search', userId);
-
-      setIsLoading(true);
-      setLastId(userId);
-
-      try {
-        const { data } = await DiscordLookupRESTApi.getUserById(userId);
-
-        recentSearches.forEach((recentSearch) => {
-          if (recentSearch.id === data.id) {
-            recentSearches.delete(recentSearch);
-          }
-        });
-        recentSearches.add(data);
-        setItem('DiscordNameHistory', [...recentSearches]);
-
-        setResult(data);
-      } catch (error) {
-        recentSearches.add({ id: userId });
-        setItem('DiscordNameHistory', [...recentSearches]);
-        setResult(error.response.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-  };
+  const isHome = window.location.pathname === '/';
 
   const InputForm = loadable(() => import('../components/InputForm'));
   const RecentSearch = loadable(() => import('../components/RecentSearch'));
-  const Placeholder = loadable(() => import('../components/Card/Placeholder'));
   const UserCard = loadable(() => import('../components/Card/UserCard'));
 
+  const { loading, error, data, refetch } = useQuery(GET_DISCORD_USER, {
+    variables: { userId },
+  });
+
   useEffect(() => {
-    if (userId) {
-      searchUserById();
+    if (data && userId !== lastId) {
+      gtag.event('set_search', 'search', 'search', userId);
+
+      setLastId(userId);
+
+      const { getItem, setItem } = localstorage();
+      const recentSearches = new Set(getItem('DiscordNameHistory') || []);
+
+      recentSearches.forEach((recentSearch) => {
+        if (recentSearch.id === data.discord.lookup.user.id) {
+          recentSearches.delete(recentSearch);
+        }
+      });
+      recentSearches.add(data.discord.lookup.user);
+      setItem('DiscordNameHistory', [...recentSearches]);
     }
-  }, [userId]);
+  }, [userId, data, refetch]);
 
   return (
     <div>
-      <InputForm isLoading={isLoading} />
-      {isLoading || (window.location.pathname === '/' && <RecentSearch />)}
-      {isLoading && <Placeholder />}
-      {!isLoading && <UserCard result={result} />}
+      <InputForm isLoading={loading} />
+      {isHome ? <RecentSearch /> : <UserCard data={data} error={error} loading={loading} />}
     </div>
   );
 }

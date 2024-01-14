@@ -27,7 +27,8 @@
     "accountAge": {
       "title": "Âge du compte",
       "years": "ans"
-    }
+    },
+    "viewProfile": "Afficher sur Discord"
   },
   "misc": {
     "copiedToClipboard": "Copié !"

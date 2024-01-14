@@ -57,10 +57,10 @@ export default function RecentSearch() {
                   key={idx}
                   className='flex items-center border-b last:border-b-0 mx-auto px-4 py-2 shadow bg-white cursor-pointer hover:bg-gray-100 transition'
                 >
-                  {recentSearch.avatar?.url ? (
+                  {recentSearch.profileAppearance.avatar?.url ? (
                     <img
                       className='relative mr-4 flex-shrink-0 object-cover object-center rounded-full w-10 h-10'
-                      src={`${recentSearch.avatar.url}?size=64`}
+                      src={`${recentSearch.profileAppearance.avatar.url}?size=64`}
                       alt={recentSearch.username}
                     />
                   ) : (

@@ -5,8 +5,9 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPalette, faStar, faIdBadge, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '../../utils/classNames';
+import loadable from '@loadable/component';
 import ToolTip from './Tooltip';
+import { classNames } from '../../utils/classNames';
 import discordLogo from '../../images/logo/Discord-Logo-White.svg';
 
 import 'dayjs/locale/en';
@@ -18,10 +19,14 @@ import 'dayjs/locale/ja';
 dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
-export default function UserCard({ result }) {
+export default function UserCard({ data, error, loading }) {
   const { t, i18n } = useTranslation();
 
-  if (!result) {
+  const Placeholder = loadable(() => import('./Placeholder'));
+
+  if (loading) return <Placeholder />;
+
+  if (error) {
     return (
       <div className='bg-white shadow rounded-lg'>
         {/* BANNER COLOR */}
@@ -49,22 +54,15 @@ export default function UserCard({ result }) {
     );
   }
 
-  if (result.length !== 0) {
+  if (data) {
     const {
-      type,
-      username,
-      displayName,
-      avatar,
-      banner,
-      avatarDecoration,
-      accentColor,
-      badges,
-      accountAge,
-      timestamp,
-    } = result;
+      discord: {
+        lookup: { user },
+      },
+    } = data;
 
     const [hover, setHover] = useState(false);
-    const [copySuccess, setCopySuccess] = useState(accentColor);
+    const [copySuccess, setCopySuccess] = useState(user.profileAppearance.accentColor);
 
     const toggleHover = () => {
       setHover(!hover);
@@ -81,13 +79,13 @@ export default function UserCard({ result }) {
     return (
       <div className='bg-white shadow rounded-lg'>
         {/* BANNER */}
-        <div className='bg-blurple border-b rounded-t-md w-full min-h-[60px]'>
-          {banner.url && (
+        <div className='relative bg-blurple border-b rounded-t-md w-full min-h-[60px]'>
+          {user.profileAppearance.banner?.url && (
             <a
               className='group flex relative w-full h-[120px]'
               target='_blank'
               rel='noopener noreferrer'
-              href={`${banner.url}?size=2048`}
+              href={`${user.profileAppearance.banner?.url}?size=2048`}
             >
               <div className='absolute top-0 left-0 h-full w-full opacity-0 group-hover:opacity-100 bg-black bg-opacity-50 transition-all flex items-center justify-center duration-200 z-30'>
                 <svg
@@ -108,17 +106,43 @@ export default function UserCard({ result }) {
               <img
                 loading='lazy'
                 className='h-full w-full object-cover object-center rounded-t-md relative z-20'
-                src={`${banner.url}?size=2048`}
-                alt={username}
+                src={`${user.profileAppearance.banner?.url}?size=2048`}
+                alt={user.username}
               />
             </a>
           )}
+          <div className='absolute top-2 right-2 z-30'>
+            <a
+              href={`discord://-/users/${user.id}`}
+              rel='noopener noreferrer'
+              className='flex items-center justify-center text-white bg-black rounded-lg px-3 py-1.5 text-white text-xs font-medium hover:bg-white hover:text-black transition duration-200'
+            >
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                className='h-4 w-4 stroke-current'
+                fill='none'
+                viewBox='0 0 24 24'
+                stroke='currentColor'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  strokeWidth='2'
+                  d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
+                />
+              </svg>
+              <span className='ml-1'>{t('userCard.viewProfile')}</span>
+            </a>
+          </div>
         </div>
         {/* USER INFOS */}
         <div className='flex items-center py-3 px-4 border-b'>
           {/* AVATAR */}
           <a
-            href={avatar.url && `${avatar.url}?size=2048`}
+            href={
+              user.profileAppearance.avatar?.url &&
+              `${user.profileAppearance.avatar?.url}?size=2048`
+            }
             target='_blank'
             rel='noopener noreferrer'
             className='group flex-none mr-1.5 rounded-full bg-gray-100 relative w-[4.3rem] h-[4.3rem]'
@@ -139,13 +163,14 @@ export default function UserCard({ result }) {
                 />
               </svg>
             </div>
-            {avatar.url ? (
+            {user.profileAppearance.avatar?.url ? (
               <img
                 loading='lazy'
-                src={avatar.url}
-                alt={username}
+                href={`${user.profileAppearance.avatar?.url}?size=2048`}
+                src={user.profileAppearance.avatar?.url}
+                alt={user.username}
                 className={classNames(
-                  avatarDecoration && 'p-[6px]',
+                  user.profileAppearance.avatarDecoration && 'p-[6px]',
                   'h-full w-full rounded-full object-cover object-center relative z-0',
                 )}
               />
@@ -164,10 +189,10 @@ export default function UserCard({ result }) {
                 </svg>
               </div>
             )}
-            {avatarDecoration && (
+            {user.profileAppearance.avatarDecoration && (
               <img
                 loading='lazy'
-                src={avatarDecoration}
+                src={user.profileAppearance.avatarDecoration}
                 alt='avatar-decoration'
                 className='h-full w-full object-cover object-center absolute top-0 left-0 z-20'
               />
@@ -178,22 +203,24 @@ export default function UserCard({ result }) {
             {/* USERNAME AND DISPLAY NAME */}
             <div className='inline-block w-[fit-content] text-xl font-semibold px-1.5 ml-1'>
               <div>
-                {username}
-                {displayName && (
-                  <small className='font-normal text-md font-mono ml-[1px]'>({displayName})</small>
+                {user.username}
+                {user.displayName && (
+                  <small className='font-normal text-md font-mono ml-[1px]'>
+                    ({user.displayName})
+                  </small>
                 )}
               </div>
             </div>
             {/* BADGES */}
             <div className='flex items-center mx-2 mt-[1px] select-none'>
-              {badges.map((badge, key) => {
+              {user.badges.map((badge, key) => {
                 return (
-                  <ToolTip key={key} tooltip={badge.name}>
+                  <ToolTip key={key} tooltip={badge?.description}>
                     <div className='flex justify-center items-center rounded-lg transition hover:bg-gray-300 h-[2rem] p-[4px] mx-[2px]'>
                       <img
                         loading='lazy'
-                        src={badge.image}
-                        alt={badge.name}
+                        src={badge?.url}
+                        alt={badge?.title}
                         className='h-full w-full object-contain'
                       />
                     </div>
@@ -212,11 +239,11 @@ export default function UserCard({ result }) {
               <p className='text-sm font-medium text-gray-900'>{t('userCard.accountType')}</p>
             </div>
             <p className='inline-block rounded-full px-[10px] text-sm font-bold text-white bg-blurple'>
-              {type}
+              {user.type}
             </p>
           </div>
           {/* ACCENT COLOR */}
-          {accentColor && (
+          {user.profileAppearance.accentColor && (
             <div>
               <div className='flex'>
                 <FontAwesomeIcon className='mr-2' icon={faStar} />
@@ -226,20 +253,20 @@ export default function UserCard({ result }) {
                 <p
                   className='transition ease duration-200 inline-flex px-[10px] rounded-full text-sm'
                   style={{
-                    color: accentColor,
-                    border: `1px solid ${accentColor}`,
+                    color: user.profileAppearance.accentColor,
+                    border: `1px solid ${user.profileAppearance.accentColor}`,
                     boxShadow: 'rgb(167, 86, 255) 0px 0px 2px',
                   }}
                   onMouseEnter={() => toggleHover()}
                   onMouseLeave={() => toggleHover()}
-                  onClick={() => clipboard(accentColor)}
+                  onClick={() => clipboard(user.profileAppearance.accentColor)}
                 >
                   {copySuccess}
                 </p>
               ) : (
                 <p
                   className='transition ease duration-200 px-[10px] rounded-full text-sm w-[4.2rem] h-[1.5rem]'
-                  style={{ backgroundColor: accentColor }}
+                  style={{ backgroundColor: user.profileAppearance.accentColor }}
                   onMouseEnter={() => toggleHover()}
                   onMouseLeave={() => toggleHover()}
                 >
@@ -256,14 +283,14 @@ export default function UserCard({ result }) {
               <p className='text-sm font-medium text-gray-900'>{t('userCard.createdOn')}</p>
             </div>
             <p className='text-sm text-gray-500'>
-              {dayjs(timestamp)
+              {dayjs(user.creationTimestamp)
                 .locale(i18n.language === 'jp' ? 'ja' : i18n.language)
                 .format('LLL')}
             </p>
           </div>
 
           {/* ACCOUNT AGE */}
-          {accountAge && (
+          {user.accountAge && (
             <div>
               <div className='flex'>
                 <FontAwesomeIcon className='mr-2' icon={faHourglassHalf} />
@@ -272,7 +299,7 @@ export default function UserCard({ result }) {
                 </p>
               </div>
               <p className='text-sm text-gray-500'>
-                {dayjs(timestamp)
+                {dayjs(user.creationTimestamp)
                   .locale(i18n.language === 'jp' ? 'ja' : i18n.language)
                   .fromNow()}
               </p>

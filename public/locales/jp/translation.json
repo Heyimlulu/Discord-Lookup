@@ -27,7 +27,8 @@
     "accountAge": {
       "title": "アカウントの年齢",
       "years": "年"
-    }
+    },
+    "viewProfile": "Discordで表示"
   },
   "misc": {
     "copiedToClipboard": "コピーしました！"

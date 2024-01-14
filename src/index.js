@@ -1,5 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
 import ReactGA from 'react-ga';
 import './index.css';
 import './styles/custom.css';
@@ -17,8 +18,15 @@ ReactGA.initialize(gtag.GA_TRACKING_ID);
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register();
 
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_GRAPHQL_API_URL,
+  cache: new InMemoryCache(),
+});
+
 createRoot(document.getElementById('root')).render(
-  <I18nextProvider i18n={i18n}>
-    <App />
-  </I18nextProvider>,
+  <ApolloProvider client={client}>
+    <I18nextProvider i18n={i18n}>
+      <App />
+    </I18nextProvider>
+  </ApolloProvider>,
 );
