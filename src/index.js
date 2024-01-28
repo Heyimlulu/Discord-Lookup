@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 import './index.css';
 import './styles/custom.css';
 import { I18nextProvider } from 'react-i18next';
@@ -11,7 +11,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 // Google Analytics
-ReactGA.initialize(gtag.GA_TRACKING_ID);
+ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -23,7 +23,7 @@ export default function Homepage() {
 
   useEffect(() => {
     if (data && userId !== lastId) {
-      gtag.event('set_search', 'search', 'search', userId);
+      gtag.event('search', 'user_id', 'user_id', userId);
 
       setLastId(userId);
 

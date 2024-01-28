@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     // Google Analytics
-    gtag.pageview(window.location.pathname);
+    gtag.send('pageview', window.location.pathname, document.title);
   }, []);
 
   return (

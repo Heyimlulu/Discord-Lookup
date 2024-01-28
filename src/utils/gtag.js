@@ -1,14 +1,13 @@
-import ReactGA from 'react-ga';
+import ReactGA from 'react-ga4';
 
 export const GA_TRACKING_ID = parseInt(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
 
-/**
- * Custom tracking event for Google Analytics on a webpage visit.
- *
- * @param {*} url
- */
-export const pageview = (url) => {
-  ReactGA.pageview(url);
+export const send = (hitType, page, title) => {
+  ReactGA.send({
+    hitType,
+    page,
+    title,
+  });
 };
 
 /**
@@ -21,9 +20,9 @@ export const pageview = (url) => {
  */
 export const event = (category, action, label, value) => {
   ReactGA.event({
-    category: category,
-    action: action,
-    label: label,
-    value: value,
+    category,
+    action,
+    label,
+    value,
   });
 };

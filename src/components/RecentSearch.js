@@ -13,7 +13,7 @@ export default function RecentSearch() {
   const [recentSearches, setRecentSearches] = useState([]);
 
   const handleSearch = (userId) => {
-    gtag.event('click', 'history_click', 'history_click', 1);
+    gtag.event('search', 'history', 'history', 1);
     navigate(`/${userId}`);
   };
 
