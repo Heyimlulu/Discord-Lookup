@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLazyQuery } from '@apollo/client';
 import { GET_DISCORD_USER } from '../graphql/queries';
 import { useParams } from 'react-router-dom';
 import loadable from '@loadable/component';
@@ -17,32 +17,34 @@ export default function Homepage() {
   const RecentSearch = loadable(() => import('../components/RecentSearch'));
   const UserCard = loadable(() => import('../components/Card/UserCard'));
 
-  const { loading, error, data, refetch } = useQuery(GET_DISCORD_USER, {
-    variables: { userId },
+  const [fetchDiscordUser, { data, loading, error }] = useLazyQuery(GET_DISCORD_USER, {
+    fetchPolicy: 'cache-and-network',
   });
 
-  useEffect(() => {
-    if (data && userId !== lastId) {
+  useMemo(async () => {
+    if (userId !== lastId && !isHome) {
+      const { data } = await fetchDiscordUser({ variables: { userId } });
+      const dataDiscordUser = data?.discord?.lookup?.user;
+
       gtag.event('search', 'user_id', 'user_id', userId);
 
       setLastId(userId);
 
       const { getItem, setItem } = localstorage();
       const recentSearches = new Set(getItem('DiscordNameHistory') || []);
-
       recentSearches.forEach((recentSearch) => {
-        if (recentSearch.id === data.discord.lookup.user.id) {
+        if (recentSearch.id === dataDiscordUser?.id) {
           recentSearches.delete(recentSearch);
         }
       });
-      recentSearches.add(data.discord.lookup.user);
+      recentSearches.add(dataDiscordUser);
       setItem('DiscordNameHistory', [...recentSearches]);
     }
-  }, [userId, data, refetch]);
+  }, [userId]);
 
   return (
     <div>
-      <InputForm isLoading={loading} />
+      <InputForm fetchDiscordUser={fetchDiscordUser} isLoading={loading} />
       {isHome ? <RecentSearch /> : <UserCard data={data} error={error} loading={loading} />}
     </div>
   );

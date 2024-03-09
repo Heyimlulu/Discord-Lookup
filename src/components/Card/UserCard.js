@@ -15,12 +15,15 @@ import 'dayjs/locale/fr';
 import 'dayjs/locale/de';
 import 'dayjs/locale/it';
 import 'dayjs/locale/ja';
+import { environment } from '../../utils/environment';
 
 dayjs.extend(localizedFormat);
 dayjs.extend(relativeTime);
 
 export default function UserCard({ data, error, loading }) {
   const { t, i18n } = useTranslation();
+
+  const BASE_URL = environment.apiUrl;
 
   const Placeholder = loadable(() => import('./Placeholder'));
 
@@ -219,7 +222,7 @@ export default function UserCard({ data, error, loading }) {
                     <div className='flex justify-center items-center rounded-lg transition hover:bg-gray-300 h-[2rem] p-[4px] mx-[2px]'>
                       <img
                         loading='lazy'
-                        src={badge?.url}
+                        src={`${BASE_URL}${badge?.url}`}
                         alt={badge?.title}
                         className='h-full w-full object-contain'
                       />
