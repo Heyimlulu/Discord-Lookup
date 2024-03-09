@@ -1,6 +1,7 @@
 import ReactGA from 'react-ga4';
+import { environment } from './environment';
 
-export const GA_TRACKING_ID = parseInt(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
+export const GA_TRACKING_ID = parseInt(environment.googleAnalyticsId);
 
 export const send = (hitType, page, title) => {
   ReactGA.send({
