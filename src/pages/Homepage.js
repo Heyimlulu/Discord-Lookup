@@ -25,7 +25,7 @@ export default function Homepage() {
     if (userId !== lastId && !isHome) {
       const { data } = await fetchDiscordUser({ variables: { userId } });
       const dataDiscordUser = data?.discord?.lookup?.user;
-
+      
       gtag.event('search', 'user_id', 'user_id', userId);
 
       setLastId(userId);
